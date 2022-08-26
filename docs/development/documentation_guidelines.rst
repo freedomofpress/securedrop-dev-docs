@@ -132,8 +132,8 @@ Prior to generating screenshots as part of a release update:
 
 Updating Upgrade Guides
 -----------------------
-We ship an upgrade guide for each release; see the :ref:`latest guide <latest_upgrade_guide>`
-as an example. As part of updating the documentation for a release:
+We ship an upgrade guide for each release. As part of updating the documentation
+for a release:
 
 1. Create a new upgrade guide copied from the most recent one and add it to the
    index.
@@ -150,7 +150,7 @@ as an example. As part of updating the documentation for a release:
    reminders in ``docs/includes/backup-and-update-reminders.txt`` towards the
    end of the document.
 5. If this release includes a kernel update, make sure to include a reference
-   to the :doc:`Kernel Troubleshooting Guide <../kernel_troubleshooting>`.
+   to the `Kernel Troubleshooting Guide <https://docs.securedrop.org/en/stable/kernel_troubleshooting.html>`_.
 6. If you are not also the release manager, check with them about any other
    pertinent release-specific instructions that should be included.
 7. Finally, ensure that mentions of the current version are up to date. You can use
@@ -245,7 +245,7 @@ Text taken directly from a user interface is in **bold face**.
 
     "Once you’re sure you have the right drive, click **Format Drive**."
 
-SecureDrop-specific :doc:`glossary <../glossary>` is in *italics*.
+SecureDrop-specific `glossary <https://docs.securedrop.org/en/stable/glossary.html>`_ is in *italics*.
 
     "To get started, you’ll need two Tails drives: one for the *Admin
     Workstation* and one for the *Secure Viewing Station*."

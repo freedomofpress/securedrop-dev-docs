@@ -25,7 +25,7 @@ Download Ubuntu server ISO
 
 On ``sd-dev``, download the latest Ubuntu server ISO for Focal,
 along with corresponding checksum and signature files. See the
-:ref:`USB boot disk creation documentation <download_ubuntu>`
+`installation docs <https://docs.securedrop.org/en/stable/create_usb_boot_drives.html#download-the-ubuntu-installation-media>`_
 for detailed instructions. If you opt for the command line instructions, omit
 the ``torify`` prepended to the ``curl`` command.
 
@@ -63,7 +63,8 @@ where ``ISO_PATH`` is the full path to the Ubuntu ISO previously downloaded on `
 Next, choose **Install Ubuntu**.
 
 For the most part, the install process matches the
-:ref:`hardware install flow <install_ubuntu>`, with a few exceptions:
+`hardware install flow <https://docs.securedrop.org/en/stable/servers.html#perform-the-installation>`_,
+with a few exceptions:
 
   -  **Subnet:** 10.137.0.0/24
   -  **Address:** use value returned by ``qvm-prefs sd-staging-base-focal ip``

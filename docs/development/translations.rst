@@ -90,7 +90,7 @@ with investigative journalists anonymously and securely. It's designed
 to protect its users with strong cryptography and network
 communications that hide locations and activity. For more information:
 
-* Learn about :doc:`what makes SecureDrop unique <../what_makes_securedrop_unique>`
+* Learn about `what makes SecureDrop unique <https://docs.securedrop.org/en/stable/what_makes_securedrop_unique.html>`_
 * Watch `The Globe and Mail guide to using SecureDrop <https://www.youtube.com/watch?v=oSW2wMWtAMM>`_
 * Read the `Localization Lab "Ask Me Anything" on SecureDrop <https://www.localizationlab.org/blog/2018/4/20/4bp1j2olispup45z8o2mm5nb5snxm2>`_
 
@@ -99,9 +99,9 @@ communications that hide locations and activity. For more information:
 Who uses SecureDrop?
 ^^^^^^^^^^^^^^^^^^^^
 
-There are two kinds of SecureDrop users: :doc:`Sources <../source>`
-and :doc:`Journalists <../journalist>`. A source is an individual who
-wants to communicate securely and anonymously with a
+There are two kinds of SecureDrop users: `Sources <https://docs.securedrop.org/en/stable/source.html>`_
+and `Journalists <https://docs.securedrop.org/en/stable/journalist.html>`_
+A source is an individual who wants to communicate securely and anonymously with a
 journalist. Sources are not expected to have any technical
 background. Journalists using SecureDrop have usually received proper
 training and understand the basic workflow of SecureDrop.
@@ -377,8 +377,9 @@ the right side of the translation page.
    Glossary sidebar in Weblate. Click on the image to see it full-size.
 
 If you find that a *source string* contains terms from the
-:doc:`SecureDrop glossary <../glossary>` or the `EFF Surveillance
-Self-Defense glossary`_, but the glossary sidebar says ``No related strings found in the glossary.``,
+`SecureDrop glossary <https://docs.securedrop.org/en/stable/glossary.html>`_ or the
+`EFF Surveillance Self-Defense glossary`_, but the glossary sidebar says
+``No related strings found in the glossary.``,
 we'd really appreciate it if you could add those terms to
 the glossary of the language you're working with.
 
@@ -450,8 +451,7 @@ technical glossaries for additional context. Then you can contribute
 to improving your own language glossary on Weblate by suggesting
 a translation yourself!
 
-- The :doc:`SecureDrop glossary <../glossary>` explains terms specific
-  to SecureDrop
+- The `SecureDrop glossary <https://docs.securedrop.org/en/stable/glossary.html>`_ explains terms specific to SecureDrop
 - The `EFF Surveillance Self-Defense glossary`_ explains many general
   security concepts
 

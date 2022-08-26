@@ -243,8 +243,9 @@ Once you're prepared the *Admin Workstation*, you can start each VM:
 At this point you should be able to SSH into both ``app-prod`` and ``mon-prod``
 with the user ``vagrant`` and the password ``vagrant``.
 
-From here you can follow the :ref:`server configuration instructions
-<test_connectivity>` to test connectivity and prepare the servers.
+From here you can follow the :`server configuration instructions
+<https://docs.securedrop.org/en/stable/servers.html#test-connectivity>`_
+to test connectivity and prepare the servers.
 
 These instructions will have you generate SSH keys and use ``ssh-copy-id`` to
 transfer the key onto the servers. By default, the Vagrant boxes authorize a
