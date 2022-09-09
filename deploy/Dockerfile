@@ -10,10 +10,8 @@ RUN deploy/build
 FROM nginx:mainline-alpine@sha256:af466e4f12e3abe41fcfb59ca0573a3a5c640573b389d5287207a49d1324abd8
 
 COPY deploy/nginx.conf /etc/nginx
-RUN mkdir -p /opt/nginx/run /opt/nginx/webroot/en/latest /opt/nginx/webroot/en/stable && chown -R nginx:nginx /opt/nginx
+RUN mkdir -p /opt/nginx/run /opt/nginx/webroot/en/latest && chown -R nginx:nginx /opt/nginx
 
 USER nginx
-COPY --from=sphinx --chown=nginx:nginx build/stable/html/html/ /opt/nginx/webroot/en/stable/
-COPY --from=sphinx --chown=nginx:nginx build/stable/html/latex/SecureDrop.pdf /opt/nginx/webroot/en/stable/
-COPY --from=sphinx --chown=nginx:nginx build/latest/html/html/ /opt/nginx/webroot/en/latest/
-COPY --from=sphinx --chown=nginx:nginx build/latest/html/latex/SecureDrop.pdf /opt/nginx/webroot/en/latest/
+COPY --from=sphinx --chown=nginx:nginx build/latest/html/ /opt/nginx/webroot/en/latest/
+COPY --from=sphinx --chown=nginx:nginx build/latest/latex/SecureDropDevDocs.pdf /opt/nginx/webroot/en/latest/

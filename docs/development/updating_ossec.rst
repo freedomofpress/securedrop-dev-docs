@@ -5,7 +5,7 @@ Updating OSSEC Rules
 
 SecureDrop uses the OSSEC open source host-based intrusion detection system
 (IDS) for log analysis, file integrity checking, policy monitoring, rootkit
-detection and real-time alerting. Refer to our :ref:`OSSEC guide <ossec_guide>`
+detection and real-time alerting. Refer to our `OSSEC guide <https://docs.securedrop.org/en/stable/ossec_alerts.html>`_
 to learn more about how SecureDrop admins set up and monitor OSSEC alerts.
 
 Alerting Strategy
