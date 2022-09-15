@@ -1,5 +1,5 @@
-Developing the SecureDrop Client Application
-============================================
+SecureDrop Client Development
+=============================
 
 As part of the ongoing work to make an integrated journalist-friendly workstation
 for SecureDrop we have created a native client application to be run within the

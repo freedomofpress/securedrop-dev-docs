@@ -50,4 +50,7 @@ administrators <https://docs.securedrop.org/>`_.
    :name: sd-workstation
    :maxdepth: 2
 
+   development/workstation_setup
+   development/workstation_development
+   development/workstation_release_management
    development/client
