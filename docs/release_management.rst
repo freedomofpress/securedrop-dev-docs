@@ -127,10 +127,6 @@ Pre-Release
                   ``ossec-agent-3.6.0-amd64.deb`` in ``main``, do not commit a new version of this
                   deb.
 
-     .. note:: If the release contains other packages not created by ``make build-debs``, such as
-               Tor or kernel updates, make sure that they also get pushed to
-               ``apt-test.freedom.press``.
-
 #. Write a test plan that focuses on the new functionality introduced in the release. Post for
    feedback and make changes based on suggestions from the community. Once it's ready, publish the
    test plan in the `wiki <https://github.com/freedomofpress/securedrop/wiki>`_ and link to it in
@@ -246,11 +242,6 @@ Release Process
    repository, create a branch from ``main`` called ``release``.
 #. In your local branch, commit the built packages to the ``core/focal``
    directory.
-
-   * If the release includes a kernel update, make sure to add the
-     corresponding grsecurity-patched kernel packages, including both
-     ``linux-image-*`` and ``linux-firmware-image-*`` packages as
-     appropriate.
 #. Run the ``tools/publish`` script. This will create the ``Release`` file.
 #. Commit the changes made by the ``tools/publish`` script.
 #. Push your commits to the remote ``release`` branch. This will trigger an
