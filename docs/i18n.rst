@@ -560,7 +560,7 @@ with a release looming, the server can be rebooted.
 .. _`Weblate announcement`: https://weblate.securedrop.org/projects/securedrop/securedrop/#announcement
 .. _`Django admin panel`: https://weblate.securedrop.org/admin/trans/announcement/
 
-.. |Weblate commit Lock| image:: ../images/weblate/admin-lock.png
-.. |Weblate commit Locked| image:: ../images/weblate/admin-locked.png
-.. |Weblate commit Unlock| image:: ../images/weblate/admin-unlock.png
-.. |Weblate commit Unlocked| image:: ../images/weblate/admin-unlocked.png
+.. |Weblate commit Lock| image:: images/weblate/admin-lock.png
+.. |Weblate commit Locked| image:: images/weblate/admin-locked.png
+.. |Weblate commit Unlock| image:: images/weblate/admin-unlock.png
+.. |Weblate commit Unlocked| image:: images/weblate/admin-unlocked.png

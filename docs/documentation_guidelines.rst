@@ -15,7 +15,7 @@ are stored in the ``docs/`` directory of the `SecureDrop docs repository
 Documentation versions
 ----------------------
 
-.. include:: ../includes/docs-branches.txt
+.. include:: includes/docs-branches.txt
 
 
 Updating Documentation
@@ -34,7 +34,7 @@ To get started editing the docs:
 
 #. Install the dependencies:
 
-   .. include:: ../includes/virtualenv.txt
+   .. include:: includes/virtualenv.txt
 
    .. code:: sh
 
@@ -82,7 +82,7 @@ a reliable internet connection:
 
 Project maintainers will need to approve the PR before it can be merged.
 
-.. include:: ../includes/squash-commits.txt
+.. include:: includes/squash-commits.txt
 
 Pushing to a contributor fork
 -----------------------------
