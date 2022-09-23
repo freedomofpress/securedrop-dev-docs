@@ -60,7 +60,7 @@ four translation components:
 #. **SecureDrop Client:**  The SecureDrop Client interface of the `SecureDrop
    Workstation`_.
 
-.. figure:: ../images/weblate/project.png
+.. figure:: images/weblate/project.png
    :align: center
    :figwidth: 80%
    :width: 100%
@@ -147,7 +147,7 @@ How to register an account on Weblate using an email address
 #. Check your email for a message from **weblate@securedrop.org** with the subject **[Weblate] Your registration on Weblate**.
 #. That message contains a confirmation link. Click that link to complete your registration.
 
-.. figure:: ../images/weblate/registration.png
+.. figure:: images/weblate/registration.png
    :align: center
    :figwidth: 80%
    :width: 100%
@@ -166,7 +166,7 @@ How to register an account on Weblate using a GitHub account
 
 The authorization request looks like this:
 
-.. figure:: ../images/weblate/github-authorization.png
+.. figure:: images/weblate/github-authorization.png
    :align: center
    :figwidth: 50%
    :width: 100%
@@ -183,7 +183,7 @@ How to manage your preferred languages on Weblate
 #. Select the languages your want to translate.
 #. Click the **Save** button.
 
-.. figure:: ../images/weblate/manage-languages.png
+.. figure:: images/weblate/manage-languages.png
    :align: center
    :figwidth: 80%
    :width: 100%
@@ -200,7 +200,7 @@ How to translate a language on Weblate
 #. Click the **Translate** button.
 #. :ref:`Start translating <how_to_translate_a_phrase_weblate>`.
 
-.. figure:: ../images/weblate/translations.png
+.. figure:: images/weblate/translations.png
    :align: center
    :figwidth: 80%
    :width: 100%
@@ -240,7 +240,7 @@ How to translate a phrase on Weblate
 #. Input your translation in the **Translation** test area near the *source string*.
 #. Click **Save**. The next untranslated string will appear automatically.
 
-.. figure:: ../images/weblate/translate.png
+.. figure:: images/weblate/translate.png
    :align: center
    :figwidth: 80%
    :width: 100%
@@ -369,7 +369,7 @@ we can add suggested translations. If a :ref:`source string <weblate_glossary_so
 from this glossary, the glossary entries will be displayed in a box on
 the right side of the translation page.
 
-.. figure:: ../images/weblate/glossary-sidebar.png
+.. figure:: images/weblate/glossary-sidebar.png
    :align: center
    :figwidth: 80%
    :width: 100%
@@ -438,7 +438,7 @@ Weblate contains an internal glossary for each language, to which
 we can add suggested translations. Learn more about
 :ref:`using language glossaries on Weblate <how_to_use_language_glossaries_on_weblate>`.
 
-.. figure:: ../images/weblate/glossary-list.png
+.. figure:: images/weblate/glossary-list.png
    :align: center
    :figwidth: 80%
    :width: 100%

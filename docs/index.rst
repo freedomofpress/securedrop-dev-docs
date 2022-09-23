@@ -11,46 +11,46 @@ administrators <https://docs.securedrop.org/>`_.
    :name: getting-started
    :maxdepth: 2
 
-   development/contributing
-   development/setup_development
-   development/making_pr
-   development/translations
-   development/contributor_guidelines
-   development/tips_and_tricks
+   contributing
+   setup_development
+   making_pr
+   translations
+   contributor_guidelines
+   tips_and_tricks
 
 .. toctree::
    :caption: SecureDrop Server
    :name: sd-server
    :maxdepth: 2
 
-   development/journalist_api
-   development/admin_development
-   development/updategui_development
-   development/virtual_environments
-   development/virtualizing_tails
-   development/qubes_staging
-   development/upgrade_testing
-   development/database_migrations
-   development/i18n
-   development/documentation_guidelines
-   development/testing_securedrop
-   development/testing_application_tests
-   development/testing_configuration_tests
-   development/testing_continuous_integration
-   development/apt_repo
-   development/updating_ossec
-   development/apparmor_profiles
-   development/portable_demo
-   development/release_management
-   development/dockerbuildmaint
-   development/updating_tor
+   journalist_api
+   admin_development
+   updategui_development
+   virtual_environments
+   virtualizing_tails
+   qubes_staging
+   upgrade_testing
+   database_migrations
+   i18n
+   documentation_guidelines
+   testing_securedrop
+   testing_application_tests
+   testing_configuration_tests
+   testing_continuous_integration
+   apt_repo
+   updating_ossec
+   apparmor_profiles
+   portable_demo
+   release_management
+   dockerbuildmaint
+   updating_tor
 
 .. toctree::
    :caption: SecureDrop Workstation
    :name: sd-workstation
    :maxdepth: 2
 
-   development/workstation_setup
-   development/workstation_development
-   development/workstation_release_management
-   development/client
+   workstation_setup
+   workstation_development
+   workstation_release_management
+   client

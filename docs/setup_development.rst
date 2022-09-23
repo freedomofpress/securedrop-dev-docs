@@ -1,7 +1,7 @@
 Setting Up the Development Environment
 ======================================
 
-.. include:: ../includes/docs-branches.txt
+.. include:: includes/docs-branches.txt
 
 Overview
 --------
@@ -176,7 +176,7 @@ combination with an authenticator application that implements
 (command line tool, multiple platforms). Instead of typing the TOTP code, you
 can simply scan the following QR code:
 
-.. image:: ../images/test-users-totp-qrcode.png
+.. image:: images/test-users-totp-qrcode.png
 
 You can also generate the two-factor code using the Python interpreter:
 

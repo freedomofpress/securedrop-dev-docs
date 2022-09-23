@@ -69,5 +69,5 @@ Some helpful diagrams for getting a sense of the SecureDrop application
 architecture are stored `here <https://github.com/freedomofpress/securedrop-docs/tree/main/docs/diagrams>`_,
 including a high-level view of the SecureDrop database structure:
 
-.. image:: ../diagrams/securedrop-database.png
+.. image:: diagrams/securedrop-database.png
   :width: 100%

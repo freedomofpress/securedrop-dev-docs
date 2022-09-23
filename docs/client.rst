@@ -72,7 +72,7 @@ Client Database Structure
 
 For a better understanding of the SecureDrop Client application architecture, a high-level view of its database structure has been provided: 
 
-.. image:: ../diagrams/securedrop-client-database.png
+.. image:: diagrams/securedrop-client-database.png
   :width: 100%
 
 Tests

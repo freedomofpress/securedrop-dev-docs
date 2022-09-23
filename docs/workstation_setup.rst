@@ -104,7 +104,7 @@ Next we need to do some SecureDrop-specific configuration:
 Qubes provisioning is handled by Salt on ``dom0``, so this project must
 be copied there from your development VM.
 
-.. include:: ../includes/dom0-warning.txt
+.. include:: includes/dom0-warning.txt
 
 That process is a little tricky, but here’s one way to do it: assuming
 this code is checked out in your ``sd-dev`` VM at
@@ -279,7 +279,7 @@ as follows:
 
 5. Transfer and install RPM package in ``dom0``
 
-.. include:: ../includes/dom0-warning.txt
+.. include:: includes/dom0-warning.txt
 
 In ``dom0``, run the following commands (changing the version number to
 its current value):

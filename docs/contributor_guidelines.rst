@@ -210,7 +210,7 @@ Git History
 We currently use an explicit merge strategy to merge feature branches into
 ``develop``. 
 
-.. include:: ../includes/squash-commits.txt
+.. include:: includes/squash-commits.txt
 
 .. _contributor-permissions:
 
