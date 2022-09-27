@@ -1,8 +1,6 @@
 Setting Up the Development Environment
 ======================================
 
-.. include:: includes/docs-branches.txt
-
 Overview
 --------
 

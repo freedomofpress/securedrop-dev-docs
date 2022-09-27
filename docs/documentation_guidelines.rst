@@ -1,11 +1,15 @@
 Documentation Guidelines
 ========================
 
-SecureDrop's documentation is available at https://docs.securedrop.org. It is
-written in `reStructuredText`_ (reST) and hosted by `Freedom of the Press Foundation`_
-using a theme by `Read the Docs`_. The documentation files
-are stored in the ``docs/`` directory of the `SecureDrop docs repository
-<https://github.com/freedomofpress/securedrop-docs>`_.
+SecureDrop's documentation for end users (sources, journalists and administrators)
+is available at https://docs.securedrop.org. It is written in `reStructuredText`_
+(reST) and hosted by `Freedom of the Press Foundation`_ using a theme by
+`Read the Docs`_. The documentation files are stored in the ``docs/`` directory of the
+`SecureDrop docs repository <https://github.com/freedomofpress/securedrop-docs>`_.
+
+Developer documentation is maintained separately via the `SecureDrop developer
+documentation repository <https://github.com/freedomofpress/securedrop-dev-docs>`_
+and published to https://developers.securedrop.org.
 
 .. _reStructuredText: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 .. _Freedom of the Press Foundation: https://freedom.press/
@@ -15,7 +19,17 @@ are stored in the ``docs/`` directory of the `SecureDrop docs repository
 Documentation versions
 ----------------------
 
-.. include:: includes/docs-branches.txt
+SecureDrop maintains two versions of its end user documentation:
+`stable <https://docs.securedrop.org/en/stable/>`_ (appropriate for end users)
+and `latest <https://docs.securedrop.org/en/latest/>`_ (appropriate for developers).
+``stable`` is the default, and is built from our latest signed git tag.
+``latest`` is built from the head of the ``main`` git branch
+of the `securedrop-docs repository <https://github.com/freedomofpress/securedrop-docs>`_.
+
+The developer documentation at https://developers.securedrop.org/
+is published only in a single version. When changes are merged into
+the ``main`` branch of the `securedrop-dev-docs repository <https://github.com/freedomofpress/securedrop-dev-docs>`_,
+a new version of the documentation is built immediately.
 
 
 Updating Documentation
@@ -25,11 +39,19 @@ To get started editing the docs:
 
 .. _clone_the_rep:
 
-#. Clone the SecureDrop documentation repository:
+#. Clone the SecureDrop documentation repository.
+
+   For the end user documentation:
 
    .. code:: sh
 
       git clone https://github.com/freedomofpress/securedrop-docs.git
+
+   For the developer documentation:
+
+   .. code:: sh
+
+      git clone https://github.com/freedomofpress/securedrop-dev-docs.git
 
 
 #. Install the dependencies:
@@ -51,12 +73,12 @@ To get started editing the docs:
 
    You can then preview the documentation at http://127.0.0.1:8000. Navigate to
    the ``docs/`` directory to make changes to the documentation
-   rendered on https://docs.securedrop.org.
+   rendered on https://docs.securedrop.org or https://developers.securedrop.org/.
    The documentation pages will automatically rebuild in the browser
    window, as you make changes; you don't need to refresh the page manually.
 
    After performing lint checks, open a PR against the ``main`` branch
-   of the `SecureDrop docs repository <https://github.com/freedomofpress/securedrop-docs>`_.
+   of the appropriate repository.
 
 
 Testing Documentation Changes
