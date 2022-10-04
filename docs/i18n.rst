@@ -137,8 +137,10 @@ focus on new translations, which are often marked `fuzzy
 is no need to review multiple languages' ``.po`` files because they
 are processed in the same way.
 
-Once you've reviewed the changes, submit them in a pull request for
-the ``develop`` branch in the `main SecureDrop repository`_.
+Once you've reviewed the changes, submit them in a pull request for the
+``develop`` branch in the `main SecureDrop repository`_.  Use the previous
+``l10n: update strings to be translated for vX.Y.Z`` pull request as a
+template.
 
 The new source strings will only be visible to translators in
 `Weblate`_ after they've been merged to ``securedrop/develop`` and
@@ -398,6 +400,12 @@ Release Management
 Two weeks before the release: string freeze
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. note::
+
+    If both a Localization Manager and a deputy are assigned for this release,
+    consider pairing on this ceremony, both for knowledge-sharing and so that
+    the intermediate pull requests can be reviewed and merged promptly.
+
 When features for a new SecureDrop release are frozen, the localization manager for the release will:
 
 * :ref:`merge_develop_to_weblate`.
@@ -441,6 +449,11 @@ goal.
 
 Release day
 ^^^^^^^^^^^
+.. note::
+
+    If both a Localization Manager and a deputy are assigned for this release,
+    consider pairing on this ceremony, both for knowledge-sharing and so that
+    the intermediate pull requests can be reviewed and merged promptly.
 
 Prior to cutting the final release, the localization manager must:
 
