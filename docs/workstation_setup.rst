@@ -77,7 +77,7 @@ environment configuration.
 
 Decide on a VM to use for development. We recommend creating a
 standalone VM called ``sd-dev`` by following `these
-instructions <https://docs.securedrop.org/en/stable/development/setup_development.html#qubes>`__.
+instructions <https://developers.securedrop.org/en/latest/setup_development.html#qubes>`__.
 
 Clone this repo to your preferred location on that VM.
 

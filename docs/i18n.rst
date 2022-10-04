@@ -424,7 +424,7 @@ When features for a new SecureDrop release are frozen, the localization manager 
     release.  If you have suggestions for source strings, please get them to us
     by 2022-03-20.  Translation will end on 2022-03-27.
 
-    Translations are done using Weblate (https://weblate.securedrop.org/projects/securedrop/securedrop/).  If you haven't used it before, <https://docs.securedrop.org/en/stable/development/translations.html> has instructions on how to get started.
+    Translations are done using Weblate (https://weblate.securedrop.org/projects/securedrop/securedrop/).  If you haven't used it before, <https://developers.securedrop.org/en/latest/translations.html> has instructions on how to get started.
 
 * Update Localization Lab via the
   `SecureDrop Coordination <https://community.internetfreedomfestival.org/community/channels/securedrop-coordination>`__ channel
