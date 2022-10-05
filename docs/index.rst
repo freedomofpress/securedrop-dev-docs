@@ -43,6 +43,7 @@ administrators <https://docs.securedrop.org/>`_.
    portable_demo
    release_management
    dockerbuildmaint
+   kernel
    updating_tor
 
 .. toctree::

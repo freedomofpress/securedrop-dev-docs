@@ -171,11 +171,9 @@ for a release:
 4. If this is a major-level or minor-level release, make sure to include the
    reminders in ``docs/includes/backup-and-update-reminders.txt`` towards the
    end of the document.
-5. If this release includes a kernel update, make sure to include a reference
-   to the `Kernel Troubleshooting Guide <https://docs.securedrop.org/en/stable/kernel_troubleshooting.html>`_.
-6. If you are not also the release manager, check with them about any other
+5. If you are not also the release manager, check with them about any other
    pertinent release-specific instructions that should be included.
-7. Finally, ensure that mentions of the current version are up to date. You can use
+6. Finally, ensure that mentions of the current version are up to date. You can use
    the ``update_version.sh`` convenience script to do so.
 
    **Example:** If you are adding a guide to upgrade to 2.4.2, you can run
