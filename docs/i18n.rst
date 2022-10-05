@@ -91,17 +91,15 @@ Development tasks
 Add a new language
 ^^^^^^^^^^^^^^^^^^
 
-A user with weblate admin rights must visit the `Weblate translation
-creation page`_ and the `Weblate desktop translation creation page`_
-to add a new language.
+Any Weblate contributor may visit the `Weblate translation creation page`_ and
+the `Weblate desktop translation creation page`_ to add a new language.
 
-SecureDrop only supports a subset of all the languages being worked on
-in `Weblate`_: some of them are partially translated or not fully
-reviewed. The list of fully supported languages is hard-coded in the
-``i18n_tool.py`` file, in the ``SUPPORTED_LANGUAGES`` variable. When a
-new language is completely translated and reviewed, the
-``i18n_tool.py`` file must be manually edited to add this new language
-to the ``SUPPORTED_LANGUAGES`` variable.
+However, SecureDrop only supports a subset of all the languages being worked on
+in `Weblate`_: some of them are partially translated or not fully reviewed. The
+list of fully supported languages is hard-coded in the `i18n.json`_ file, in
+the ``supported_locales`` object. When a new language is completely translated
+and reviewed, ``i18n.json`` must be manually edited to add this new language to
+the ``supported_locales`` variable.
 
 .. _update_strings_to_be_translated:
 
@@ -572,6 +570,7 @@ with a release looming, the server can be rebooted.
 .. _`i18n timeline`: https://forum.securedrop.org/t/about-the-translations-category/16
 .. _`Weblate announcement`: https://weblate.securedrop.org/projects/securedrop/securedrop/#announcement
 .. _`Django admin panel`: https://weblate.securedrop.org/admin/trans/announcement/
+.. _`i18n.json`: https://github.com/freedomofpress/securedrop/blob/develop/securedrop/i18n.json
 
 .. |Weblate commit Lock| image:: images/weblate/admin-lock.png
 .. |Weblate commit Locked| image:: images/weblate/admin-locked.png
