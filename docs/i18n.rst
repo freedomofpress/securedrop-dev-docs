@@ -73,6 +73,18 @@ the PO files on ``securedrop-i18n/i18n`` in a pull request for
 translations are backported to the release branch in the `main
 SecureDrop repository`_.
 
+What languages are available where?
+-----------------------------------
+
+* All languages *translated* in Weblate are *present* in the
+  ``securedrop/translations`` directory.
+* *Supported* languages are listed in the ``supported_locales`` object in the
+  `i18n.json`_ file.
+* Those languages that are both *present* and *supported* are *available* for
+  administrators to *configure* in ``securedrop-admin sdconfig``.
+* Those languages that are both *configured* and *available* on the
+  *Application Server* are *usable* for users to select.
+
 i18n_tool.py
 ------------
 
