@@ -18,7 +18,7 @@ The following steps should be performed for all of the `recommended hardware`_:
 #. Upgrade your *Application Server* to the new kernel and reboot.
 #. Run basic smoke tests of SecureDrop by verifying you can send a submission and a journalist can reply.
 
-.. _`grsecurity hardening patches`: https://grsecurity.net/`
+.. _`grsecurity hardening patches`: https://grsecurity.net/
 .. _`kernel-builder`: https://github.com/freedomofpress/kernel-builder/
 .. _`recommended hardware`: https://docs.securedrop.org/en/stable/hardware.html#application-and-monitor-servers
 .. _`Troubleshooting Kernel Updates`: https://docs.securedrop.org/en/stable/kernel_troubleshooting.html
