@@ -33,12 +33,11 @@ official release key. Later releases, as the subprojects were prepared
 for production, had their tags signed with the official release key.
 
 In addition, we have the following (Debian) metapackages, which are
-stored in the
-`securedrop-debian-packaging <https://github.com/freedomofpress/securedrop-debian-packaging>`__
-repository: \*
-```securedrop-workstation-config`` <https://github.com/freedomofpress/securedrop-debian-packaging/tree/main/securedrop-workstation-config/debian>`__
-\*
-```securedrop-workstation-viewer`` <https://github.com/freedomofpress/securedrop-debian-packaging/tree/main/securedrop-workstation-viewer>`__
+stored in the `securedrop-debian-packaging <https://github.com/freedomofpress/securedrop-debian-packaging>`__
+repository:
+
+- `securedrop-workstation-config <https://github.com/freedomofpress/securedrop-debian-packaging/tree/main/securedrop-workstation-config>`__
+- `securedrop-workstation-viewer <https://github.com/freedomofpress/securedrop-debian-packaging/tree/main/securedrop-workstation-viewer>`__
 
 The release process for a metapackage is generally to bump the version,
 update the debian changelog, and then tag
