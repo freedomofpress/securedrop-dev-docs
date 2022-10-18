@@ -300,7 +300,7 @@ SecureDrop page layout tests:
 .. code:: sh
 
      $ export PAGE_LAYOUT_LOCALES="en_US,fr_FR"  # may be set to any supported languages
-     $ make test TESTFILES=tests/pageslayout
+     $ make test TESTFILES=tests/functional/pageslayout
      [...]
      tests/pageslayout/test_journalist.py::TestJournalistLayout::test_account_edit_hotp_secret[en_US] PASSED
      tests/pageslayout/test_journalist.py::TestJournalistLayout::test_account_edit_hotp_secret[fr_FR] PASSED
