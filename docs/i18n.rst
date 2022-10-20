@@ -73,6 +73,18 @@ the PO files on ``securedrop-i18n/i18n`` in a pull request for
 translations are backported to the release branch in the `main
 SecureDrop repository`_.
 
+What languages are available where?
+-----------------------------------
+
+* All languages *translated* in Weblate are *present* in the
+  ``securedrop/translations`` directory.
+* *Supported* languages are listed in the ``supported_locales`` object in the
+  `i18n.json`_ file.
+* Those languages that are both *present* and *supported* are *available* for
+  administrators to *configure* in ``securedrop-admin sdconfig``.
+* Those languages that are both *configured* and *available* on the
+  *Application Server* are *usable* for users to select.
+
 i18n_tool.py
 ------------
 
@@ -91,17 +103,15 @@ Development tasks
 Add a new language
 ^^^^^^^^^^^^^^^^^^
 
-A user with weblate admin rights must visit the `Weblate translation
-creation page`_ and the `Weblate desktop translation creation page`_
-to add a new language.
+Any Weblate contributor may visit the `Weblate translation creation page`_ and
+the `Weblate desktop translation creation page`_ to add a new language.
 
-SecureDrop only supports a subset of all the languages being worked on
-in `Weblate`_: some of them are partially translated or not fully
-reviewed. The list of fully supported languages is hard-coded in the
-``i18n_tool.py`` file, in the ``SUPPORTED_LANGUAGES`` variable. When a
-new language is completely translated and reviewed, the
-``i18n_tool.py`` file must be manually edited to add this new language
-to the ``SUPPORTED_LANGUAGES`` variable.
+However, SecureDrop only supports a subset of all the languages being worked on
+in `Weblate`_: some of them are partially translated or not fully reviewed. The
+list of fully supported languages is hard-coded in the `i18n.json`_ file, in
+the ``supported_locales`` object. When a new language is completely translated
+and reviewed, ``i18n.json`` must be manually edited to add this new language to
+the ``supported_locales`` variable.
 
 .. _update_strings_to_be_translated:
 
@@ -137,8 +147,10 @@ focus on new translations, which are often marked `fuzzy
 is no need to review multiple languages' ``.po`` files because they
 are processed in the same way.
 
-Once you've reviewed the changes, submit them in a pull request for
-the ``develop`` branch in the `main SecureDrop repository`_.
+Once you've reviewed the changes, submit them in a pull request for the
+``develop`` branch in the `main SecureDrop repository`_.  Use the previous
+``l10n: update strings to be translated for vX.Y.Z`` pull request as a
+template.
 
 The new source strings will only be visible to translators in
 `Weblate`_ after they've been merged to ``securedrop/develop`` and
@@ -288,7 +300,7 @@ SecureDrop page layout tests:
 .. code:: sh
 
      $ export PAGE_LAYOUT_LOCALES="en_US,fr_FR"  # may be set to any supported languages
-     $ make test TESTFILES=tests/pageslayout
+     $ make test TESTFILES=tests/functional/pageslayout
      [...]
      tests/pageslayout/test_journalist.py::TestJournalistLayout::test_account_edit_hotp_secret[en_US] PASSED
      tests/pageslayout/test_journalist.py::TestJournalistLayout::test_account_edit_hotp_secret[fr_FR] PASSED
@@ -398,6 +410,12 @@ Release Management
 Two weeks before the release: string freeze
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. note::
+
+    If both a Localization Manager and a deputy are assigned for this release,
+    consider pairing on this ceremony, both for knowledge-sharing and so that
+    the intermediate pull requests can be reviewed and merged promptly.
+
 When features for a new SecureDrop release are frozen, the localization manager for the release will:
 
 * :ref:`merge_develop_to_weblate`.
@@ -441,6 +459,11 @@ goal.
 
 Release day
 ^^^^^^^^^^^
+.. note::
+
+    If both a Localization Manager and a deputy are assigned for this release,
+    consider pairing on this ceremony, both for knowledge-sharing and so that
+    the intermediate pull requests can be reviewed and merged promptly.
 
 Prior to cutting the final release, the localization manager must:
 
@@ -559,6 +582,7 @@ with a release looming, the server can be rebooted.
 .. _`i18n timeline`: https://forum.securedrop.org/t/about-the-translations-category/16
 .. _`Weblate announcement`: https://weblate.securedrop.org/projects/securedrop/securedrop/#announcement
 .. _`Django admin panel`: https://weblate.securedrop.org/admin/trans/announcement/
+.. _`i18n.json`: https://github.com/freedomofpress/securedrop/blob/develop/securedrop/i18n.json
 
 .. |Weblate commit Lock| image:: images/weblate/admin-lock.png
 .. |Weblate commit Locked| image:: images/weblate/admin-locked.png
