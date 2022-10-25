@@ -53,5 +53,6 @@ administrators <https://docs.securedrop.org/>`_.
 
    workstation_setup
    workstation_development
+   workstation_packaging
    workstation_release_management
    client
