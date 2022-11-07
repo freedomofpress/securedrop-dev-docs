@@ -291,7 +291,7 @@ Ensure your virtualenv is activated and install the packages.
 Qubes
 ~~~~~
 
-To configure a multi-machine evironment in Qubes, follow the Quick Start instructions above to
+To configure a multi-machine environment in Qubes, follow the Quick Start instructions above to
 create a standalone VM named ``sd-dev``, then follow the Linux instructions above to install the
 required packages.
 

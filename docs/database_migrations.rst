@@ -149,7 +149,7 @@ Additionally, your test **MUST NOT** import anything from the ``models`` module 
 accurately test your migration, and it will likely break during future code changes. In fact, you
 should use as few dependencies as possible in your test including other ``securedrop`` code as well
 as external packages. This may be a rather annoying requirement, but it will make the tests more
-robust aginst future code changes.
+robust against future code changes.
 
 Release Testing Migrations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
