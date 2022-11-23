@@ -60,7 +60,7 @@ Pre-Release
    changelog.
 
    a. First collect a list of changes since the last release. For example, if the last release was
-      version 1.6.0, you can view changes in Github by running::
+      version 1.6.0, you can view changes in GitHub by running::
 
          https://github.com/freedomofpress/securedrop/compare/release/1.6.0...develop
 
@@ -174,7 +174,7 @@ Pre-Release
 
    * Work with the Communications Manager assigned for the release to prepare a pre-release
      announcement that will be shared on the support.freedom.press support portal, securedrop.org
-     website, and Twitter. Wait until the day of the release before including an announcmement for a
+     website, and Twitter. Wait until the day of the release before including an announcement for a
      SecureDrop security update. For a point release, you may be able to skip the pre-release
      announcement depending on how small the point release is.
 

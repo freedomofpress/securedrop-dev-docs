@@ -54,7 +54,7 @@ To rebuild the local packages for the app code and update the staging VMs:
 The Debian packages will be rebuilt from the current state of your
 local git repository and then installed on the staging servers.
 
-The web interfaces and SSH are available over Tor. A copy of the the Onion URLs
+The web interfaces and SSH are available over Tor. A copy of the Onion URLs
 for *Source* and *Journalist Interfaces*, as well as SSH access, are written to the
 Vagrant host's ``install_files/ansible-base`` directory.
 
