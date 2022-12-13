@@ -13,8 +13,10 @@ The following steps should be performed for all of the `recommended hardware`_:
 
 #. Install the new kernel packages on your *Monitor Server*, then reboot. Verify with ``uname -r`` that you are using the new kernel.
 #. If it doesn't boot, see the `Troubleshooting Kernel Updates`_ documentation.
-#. Verify ``paxtest`` doesn't return any errors nor warnings.
-#. Verify the `spectre-meltdown-checker`_ doesn't return any errors nor warnings.
+#. Install the ``paxtest`` package, run with ``sudo paxtest blackhat``, and verify it doesn't
+   return any new errors nor warnings.
+#. Install `spectre-meltdown-checker`_ and the ``binutils`` package, run with
+   ``sudo ./meltdown-checker``, and verify it doesn't return any errors nor warnings.
 #. Upgrade your *Application Server* to the new kernel and reboot.
 #. Run basic smoke tests of SecureDrop by verifying you can send a submission and a journalist can reply.
 
