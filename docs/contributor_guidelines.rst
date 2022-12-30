@@ -47,7 +47,7 @@ root of the repository:
 
 .. code:: sh
 
-    ln -sf ../../git/pre-commit .git/hooks/pre-commit
+    ln -sf .githooks/pre-commit .git/hooks/pre-commit
 
 
 .. note::
