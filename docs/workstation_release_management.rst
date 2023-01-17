@@ -299,7 +299,7 @@ Now we’ll sign the RPM:
    rpm --resign <rpm>.rpm  # --addsign would allow us to apply multiple signatures to the RPM
    rpm -qi<file.rpm>  # should now show that the file is signed
    rpm -Kv  # should contain NOKEY errors in the lines containing Signature
-   # This is because the the (public) key of the RPM signing key is not present,
+   # This is because the (public) key of the RPM signing key is not present,
    # and must be added to the RPM client config to verify the signature:
    sudo rpm --import <publicKey>.asc
    rpm -Kv  # Signature lines will now contain OK instead of NOKEY

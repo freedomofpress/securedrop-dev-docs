@@ -163,7 +163,7 @@ Google Compute host:
 
 .. code:: sh
 
-    ssh -i /tmp/gce-nested/gce sdci@<ip adress>
+    ssh -i /tmp/gce-nested/gce sdci@<ip address>
 
 Once on the GCP host, the SecureDrop source is in ``/home/sdci/securedrop-source``
 and you may activate the virtualenv, list the molecule instances and connect to

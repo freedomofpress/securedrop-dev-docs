@@ -254,7 +254,7 @@ To avoid confusion, paths to files anywhere inside the SecureDrop git repository
 should be written as ``./some_dir/file``, where ``.`` is the top level directory
 of the SecureDrop repo.
 
-Use absolute paths when refering to files outside the SecureDrop repository:
+Use absolute paths when referring to files outside the SecureDrop repository:
 ``/usr/local/bin/tor-browser``.
 
 
