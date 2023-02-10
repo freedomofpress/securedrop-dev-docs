@@ -12,8 +12,8 @@ Announcements for new Tor releases are posted in the `Tor forum
 <https://forum.torproject.net/c/news/tor-release-announcement/28>`_.
 
 Our continuous integration automatically checks for new Tor packages every
-night and should commit them to the `securedrop-dev-packages-lfs
-<https://github.com/freedomofpress/securedrop-dev-packages-lfs>`_ repository.
+night and should commit them to the `securedrop-apt-test
+<https://github.com/freedomofpress/securedrop-apt-test>`_ repository.
 Within 15 minutes they should be available for download via
 ``apt-test.freedom.press``.
 
@@ -32,5 +32,5 @@ Promoting
 ---------
 
 To promote a Tor release to production, copy the ``*.deb`` files over to the
-`securedrop-debian-packages-lfs <https://github.com/freedomofpress/securedrop-debian-packages-lfs>`_
+`securedrop-apt-prod <https://github.com/freedomofpress/securedrop-apt-prod>`_
 repository and follow those instructions.

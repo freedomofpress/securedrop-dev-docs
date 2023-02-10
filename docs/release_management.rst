@@ -116,8 +116,8 @@ Pre-Release
 
    c. Build logs should be saved and published according to the `build log guidelines
       <https://github.com/freedomofpress/securedrop/wiki/Build-logs>`_.
-   d. Open a PR on `securedrop-dev-packages-lfs
-      <https://github.com/freedomofpress/securedrop-dev-packages-lfs>`_ that targets the ``main``
+   d. Open a PR on `securedrop-apt-test
+      <https://github.com/freedomofpress/securedrop-apt-test>`_ that targets the ``main``
       branch with the new debs. Do not include tarballs or any debs that would overwrite
       existing debs. Changes merged to this branch will be published to ``apt-test.freedom.press``
       within 15 minutes.
@@ -238,7 +238,7 @@ Release Process
       log guidelines
       <https://github.com/freedomofpress/securedrop/wiki/Build-logs>`_.
 #. In a clone of the private
-   `securedrop-debian-packages-lfs <https://github.com/freedomofpress/securedrop-debian-packages-lfs>`_
+   `securedrop-apt-prod <https://github.com/freedomofpress/securedrop-apt-prod>`_
    repository, create a branch from ``main`` called ``release``.
 #. In your local branch, commit the built packages to the ``core/focal``
    directory.
