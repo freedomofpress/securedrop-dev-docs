@@ -1,7 +1,14 @@
 Policy on Supported Languages
 =============================
 
-*Revision 4, approved 7 February 2023*
+.. list-table::
+   :widths: 50 50
+   :header-rows: 1
+
+   * - Version
+     - Approved
+   * - `4 <https://github.com/freedomofpress/securedrop-engineering/issues/6>`_
+     - 7 February 2023
 
 Thresholds for Translation and Review Coverage
 ----------------------------------------------
