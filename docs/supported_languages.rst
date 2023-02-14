@@ -32,6 +32,25 @@ The goals of these thresholds are to:
 
 #. maximize the correctness of the translations we ultimately ship.
 
+Granting Support for a Language
+-------------------------------
+
+Granting support for a new language consists of adding an entry in the
+``supported_locales`` object in ``securedrop``'s ``i18n.json`` and in the
+"Localization" section in ``securedrop-client``'s ``MANIFEST.in``.  Other steps,
+such as communication, are left to the discretion of the Localization Manager.
+
+#. A language *L* that reaches coverage in time for a release
+   version *V* SHOULD be nominated for support in version *V*.
+
+#. The Localization Manager SHOULD ask Localization Lab whether they
+   believe *L*'s `language team`_ is likely to be able to maintain coverage for
+   the foreseeable future.
+
+        #. If so, the Localization Manager SHOULD grant support for *L*.
+
+        #. If not, the Localization Manager MUST NOT grant support for *L*.
+
 .. rubric:: Footnotes
 
 .. [#journalist_components] As of this writing, to include any future
@@ -43,3 +62,5 @@ The goals of these thresholds are to:
 
 .. [#source_components] As of this writing, to include any future source-facing
    components.
+
+.. _`language team`: https://wiki.localizationlab.org/index.php/Category:Language_Teams
