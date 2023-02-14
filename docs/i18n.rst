@@ -78,8 +78,8 @@ What languages are available where?
 
 * All languages *translated* in Weblate are *present* in the
   ``securedrop/translations`` directory.
-* *Supported* languages are listed in the ``supported_locales`` object in the
-  `i18n.json`_ file.
+* :doc:`Supported languages <supported_languages>` are listed in the
+  ``supported_locales`` object in the `i18n.json`_ file.
 * Those languages that are both *present* and *supported* are *available* for
   administrators to *configure* in ``securedrop-admin sdconfig``.
 * Those languages that are both *configured* and *available* on the
