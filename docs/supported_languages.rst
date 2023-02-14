@@ -107,6 +107,12 @@ Then:
            instances, for especially high-traffic or high-profile instances,
            etc.
            
+Adding a New Language for Translation
+-------------------------------------
+
+Translators MUST ask Localization Lab to add a new language for translation in
+Weblate.
+
 .. rubric:: Footnotes
 
 .. [#journalist_components] As of this writing, to include any future
