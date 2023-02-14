@@ -48,9 +48,9 @@ Granting Support for a Language
 -------------------------------
 
 Granting support for a new language consists of adding an entry in the
-``supported_locales`` object in ``securedrop``'s ``i18n.json`` and in the
+``supported_locales`` object in ``securedrop``'s ``i18n.json`` and/or in the
 "Localization" section in ``securedrop-client``'s ``MANIFEST.in``.  Other steps,
-such as communication, are left to the discretion of the Localization Manager.
+such as communication, are at the discretion of the Localization Manager.
 
 #. A language *L* that reaches coverage in time for a release
    version *V* SHOULD be nominated for support in version *V*.
@@ -63,6 +63,50 @@ such as communication, are left to the discretion of the Localization Manager.
 
         #. If not, the Localization Manager MUST NOT grant support for *L*.
 
+Revoking Support for a Language
+-------------------------------
+
+Revoking support for a currently-supported language consists of removing the
+language's entries in ``i18n.json`` and/or ``MANIFEST.in``.  Other steps, such
+as communication, are at the discretion of the Localization Manager.
+
+Consider an expected release timeline as follows:
+
+.. list-table::
+   :widths: 50 50
+   :header-rows: 1
+   :stub-columns: 1
+
+   * - Version
+     - Date
+   * - V1
+     - January 1
+   * - V2
+     - March 1
+   * - V3
+     - May 1
+
+Then:
+
+#. A language *L* that misses coverage for a release version *V1*
+   MUST be considered on probation.
+
+        #. In consultation with Localization Lab, the Localization
+           Manager MAY consult the `language census`_ and reach out to
+           administrators who may be able to contribute to translation and
+           review.
+
+#. If *L* misses coverage again for *V2* and does not regain
+   coverage for *V3*, then the Localization Manager SHOULD revoke support for
+   *L* for *V3*.
+
+        #. In consultation with Localization Lab and the Release
+           Manager, the Localization Manager MAY extend *L*’s probationary
+           period, for example if the `language census`_ indicates that revoking
+           support for *L* would jeopardize the default locale for many
+           instances, for especially high-traffic or high-profile instances,
+           etc.
+           
 .. rubric:: Footnotes
 
 .. [#journalist_components] As of this writing, to include any future
@@ -76,4 +120,5 @@ such as communication, are left to the discretion of the Localization Manager.
    components.
 
 .. _`RFC 2119`: https://datatracker.ietf.org/doc/html/rfc2119
+.. _`language census`: https://github.com/freedomofpress/i18n_scan
 .. _`language team`: https://wiki.localizationlab.org/index.php/Category:Language_Teams
