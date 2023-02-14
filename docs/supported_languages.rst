@@ -10,6 +10,11 @@ Policy on Supported Languages
    * - `4 <https://github.com/freedomofpress/securedrop-engineering/issues/6>`_
      - 7 February 2023
 
+.. note::
+   The key words *MUST*, *MUST NOT*, *REQUIRED*, *SHALL*, *SHALL NOT*, *SHOULD*,
+   *SHOULD NOT*, *RECOMMENDED*,  *MAY*, and *OPTIONAL* in this document are to be
+   interpreted as described in `RFC 2119`_.
+
 Thresholds for Translation and Review Coverage
 ----------------------------------------------
 
@@ -70,4 +75,5 @@ such as communication, are left to the discretion of the Localization Manager.
 .. [#source_components] As of this writing, to include any future source-facing
    components.
 
+.. _`RFC 2119`: https://datatracker.ietf.org/doc/html/rfc2119
 .. _`language team`: https://wiki.localizationlab.org/index.php/Category:Language_Teams
