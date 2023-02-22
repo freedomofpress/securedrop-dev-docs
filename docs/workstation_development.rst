@@ -99,7 +99,7 @@ Building workstation deb packages
 
 Debian packages for the SecureDrop Workstation components are maintained
 in a separate repository:
-https://github.com/freedomofpress/securedrop-debian-packaging/
+https://github.com/freedomofpress/securedrop-builder/
 
 Building workstation rpm packages
 ---------------------------------
