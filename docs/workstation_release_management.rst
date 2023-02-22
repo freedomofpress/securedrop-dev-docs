@@ -25,17 +25,18 @@ Releasing a release candidate (rc) package is the first step before you begin QA
 
 On release day (usually at least a couple weeks after releasing your first rc package), you (or another maintainer) will need to have access to the SecureDrop release key to sign both a new release tag (in order to build a production version of the package, which you will verify has a hash that matches the rc package hash that was approved during QA) and updated Debian Release file for the production apt repository. You will also need at least one other maintainer to review your PRs and perform the final QA checks once the package lands on https://apt-qa.freedom.press and later on https://apt.freedom.press.
 
-Step 1: Create an rc tag
-------------------------
+Step 1: Create a release candidate (rc) tag
+-------------------------------------------
 
 1. Create a release branch in the repo of the component you want to release.
 2. Push a changelog commit.
 3. Push an rc tag in the format ``<major>.<minor>.<patch>~rcN`` on your new commit. We will be building from this tag in the next step.
 
-Step 2: Build the package
--------------------------
+Step 2: Build and deploy the package to ``apt-test``
+----------------------------------------------------
 
 1. Open a terminal in your named DispVM called ``sd-dev-dvm`` (see :ref:`How to create the DispVM for building packages`).
+
 2. Clone ``securedrop-builder`` and install its dependencies (https://github.com/freedomofpress/securedrop-builder/tree/HEAD/workstation-bootstrap/wheels):
 
   .. code-block:: sh
@@ -56,20 +57,20 @@ Step 2: Build the package
    
    PKG_VERSION=x.y.z-rcN make securedrop-foobar
 
-5. Output the package hash so you can copy it into the build logs in a following step.
+5. Ouput the package hash so you can copy it into the build logs in the next step.
 
   .. code-block:: sh
 
    sha256sum bulid/debbuild/packaging/securedrop-foobar_x.y.z-rcN.deb
 
-6. Save and publish your terminal history to the [build-logs repository](https://github.com/freedomofpress/build-logs/).
+6. Save and publish your terminal history to the `build-logs <https://github.com/freedomofpress/build-logs>`__ repository in the workstation directory.
 
 7. Open a PR to https://github.com/freedomofpress/securedrop-apt-test with the package you want to deploy. Remember to link to your build logs commit. Once your PR is merged, the package will be deployed to https://apt-test.freedom.press.
 
 Step 3: Begin QA
 ----------------
 
-You can start the QA process on the rc package that you deployed to https://apt-test.freedom.press in the previous step. If a bug is found, the fix can be added to the release branch and you can begin the rc process all over again with a new rc version.
+You can start the QA process on the rc package that you deployed to https://apt-test.freedom.press. If a bug is found, the fix can be added to the release branch and you can begin the rc process all over again with a new rc version.
 
 Once an rc package has been approved, you are ready to move on to the next step.
 
@@ -81,42 +82,48 @@ Begin this step on the day you want to release the package. It's best to start t
 1. Push a release tag on the same commit of the rc tag that was approved during QA.
 2. :ref:`Sign the tag with the SecureDrop release key` (or ask another maintainer to do this).
 
-Step 5: Build a production version of the package
--------------------------------------------------
+Step 5: Build and deploy the package to ``apt-qa``
+--------------------------------------------------
 
-1. Once again, open a terminal in ``sd-dev-dvm``, clone ``securedrop-builder`` and install its dependencies.
-2. Build the package.
-3. Ouput the package hash so you can copy it into the build logs in a following step.
+In this step, you will build a production version of the package to first be deployed to ``apt-qa`` and then later to ``apt-prod``. Since this package is reproducibly built, you will also confirm that it matches the hash of the rc package that was approved during QA. 
+
+1. Open a terminal in your named DispVM called ``sd-dev-dvm`` (see :ref:`How to create the DispVM for building packages`).
+
+2. Clone ``securedrop-builder`` and install its dependencies (https://github.com/freedomofpress/securedrop-builder/tree/HEAD/workstation-bootstrap/wheels):
+
+  .. code-block:: sh
+
+   git clone git@github.com:freedomofpress/securedrop-builder.git
+   cd securedrop-builder
+   make install-deps  # This also confifgures the git-lfs repo used to store SecureDrop Workstation dependencies
+
+3. Build the package from the release tag that was signed with the SecureDrop release key.
+
+  .. code-block:: sh
+
+   PKG_VERSION=x.y.z make securedrop-foobar
+
+4. Ouput the package hash so that you can verify that it matches the hash of the rc package that was approved during QA and copy it into the build logs in the next step.
 
   .. code-block:: sh
 
    sha256sum bulid/debbuild/packaging/securedrop-foobar_x.y.z.deb
 
-4. Confirm the hash matches the x.y.z-rcN package that was approved for release.
-5. Save and publish your terminal history to the [build-logs repository](https://github.com/freedomofpress/build-logs/).
+5. Save and publish your terminal history to the `build-logs <https://github.com/freedomofpress/build-logs>`__ repository in the workstation directory.
+6. Add your package to a new branch called ``release`` in https://github.com/freedomofpress/securedrop-apt-prod. 
+7. Update the apt repo distribution files by running ``./tools/publish`` and push those changes to the ``release`` branch as well. This will deploy your pakcage to https://apt-qa.freedom.press.
+8. Open a PR to merge the ``release`` branch into ``main``. Remember to link to the new ``build-logs`` commit. DO NOT MERGE. First, you will perform the ``apt-qa`` preflight check in the next step.
 
-Step 6: Sign the Debian Release file with the SecureDrop release key
---------------------------------------------------------------------
+Step 6: Perform the ``apt-qa`` preflight check
+----------------------------------------------
 
-1. Add your package to a new branch called ``release`` in https://github.com/freedomofpress/securedrop-apt-prod.
-2. :ref:`Regenerate and sign the apt release file`.
+Ensure you are able to update and install the package directly in the package's Template VM by updating the apt sources file to point to https://apt-qa.freedom.press.
 
-Step 7: Deploy the package to ``apt-qa``
-----------------------------------------
-
-1. Push your ``release`` branch to remote to automatically deploy the package to https://apt-qa.freedom.press.
-2. Open a PR to merge ``release`` into ``main`` and link to the new `build-logs` commit.
-
-Step 8: apt-qa preflight check
-------------------------------
-
-Once the package has been deployed to https://apt-qa.freedom.press, ensure you are able to update and install it directly in the package's template VM by updating the apt sources file.
-
-Step 9: Deploy the package to ``apt`` (prod)
---------------------------------------------
+Step 7: Deploy the package to ``apt-prod``
+------------------------------------------
 
 1. Merge the ``release`` branch into ``main`` to deploy your package to https://apt.freedom.press.
-2. Now that your package is on https://apt.freedom.press, you can run the updater to install it in a production environment and ensure that it works as expected.
+2. Once you see the package land on https://apt.freedom.press, run the updater to install it in a production environment and ensure that it works as expected.
 
 Release an RPM package
 ======================
