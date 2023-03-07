@@ -1,14 +1,15 @@
-# sha256 as of 2022-09-13
-FROM python:3.9-slim-bullseye@sha256:09c9438d7b13587df2b1b798d372442fb2bdda6cd408aa89dda2e995868c0b31 AS sphinx
+# sha256 as of 2023-01-17
+FROM python:3.9-slim-bullseye@sha256:8b0502fe3a8ae9d26567f66e217223595ff6abe901cba64fd8b1b58176311b27 AS sphinx
 
 ARG GIT_BRANCH=main
 RUN apt-get -q update && apt-get -qy upgrade && apt-get -qy install git make latexmk texlive-latex-extra
 COPY ./ .
-RUN pip install -r requirements/requirements.txt
+RUN pip install poetry==1.4.0
+RUN poetry install
 RUN deploy/build $GIT_BRANCH
 
-# sha256 as of 2022-09-13
-FROM nginx:mainline-alpine@sha256:2959a35e1b1e61e2419c01e0e457f75497e02d039360a658b66ff2d4caab19c4
+# sha256 as of 2023-01-09
+FROM nginx:mainline-alpine@sha256:c1b9fe3c0c015486cf1e4a0ecabe78d05864475e279638e9713eb55f013f907f
 
 COPY deploy/nginx.conf /etc/nginx
 RUN mkdir -p /opt/nginx/run /opt/nginx/webroot/en/latest && chown -R nginx:nginx /opt/nginx
