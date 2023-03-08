@@ -7,8 +7,8 @@ Policy on Supported Languages
 
    * - Version
      - Approved
-   * - `4 <https://github.com/freedomofpress/securedrop-engineering/issues/6>`_
-     - 7 February 2023
+   * - `5 <https://github.com/freedomofpress/securedrop-engineering/issues/6>`_
+     - 8 March 2023
 
 .. note::
    The key words *MUST*, *MUST NOT*, *REQUIRED*, *SHALL*, *SHALL NOT*, *SHOULD*,
@@ -21,28 +21,24 @@ Thresholds for Translation and Review Coverage
 .. list-table::
    :widths: 30 30 30
    :header-rows: 1
-   :stub-columns: 1
 
-   * - Component
+   * -
      - Translation Coverage (of Source Strings)
      - Review Coverage (of Translations) [#review_coverage]_
-   * - Source Interface [#source_components]_
+   * - **Initial coverage,** for a language to be granted support
      - 100%
      - 100%
-   * - Journalist Interface; SecureDrop Client [#journalist_components]_
+   * - **Ongoing coverage,** for a language to remain supported
      - 80%
      - 100%
 
-The goals of these thresholds are to:
+In addition to these thresholds, the SecureDrop team will:
 
-#. emphasize to **translators and reviewers** the importance of
-   translating and reviewing source-facing strings;
+#. always prioritize the translation of source-facing strings, given their
+   importance for sources' security; and
 
-#. emphasize to **code contributors and maintainers** the higher
-   cost and risk involved in changing source (English) strings in source-facing
-   components compared to others; and
-
-#. maximize the correctness of the translations we ultimately ship.
+#. inform Localization Lab when particular strings should be prioritized or
+   even considered blocking for a given release.
 
 Granting Support for a Language
 -------------------------------
@@ -88,8 +84,10 @@ Consider an expected release timeline as follows:
 
 Then:
 
-#. A language *L* that misses coverage for a release version *V1*
-   MUST be considered on probation.
+#. A language *L* that misses coverage for a release version *V1* MUST be
+   considered on probation for up to the next two releases *V2* and *V3*.
+   While on probation, a language is still considered supported until it has
+   missed coverage for a total of 3 consecutive release/localization cycles.
 
         #. In consultation with Localization Lab, the Localization
            Manager MAY consult the `language census`_ and reach out to
@@ -115,15 +113,12 @@ Weblate.
 
 .. rubric:: Footnotes
 
-.. [#journalist_components] As of this writing, to include any future
-   journalist-, admin, or otherwise *non*-source-facing components.
-
 .. [#review_coverage] Machine translation (e.g., Google Translate) MAY be used
    to close gaps in review coverage for an otherwise well-supported language.
-   (It MAY NOT be used to close gaps in translation coverage.)
-
-.. [#source_components] As of this writing, to include any future source-facing
-   components.
+   (It MAY NOT be used to close gaps in translation coverage.)  Because of the
+   risk of low-quality machine translations especially from minority languages,
+   machine translation SHOULD be considered a last resort, on a case-by-case
+   basis in consultation with Localization Lab.
 
 .. _`RFC 2119`: https://datatracker.ietf.org/doc/html/rfc2119
 .. _`language census`: https://github.com/freedomofpress/i18n_scan
