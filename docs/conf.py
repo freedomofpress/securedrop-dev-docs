@@ -323,4 +323,5 @@ linkcheck_ignore = [
     r"https://docs.securedrop.org/?$",
     r"https://support-docs.securedrop.org/?$",
     "https://support.yubico.com/hc/en-us/articles/360016614780-OATH-HOTP-Yubico-Best-Practices-Guide",
+    r"https://github.com/freedomofpress/securedrop-builder/.*"
 ]

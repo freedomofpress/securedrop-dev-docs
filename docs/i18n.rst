@@ -446,7 +446,7 @@ When features for a new SecureDrop release are frozen, the localization manager 
 
 * Update Localization Lab via the
   `SecureDrop Coordination <https://community.internetfreedomfestival.org/community/channels/securedrop-coordination>`__ channel
-  in the `IFF Mattermost <https://internetfreedomfestival.org/wiki/index.php/IFF_Mattermost>`__.
+  in the `TCU Mattermost <https://wiki.digitalrights.community/index.php?title=TCU_Mattermost>`__.
 * During the feedback period, monitor Weblate comments and suggestions, and open
   a pull request for every source string suggestion coming from translators.
 
