@@ -103,15 +103,11 @@ Development tasks
 Add a new language
 ^^^^^^^^^^^^^^^^^^
 
-Any Weblate contributor may visit the `Weblate translation creation page`_ and
-the `Weblate desktop translation creation page`_ to add a new language.
+See :ref:`how_to_add_a_new_language`.
 
 However, SecureDrop only supports a subset of all the languages being worked on
-in `Weblate`_: some of them are partially translated or not fully reviewed. The
-list of fully supported languages is hard-coded in the `i18n.json`_ file, in
-the ``supported_locales`` object. When a new language is completely translated
-and reviewed, ``i18n.json`` must be manually edited to add this new language to
-the ``supported_locales`` variable.
+in `Weblate`_.   New languages are supported according to the
+:doc:`supported_languages`.
 
 .. _update_strings_to_be_translated:
 
