@@ -43,7 +43,6 @@ administrators <https://docs.securedrop.org/>`_.
    portable_demo
    release_management
    build_metadata
-   dockerbuildmaint
    kernel
    updating_tor
 

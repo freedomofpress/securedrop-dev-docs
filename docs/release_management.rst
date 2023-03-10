@@ -107,13 +107,6 @@ Pre-Release
 
    a. Check out the tag for the release candidate.
    b. Build the packages with ``make build-debs``
-
-     .. note:: If the :ref:`build container <build_container>` used by ``make build-debs`` has
-               security updates, then you will see ``test_ensure_no_updates_avail`` fail in the
-               build output. To get around the bottleneck of tight restrictions around who can
-               update the build container, you can ignore this test failure until you are building a
-               production release.
-
    c. Save and publish :doc:`build metadata <build_metadata>`.
    d. Open a PR on `securedrop-apt-test
       <https://github.com/freedomofpress/securedrop-apt-test>`_ that targets the ``main``
