@@ -54,16 +54,25 @@ To get started editing the docs:
       git clone https://github.com/freedomofpress/securedrop-dev-docs.git
 
 
-#. Install the dependencies:
+#. Install Poetry, which is used to manage the Python dependencies of the project.
 
-   .. include:: includes/virtualenv.txt
+   If you are not already using Poetry, follow the
+   `installation guide <https://python-poetry.org/docs/#installing-with-the-official-installer>`__
+   to set up Poetry on your operating system.
+
+#. Install the Python dependencies of the project.
 
    .. code:: sh
 
-      pip install --require-hashes -r requirements/requirements.txt
+      poetry install
 
+   We use the version of Python included with the most recent stable release
+   of the Debian GNU/Linux distribution. The project configuration therefore
+   specifies that this version of Python is required.
 
-   .. _build_the_docs:
+   If you receive a warning that the required version of Python cannot be found, you
+   may need to install it. If necessary, you can use `pyenv <https://github.com/pyenv/pyenv>`__
+   to manage multiple versions of Python alongside each other.
 
 #. Build the docs for viewing in your web browser:
 
