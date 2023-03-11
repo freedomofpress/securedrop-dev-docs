@@ -25,7 +25,7 @@ Create a VM using virt-manager
 
 Follow the Tails virt-manager instructions for
 `running Tails from a USB image <https://tails.boum.org/doc/advanced_topics/virtualization/virt-manager/index.en.html#index4h1>`__.
-Then proceed with booting to the USB drive, and `configure Persistent Storage <https://tails.boum.org/doc/first_steps/persistence/index.en.html>`__.
+Then proceed with booting to the USB drive, and `configure Persistent Storage <https://tails.boum.org/doc/persistent_storage/index.en.html>`__.
 
 We recommend cloning the SecureDrop repository into the persistent volume for
 testing and development, instead of attempting to mount a folder from the host
