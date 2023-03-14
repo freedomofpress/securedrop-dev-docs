@@ -28,7 +28,7 @@ buildinfo
 so that an external user can recreate that environment and reproduce the package. See
 the `Debian documentation <https://wiki.debian.org/ReproducibleBuilds/BuildinfoFiles>`__ for more details.
 
-When available, these should be committed into the ``buildinfo/`` folder. As these files
-also contain SHA256 checksums of the packages, they can be omitted from the build log.
+When produced by a build, these ``.buildinfo`` files should be committed into the ``buildinfo/`` folder. As these files
+also contain SHA256 checksums of the packages, checksums can be omitted from the build log.
 
 These are not yet `generated for RPM packages <https://github.com/freedomofpress/securedrop-builder/issues/418>`__.
