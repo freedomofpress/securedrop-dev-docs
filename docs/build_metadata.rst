@@ -8,7 +8,7 @@ of which are published to the `build-logs <https://github.com/freedomofpress/bui
 Build logs
 ----------
 
-Builders should save their terminal output starting with:
+When you build a package for release, you should should save your terminal output, including:
 
 * Checking out the build tag and verifying that it is signed with the release key
 * ``make build-debs`` (or equivalent) output
