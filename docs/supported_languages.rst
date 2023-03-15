@@ -21,14 +21,15 @@ Thresholds for Translation and Review Coverage
 .. list-table::
    :widths: 30 30 30
    :header-rows: 1
+   :stub-columns: 1
 
    * -
-     - Translation Coverage (of Source Strings)
-     - Review Coverage (of Translations) [#review_coverage]_
-   * - **Initial coverage,** for a language to be granted support
+     - Translation Coverage
+     - Review Coverage [#review_coverage]_
+   * - To grant support
      - 100%
      - 100%
-   * - **Ongoing coverage,** for a language to remain supported
+   * - To maintain support
      - 80%
      - 100%
 
