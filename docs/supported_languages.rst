@@ -10,10 +10,23 @@ Policy on Supported Languages
    * - `5 <https://github.com/freedomofpress/securedrop-engineering/issues/6>`_
      - 8 March 2023
 
+
+Definitions
+-----------
+
 .. note::
    The key words *MUST*, *MUST NOT*, *REQUIRED*, *SHALL*, *SHALL NOT*, *SHOULD*,
    *SHOULD NOT*, *RECOMMENDED*,  *MAY*, and *OPTIONAL* in this document are to be
    interpreted as described in `RFC 2119`_.
+
+.. glossary::
+
+   translation freeze
+
+      The deadline for translations to be reviewed and merged in order to be
+      included in a given release.  For SecureDrop, this is :ref:`release day
+      <release_day>`.
+
 
 Thresholds for Translation and Review Coverage
 ----------------------------------------------
@@ -50,7 +63,8 @@ Granting support for a new language consists of adding an entry in the
 such as communication, are at the discretion of the Localization Manager.
 
 #. A language *L* that reaches coverage in time for a release
-   version *V* SHOULD be nominated for support in version *V*.
+   version *V*'s :term:`translation freeze` SHOULD be nominated for support in
+   version *V*.
 
 #. The Localization Manager SHOULD ask Localization Lab whether they
    believe *L*'s `language team`_ is likely to be able to maintain coverage for
@@ -75,7 +89,7 @@ Consider an expected release timeline as follows:
    :stub-columns: 1
 
    * - Version
-     - Date
+     - :term:`Translation Freeze`
    * - V1
      - January 1
    * - V2
@@ -85,19 +99,20 @@ Consider an expected release timeline as follows:
 
 Then:
 
-#. A language *L* that misses coverage for a release version *V1* MUST be
-   considered on probation for up to the next two releases *V2* and *V3*.
-   While on probation, a language is still considered supported until it has
-   missed coverage for a total of 3 consecutive release/localization cycles.
+#. A language *L* that misses coverage for a release version *V1*'s
+   :term:`translation freeze` MUST be considered on probation for up to the next
+   two releases *V2* and *V3*.  While on probation, a language is still
+   considered supported until it has missed coverage for a total of 3
+   consecutive translation freezes.
 
         #. In consultation with Localization Lab, the Localization
            Manager MAY consult the `language census`_ and reach out to
            administrators who may be able to contribute to translation and
            review.
 
-#. If *L* misses coverage again for *V2* and does not regain
-   coverage for *V3*, then the Localization Manager SHOULD revoke support for
-   *L* for *V3*.
+#. If *L* misses coverage again for *V2*'s translation freeze and does not
+   regain coverage for *V3*'s translation freeze, then the Localization Manager
+   SHOULD revoke support for *L* for *V3*.
 
         #. In consultation with Localization Lab and the Release
            Manager, the Localization Manager MAY extend *L*’s probationary

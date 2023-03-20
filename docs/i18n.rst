@@ -453,6 +453,8 @@ current set of supported languages at 100% translation in Weblate.
 Localization Lab can marshal individual translators to help meet this
 goal.
 
+.. _release_day:
+
 Release day
 ^^^^^^^^^^^
 .. note::
