@@ -418,16 +418,20 @@ In order to review the demo server as a *journalist*:
 How to become a reviewer
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can ask to become a reviewer for a language by posting a message
-in the `translations category of the SecureDrop forum`_.
+`Contact Localization Lab`_ to ask to join a `language team`_ as a reviewer.
 
 .. _how_to_add_a_new_language:
 
 How to add a new language to SecureDrop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We love seeing SecureDrop translated into new languages. Just ask us
-to add yours by posting in the `translations category of the SecureDrop forum`_.
+We love seeing SecureDrop translated into new languages.  `Contact Localization
+Lab`_ to ask to join a `language team`_ (or start a new one) and have the new
+language added to Weblate.
+
+However, SecureDrop only supports a subset of all the languages being worked on
+in `Weblate`_.   New languages are supported according to the
+:doc:`supported_languages`.
 
 .. _weblate_glossary:
 
@@ -485,3 +489,5 @@ Source strings are English phrases and are automatically extracted from SecureDr
 .. _`SecureDrop Workstation`: https://workstation.securedrop.org
 .. _`SecureDrop Workstation documentation`: https://workstation.securedrop.org
 .. _`Localization Lab`: https://www.localizationlab.org/
+.. _`Contact Localization Lab`: https://wiki.localizationlab.org/index.php/Communication_Platforms
+.. _`language team`: https://wiki.localizationlab.org/index.php/Category:Language_Teams
