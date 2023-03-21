@@ -61,10 +61,9 @@ Step 2: Build and deploy the package to ``apt-test``
 
   .. code-block:: sh
 
-   sha256sum bulid/debbuild/packaging/securedrop-foobar_x.y.z-rcN.deb
+   sha256sum build/debbuild/packaging/securedrop-foobar_x.y.z-rcN.deb
 
-6. Save and publish your terminal history to the `build-logs <https://github.com/freedomofpress/build-logs>`__ repository in the workstation directory.
-
+6. Save and publish :doc:`build metadata <build_metadata>`.
 7. Open a PR to https://github.com/freedomofpress/securedrop-apt-test with the package you want to deploy. Remember to link to your build logs commit. Once your PR is merged, the package will be deployed to https://apt-test.freedom.press.
 
 Step 3: Begin QA
@@ -107,12 +106,12 @@ In this step, you will build a production version of the package to first be dep
 
   .. code-block:: sh
 
-   sha256sum bulid/debbuild/packaging/securedrop-foobar_x.y.z.deb
+   sha256sum build/debbuild/packaging/securedrop-foobar_x.y.z.deb
 
-5. Save and publish your terminal history to the `build-logs <https://github.com/freedomofpress/build-logs>`__ repository in the workstation directory.
-6. Add your package to a new branch called ``release`` in https://github.com/freedomofpress/securedrop-apt-prod. 
+5. Save and publish :doc:`build metadata <build_metadata>`.
+6. Add your package to a new branch called ``release`` in https://github.com/freedomofpress/securedrop-apt-prod.
 7. Update the apt repo distribution files by running ``./tools/publish`` and push those changes to the ``release`` branch as well. This will deploy your pakcage to https://apt-qa.freedom.press.
-8. Open a PR to merge the ``release`` branch into ``main``. Remember to link to the new ``build-logs`` commit. DO NOT MERGE. First, you will perform the ``apt-qa`` preflight check in the next step.
+8. Open a PR to merge the ``release`` branch into ``main``. DO NOT MERGE. First, you will perform the ``apt-qa`` preflight check in the next step.
 
 Step 6: Perform the ``apt-qa`` preflight check
 ----------------------------------------------
@@ -154,11 +153,7 @@ Release ``securedrop-workstation-dom0-config``
 8.  Sign RPM in place (see Signing section below).
 9.  Move the signed RPM back to the environment for committing to the
     lfs repository.
-10. Upload build logs directly to the
-    `build-logs <https://github.com/freedomofpress/build-logs>`__
-    repository in the workstation directory. Ensure that the sha256sum
-    of the package before and after signing is included in the build
-    log.
+10. Save and publish :doc:`build metadata <build_metadata>`.
 11. Commit the RPM in a second commit on the branch you began above in
     `securedrop-yum-prod <https://github.com/freedomofpress/securedrop-yum-prod>`__.
     Make a PR.
@@ -188,9 +183,7 @@ production (``yum.securedrop.org``) using the following procedure:
 8.  Push those two commits to a PR in
     `securedrop-yum-test <https://github.com/freedomofpress/securedrop-yum-test/>`__.
     Make the PR.
-9.  Upload build logs directly to the
-    `build-logs <https://github.com/freedomofpress/build-logs>`__
-    repository in the workstation directory.
+9.  Save and publish :doc:`build metadata <build_metadata>`.
 10. Upon merge of the PR into
     `securedrop-yum-test <https://github.com/freedomofpress/securedrop-yum-test/>`__,
     the template will be deployed to ``yum-test.securedrop.org``.

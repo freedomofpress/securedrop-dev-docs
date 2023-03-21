@@ -107,15 +107,7 @@ Pre-Release
 
    a. Check out the tag for the release candidate.
    b. Build the packages with ``make build-debs``
-
-     .. note:: If the :ref:`build container <build_container>` used by ``make build-debs`` has
-               security updates, then you will see ``test_ensure_no_updates_avail`` fail in the
-               build output. To get around the bottleneck of tight restrictions around who can
-               update the build container, you can ignore this test failure until you are building a
-               production release.
-
-   c. Build logs should be saved and published according to the `build log guidelines
-      <https://github.com/freedomofpress/securedrop/wiki/Build-logs>`_.
+   c. Save and publish :doc:`build metadata <build_metadata>`.
    d. Open a PR on `securedrop-apt-test
       <https://github.com/freedomofpress/securedrop-apt-test>`_ that targets the ``main``
       branch with the new debs. Do not include tarballs or any debs that would overwrite
@@ -234,9 +226,7 @@ Release Process
 
    a. Verify and check out the signed tag for the release.
    #. Build the packages with ``make build-debs``.
-   #. Build logs should be saved and published according to the `build
-      log guidelines
-      <https://github.com/freedomofpress/securedrop/wiki/Build-logs>`_.
+   #. Save and publish :doc:`build metadata <build_metadata>`.
 #. In a clone of the private
    `securedrop-apt-prod <https://github.com/freedomofpress/securedrop-apt-prod>`_
    repository, create a branch from ``main`` called ``release``.

@@ -43,7 +43,7 @@ administrators <https://docs.securedrop.org/>`_.
    apparmor_profiles
    portable_demo
    release_management
-   dockerbuildmaint
+   build_metadata
    kernel
    updating_tor
 
