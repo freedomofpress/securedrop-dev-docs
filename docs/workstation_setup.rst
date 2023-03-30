@@ -18,16 +18,18 @@ Install Qubes
 -------------
 
 Before trying to use this project, install `Qubes
-4.1.1 <https://www.qubes-os.org/downloads/>`__ on your development
+4.1.2 <https://www.qubes-os.org/downloads/>`__ on your development
 machine. Accept the default VM configuration during the install process.
 
 After installing Qubes, you must update both dom0 and the base templates
-to include the latest versions of apt packages. Open a terminal in
+to include the latest versions of apt packages, as well as install an
+additional dependency (``make``) in dom0. Open a terminal in
 ``dom0`` by clicking on the Qubes menu top-right of the screen and
 left-clicking on Terminal Emulator and run:
 
 ::
 
+   sudo qubes-dom0-update -y make
    sudo qubes-dom0-update
 
 After dom0 updates complete, reboot your computer to ensure the updates
@@ -191,7 +193,7 @@ in dom0 will be overwritten by ``make dev``.
 Staging Environment
 -------------------
 
-Update ``dom0``, ``fedora-36``, ``whonix-gw-16`` and ``whonix-ws-16`` templates
+Update ``dom0``, ``fedora-37``, ``whonix-gw-16`` and ``whonix-ws-16`` templates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Updates to these VMs will be performed by the installer and updater, but
