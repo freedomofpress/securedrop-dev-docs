@@ -15,6 +15,10 @@ review on the PR reviewer. Please note that the following guidelines do not
 apply to dev, test, or deployment only (e.g. s3transfer, provided the
 deployment artifacts are signed, which they should be) dependencies.
 
+We use tools that pin every dependency to a specific version and verify they
+match published checksums. Historically we used ``pip-compile`` for this
+purpose; we are currently in the process of migrating to ``poetry``.
+
 Adding a dependency
 -------------------
 
@@ -46,9 +50,17 @@ When updating a dependency, one should:
    timeboxed review of the diff. Are there any concerning areas (primarily in
    terms of security)?  One can use the diffoscope tool from https://try.diffoscope.org/
    locally to view the diffs in the source code.
-3. **Explain version specifiers:** Use comments in ``.in`` files to explain why
-   you are specifying certain versions or ranges.
+3. **Explain version specifiers:** Use comments in ``.in`` or ``pyproject.toml``
+   files to explain why you are specifying certain versions or ranges.
 
+dependabot automated updates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+GitHub's `dependabot <https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts>`_
+can be used to automatically propose pull requests for dependency updates.
+
+In addition to the normal review process, the reviewer should verify the
+GitHub-provided checksums match those published for the package on pypi.org.
 
 Specifying version constraints
 ------------------------------
@@ -81,19 +93,27 @@ Doing so clearly indicates to other maintainers that no version less than
 ``2.11.3`` should be used. The next time the requirement is updated, the lower
 bound should be adjusted accordingly.
 
+For projects using poetry, the ``^`` semver operator should be used, which only
+permits semver minor and patch updates:
+
+.. code:: toml
+
+    [tool.poetry.dependencies]
+    sphinx = "^6.1.3"
+
+
 Additional comments
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 These same processes should be followed for the dependencies of the dependency
 highlighted in the diff.
 
-Recall that updating packages on FPF’s PyPI will be done at release time, not
-at the time of PR merge. Also note that FPF’s PyPI is currently used for Python
-projects built from the [debian packaging repository](https://github.com/freedomofpress/securedrop-debian-packaging),
-which is the SecureDrop Workstation components, such as ``securedrop-client``.
+Some package updates will require new reproducible wheels to be published in the
+`securedrop-builder <https://github.com/freedomofpress/securedrop-builder>`_
+repository; this should be done at the same time as the dependency update.
 
-Step by Step Procedure
-----------------------
+Dependency diff review procedure
+--------------------------------
 
 1. Download the source tarball from pypi.org for both the version from which
 you are starting your diff review and the target version, example here for the
