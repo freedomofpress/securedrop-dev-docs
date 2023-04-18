@@ -60,7 +60,20 @@ GitHub's `dependabot <https://docs.github.com/en/code-security/dependabot/depend
 can be used to automatically propose pull requests for dependency updates.
 
 In addition to the normal review process, the reviewer should verify the
-GitHub-provided checksums match those published for the package on pypi.org.
+GitHub-provided checksums match those published for the package on `pypi.org <https://pypi.org/>`_.
+To do so, locate the package on PyPI, select the correct version from the
+"Release history" page, and click "Download files". Identify the files
+corresponding to the Dependabot diff, and click "view hashes" to compare the
+hashes.
+
+You should see a dialog similar to this one:
+
+.. figure:: images/pypi-hashes-example.png
+   :align: center
+   :figwidth: 80%
+   :width: 100%
+
+   Example dialog for displaying hashes of a Python dependency published on PyPI
 
 Specifying version constraints
 ------------------------------
