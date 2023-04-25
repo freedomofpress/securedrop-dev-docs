@@ -18,6 +18,7 @@ administrators <https://docs.securedrop.org/>`_.
    contributor_guidelines
    tips_and_tricks
    supported_languages
+   dependency_updates
 
 .. toctree::
    :caption: SecureDrop Server
