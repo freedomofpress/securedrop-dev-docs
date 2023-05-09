@@ -214,16 +214,11 @@ Set the default Vagrant provider to ``libvirt``:
 
 Convert Vagrant boxes to libvirt
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-..
-   See also: securedrop#6497
-
-Convert the VirtualBox image for Focal from ``virtualbox`` to ``libvirt`` format.
-Pending resolution of an `upstream bug <https://github.com/chef/bento/issues/1421>`_,
-we must use an older version of this image.
+Convert the VirtualBox images for Focal from ``virtualbox`` to ``libvirt`` format:
 
 .. code:: sh
 
-   vagrant box add --provider virtualbox bento/ubuntu-20.04 --box-version 202112.19.0
+   vagrant box add --provider virtualbox bento/ubuntu-20.04
    vagrant mutate bento/ubuntu-20.04 libvirt
 
 You can now use the libvirt-backed VM images to develop against
