@@ -482,6 +482,11 @@ Prior to cutting the final release, the localization manager must:
   (`see example PR <https://github.com/freedomofpress/securedrop/pull/6646>`__)
 * Submit a backport PR of these changes into the release branch
   (`see example PR <https://github.com/freedomofpress/securedrop/pull/6647>`__)
+
+  * If you forgot to backport the *source-string* changes into the release branch,
+    you'll need to include those too for a clean cherry-pick
+    (`see example PR <https://github.com/freedomofpress/securedrop/pull/6872>`__)
+
 * :ref:`Update the documentation screenshots <updating_screenshots>`.
 * Provide translator credits to add to the SecureDrop release announcement.
 
