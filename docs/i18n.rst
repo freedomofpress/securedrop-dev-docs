@@ -153,6 +153,11 @@ The new source strings will only be visible to translators in
 that branch has been merged into ``securedrop-i18n/i18n``. The
 localization manager does this at the beginning of our release cycle.
 
+If this pull request is merged into ``develop`` after the ``release/X.Y.Z``
+branch has been cut, make sure to backport it, or you'll have to do so as part
+of the :ref:`release-day procedure <release_day>`, when it will be more
+confusing.
+
 .. _merge_develop_to_weblate:
 
 Merge develop into the Weblate fork
@@ -474,9 +479,9 @@ Release day
 Prior to cutting the final release, the localization manager must:
 
 * :ref:`merge_weblate_to_develop`
-  (`see example PR <https://github.com/freedomofpress/securedrop/pull/6014>`__)
+  (`see example PR <https://github.com/freedomofpress/securedrop/pull/6646>`__)
 * Submit a backport PR of these changes into the release branch
-  (`see example PR <https://github.com/freedomofpress/securedrop/pull/6016>`__)
+  (`see example PR <https://github.com/freedomofpress/securedrop/pull/6647>`__)
 * :ref:`Update the documentation screenshots <updating_screenshots>`.
 * Provide translator credits to add to the SecureDrop release announcement.
 
