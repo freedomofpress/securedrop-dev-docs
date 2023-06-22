@@ -238,6 +238,14 @@ repo root:
 
 You now have the latest translations on your ``i18n-merge`` branch.
 
+.. warning::
+
+    Pending `securedrop#6879`_, ``i18n_tool.py update-from-weblate`` will stage
+    changes from the ``securedrop/desktop`` Weblate component for *all*
+    languages, not only supported ones.  Review ``git status`` and unstage
+    changes in ``install_files/ansible-base/roles/tails-config/tempaltes`` for
+    unsupported languages.
+
 .. note::
 
     It is **very** important to check that each translated string
@@ -586,6 +594,7 @@ with a release looming, the server can be rebooted.
 .. _`Django admin panel`: https://weblate.securedrop.org/admin/trans/announcement/
 .. _`i18n.json`: https://github.com/freedomofpress/securedrop/blob/develop/securedrop/i18n.json
 .. _`tracking spreadsheet`: https://docs.google.com/spreadsheets/d/1IfGqf3tgcW9PoL1h8vRJG6lTqVZuNsPYIbhG947FKMk/edit#gid=0
+.. _`securedrop#6879`: https://github.com/freedomofpress/securedrop/issues/6879
 
 .. |Weblate commit Lock| image:: images/weblate/admin-lock.png
 .. |Weblate commit Locked| image:: images/weblate/admin-locked.png
