@@ -477,6 +477,10 @@ Then, post-release, either same day or day-after, the localization manager shoul
 * Remove the `Weblate announcement`_ about this release's translation timeline
   (if you set an end-date on the original announcement, this may happen automatically)
 * Update the `i18n timeline`_ in the forum.
+* Update the `tracking spreadsheet`_ with supported languages' current
+  translation and review coverage.  File a ticket for each new language due
+  either (a) consideration for new support, (b) probation for dropping coverage,
+  or (c) revocation of support.
 
 Translator credits
 ^^^^^^^^^^^^^^^^^^
@@ -581,6 +585,7 @@ with a release looming, the server can be rebooted.
 .. _`Weblate announcement`: https://weblate.securedrop.org/projects/securedrop/securedrop/#announcement
 .. _`Django admin panel`: https://weblate.securedrop.org/admin/trans/announcement/
 .. _`i18n.json`: https://github.com/freedomofpress/securedrop/blob/develop/securedrop/i18n.json
+.. _`tracking spreadsheet`: https://docs.google.com/spreadsheets/d/1IfGqf3tgcW9PoL1h8vRJG6lTqVZuNsPYIbhG947FKMk/edit#gid=0
 
 .. |Weblate commit Lock| image:: images/weblate/admin-lock.png
 .. |Weblate commit Locked| image:: images/weblate/admin-locked.png
