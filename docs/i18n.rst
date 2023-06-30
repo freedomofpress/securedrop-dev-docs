@@ -153,6 +153,11 @@ The new source strings will only be visible to translators in
 that branch has been merged into ``securedrop-i18n/i18n``. The
 localization manager does this at the beginning of our release cycle.
 
+If this pull request is merged into ``develop`` after the ``release/X.Y.Z``
+branch has been cut, make sure to backport it, or you'll have to do so as part
+of the :ref:`release-day procedure <release_day>`, when it will be more
+confusing.
+
 .. _merge_develop_to_weblate:
 
 Merge develop into the Weblate fork
@@ -237,6 +242,14 @@ repo root:
     $ securedrop/bin/dev-shell ./i18n_tool.py --verbose update-docs --docs-repo-dir /path/to/documentation
 
 You now have the latest translations on your ``i18n-merge`` branch.
+
+.. warning::
+
+    Pending `securedrop#6879`_, ``i18n_tool.py update-from-weblate`` will stage
+    changes from the ``securedrop/desktop`` Weblate component for *all*
+    languages, not only supported ones.  Review ``git status`` and unstage
+    changes in ``install_files/ansible-base/roles/tails-config/templates`` for
+    unsupported languages.
 
 .. note::
 
@@ -466,9 +479,14 @@ Release day
 Prior to cutting the final release, the localization manager must:
 
 * :ref:`merge_weblate_to_develop`
-  (`see example PR <https://github.com/freedomofpress/securedrop/pull/6014>`__)
+  (`see example PR <https://github.com/freedomofpress/securedrop/pull/6646>`__)
 * Submit a backport PR of these changes into the release branch
-  (`see example PR <https://github.com/freedomofpress/securedrop/pull/6016>`__)
+  (`see example PR <https://github.com/freedomofpress/securedrop/pull/6647>`__)
+
+  * If you forgot to backport the *source-string* changes into the release branch,
+    you'll need to include those too for a clean cherry-pick
+    (`see example PR <https://github.com/freedomofpress/securedrop/pull/6872>`__)
+
 * :ref:`Update the documentation screenshots <updating_screenshots>`.
 * Provide translator credits to add to the SecureDrop release announcement.
 
@@ -477,6 +495,10 @@ Then, post-release, either same day or day-after, the localization manager shoul
 * Remove the `Weblate announcement`_ about this release's translation timeline
   (if you set an end-date on the original announcement, this may happen automatically)
 * Update the `i18n timeline`_ in the forum.
+* Update the `tracking spreadsheet`_ with supported languages' current
+  translation and review coverage.  File a ticket for each new language due
+  either (a) consideration for new support, (b) probation for dropping coverage,
+  or (c) revocation of support.
 
 Translator credits
 ^^^^^^^^^^^^^^^^^^
@@ -581,6 +603,8 @@ with a release looming, the server can be rebooted.
 .. _`Weblate announcement`: https://weblate.securedrop.org/projects/securedrop/securedrop/#announcement
 .. _`Django admin panel`: https://weblate.securedrop.org/admin/trans/announcement/
 .. _`i18n.json`: https://github.com/freedomofpress/securedrop/blob/develop/securedrop/i18n.json
+.. _`tracking spreadsheet`: https://docs.google.com/spreadsheets/d/1IfGqf3tgcW9PoL1h8vRJG6lTqVZuNsPYIbhG947FKMk/edit#gid=0
+.. _`securedrop#6879`: https://github.com/freedomofpress/securedrop/issues/6879
 
 .. |Weblate commit Lock| image:: images/weblate/admin-lock.png
 .. |Weblate commit Locked| image:: images/weblate/admin-locked.png
