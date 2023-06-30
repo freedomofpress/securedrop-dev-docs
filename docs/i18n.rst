@@ -248,7 +248,7 @@ You now have the latest translations on your ``i18n-merge`` branch.
     Pending `securedrop#6879`_, ``i18n_tool.py update-from-weblate`` will stage
     changes from the ``securedrop/desktop`` Weblate component for *all*
     languages, not only supported ones.  Review ``git status`` and unstage
-    changes in ``install_files/ansible-base/roles/tails-config/tempaltes`` for
+    changes in ``install_files/ansible-base/roles/tails-config/templates`` for
     unsupported languages.
 
 .. note::
