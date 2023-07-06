@@ -321,6 +321,8 @@ linkcheck_ignore = [
     "https://weblate.securedrop.org/projects/securedrop/securedrop/#announcement",
     "https://weblate.securedrop.org/projects/securedrop/securedrop/#repository",
     "https://github.com/freedomofpress/securedrop-apt-prod",
+    "https://github.com/freedomofpress/securedrop-engineering/issues/6",
+    "https://github.com/freedomofpress/i18n_scan",
     r"https://weblate.securedrop.org/accounts/profile/.*",
     r"https://github.com/freedomofpress/securedrop/issues/.*",
     r"https://github.com/freedomofpress/securedrop/tree/.*",

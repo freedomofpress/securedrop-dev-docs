@@ -7,7 +7,7 @@ Policy on Supported Languages
 
    * - Version
      - Approved
-   * - `5 <https://github.com/freedomofpress/securedrop-engineering/issues/6>`_
+   * - 5 `(internal link) <https://github.com/freedomofpress/securedrop-engineering/issues/6>`_
      - 8 March 2023
 
 
@@ -106,7 +106,7 @@ Then:
    consecutive translation freezes.
 
         #. In consultation with Localization Lab, the Localization
-           Manager MAY consult the `language census`_ and reach out to
+           Manager MAY consult the `language census`_ (internal link) and reach out to
            administrators who may be able to contribute to translation and
            review.
 

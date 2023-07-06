@@ -38,8 +38,7 @@ Pre-Release
    Keep this issue updated as you proceed through the release process for transparency.
 
 #. Copy a link of the latest release or release candidate from the `Tails apt repo
-   <https://deb.tails.boum.org/dists/>`_ and include it in the issue. You can compare it with the
-   `Tails release calendar <https://tails.boum.org/contribute/calendar/>`_ if you're not sure. The
+   <https://deb.tails.boum.org/dists/>`_ and include it in the issue. The
    goal is to make sure we test against the lastest Tails release, including release candidates,
    so that we can report bugs early to Tails.
 
