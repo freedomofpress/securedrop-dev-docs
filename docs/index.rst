@@ -40,7 +40,8 @@ administrators <https://docs.securedrop.org/>`_.
    testing_application_tests
    testing_configuration_tests
    demo
-   apt_repo
+   package_repos
+   debian_packages
    updating_ossec
    apparmor_profiles
    portable_demo
