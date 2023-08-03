@@ -11,7 +11,10 @@ Testing a new kernel
 
 The following steps should be performed for all of the `recommended hardware`_:
 
-#. Install the new kernel packages on your *Monitor Server*, then reboot. Verify with ``uname -r`` that you are using the new kernel.
+#. Install the new kernel packages on your *Monitor Server* using unattended-upgrades,
+   e.g. ``sudo apt update && sudo unattended-upgrades --debug`` or wait for the automatic
+   nightly upgrade.
+#. Reboot. Verify with ``uname -r`` that you are using the new kernel.
 #. If it doesn't boot, see the `Troubleshooting Kernel Updates`_ documentation.
 #. Install the ``paxtest`` package, run with ``sudo paxtest blackhat``, and verify it doesn't
    return any new errors nor warnings.
