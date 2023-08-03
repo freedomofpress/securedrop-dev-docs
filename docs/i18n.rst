@@ -603,7 +603,7 @@ with a release looming, the server can be rebooted.
 .. _`Weblate announcement`: https://weblate.securedrop.org/projects/securedrop/securedrop/#announcement
 .. _`Django admin panel`: https://weblate.securedrop.org/admin/trans/announcement/
 .. _`i18n.json`: https://github.com/freedomofpress/securedrop/blob/develop/securedrop/i18n.json
-.. _`tracking spreadsheet`: https://docs.google.com/spreadsheets/d/1IfGqf3tgcW9PoL1h8vRJG6lTqVZuNsPYIbhG947FKMk/edit#gid=0
+.. _`tracking spreadsheet`: https://docs.google.com/spreadsheets/d/1IfGqf3tgcW9PoL1h8vRJG6lTqVZuNsPYIbhG947FKMk/edit
 .. _`securedrop#6879`: https://github.com/freedomofpress/securedrop/issues/6879
 
 .. |Weblate commit Lock| image:: images/weblate/admin-lock.png
