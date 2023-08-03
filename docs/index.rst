@@ -46,6 +46,7 @@ administrators <https://docs.securedrop.org/>`_.
    release_management
    build_metadata
    kernel
+   rust_toolchain
    updating_tor
 
 .. toctree::
