@@ -30,7 +30,9 @@ Step 1: Create a release candidate (rc) tag
 
 1. Create a release branch in the repo of the component you want to release.
 2. Push a changelog commit.
-3. Push an rc tag in the format ``<major>.<minor>.<patch>~rcN`` on your new commit. We will be building from this tag in the next step.
+3. Push an rc tag on your new commit. For components in the ``securedrop-builder`` repo, use the tag format 
+   ``securedrop-<component>-<major>.<minor>.<patch>-rcN``; for components outside this repo (i.e. ``securedrop-client``),
+   use the tag format ``<major>.<minor>.<patch>-rcN``.  We will be building from this tag in the next step.
 
 Step 2: Build and deploy the package to ``apt-test``
 ----------------------------------------------------
@@ -78,7 +80,8 @@ Step 4: Create a release tag
 
 Begin this step on the day you want to release the package. It's best to start this process early in the day to ensure there is enough time for final QA checks, signing ceremonies, and stakeholder communications.
 
-1. Push a release tag on the same commit of the rc tag that was approved during QA.
+1. Push a release tag on the same commit of the rc tag that was approved during QA. Follow the tag-naming convention as described
+   above.
 2. :ref:`Sign the tag with the SecureDrop release key` (or ask another maintainer to do this).
 
 Step 5: Build and deploy the package to ``apt-qa``
