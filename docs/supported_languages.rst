@@ -127,6 +127,22 @@ Adding a New Language for Translation
 Translators MUST ask Localization Lab to add a new language for translation in
 Weblate.
 
+Technical Limitations
+---------------------
+
+* Although Weblate, our localization platform, supports arbitrary languages for
+  translation and review, at runtime SecureDrop components are generally limited
+  to locales with ISO 639-1 codes registered in the Common Locale Data
+  Repository (CLDR). [#babel]_
+
+* SecureDrop cannot be translated into the following constructed languages,
+  because their `ISO 639-1 codes`_ are used in our automated tools and tests:
+
+   * Esperanto (``eo``): used for `pseudolocale generation
+     <https://docs.weblate.org/en/weblate-4.14/admin/addons.html#pseudolocale-generation>`_
+   * Interlingua (``ia``): used for testing
+   * Ido (``io``): reserved for future use
+
 .. rubric:: Footnotes
 
 .. [#review_coverage] Machine translation (e.g., Google Translate) MAY be used
@@ -136,6 +152,11 @@ Weblate.
    machine translation SHOULD be considered a last resort, on a case-by-case
    basis in consultation with Localization Lab.
 
+.. [#babel] For example, to be supported by ``securedrop``, a new language's ISO
+   639-1 code must be registered in the CLDR release `used by the version of
+   Babel <https://babel.pocoo.org/en/latest/locale.html>`_ we install.
+
+.. _`ISO 639-1 codes`: https://en.wikipedia.org/wiki/Codes_for_constructed_languages
 .. _`RFC 2119`: https://datatracker.ietf.org/doc/html/rfc2119
 .. _`language census`: https://github.com/freedomofpress/i18n_scan
 .. _`language team`: https://wiki.localizationlab.org/index.php/Category:Language_Teams
