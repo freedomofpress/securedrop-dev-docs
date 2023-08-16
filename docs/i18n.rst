@@ -62,16 +62,11 @@ We don't expect translators to deal with all these files
 directly. Translation happens on our `Weblate`_ server, which is
 configured to use a fork of the `main SecureDrop repository`_.
 
-At the start of the :ref:`release process <release_management>`, the
-localization manager collects string changes on the ``develop`` branch
-in the `main SecureDrop repository`_ and merges them to the ``i18n``
-branch of the `securedrop-i18n repository`_. The changes will then
-appear in Weblate, and translation can begin. At the end of the
-translation period, the localization manager collects the changes to
-the PO files on ``securedrop-i18n/i18n`` in a pull request for
-``securedrop/develop``. Once that pull request is merged, the
-translations are backported to the release branch in the `main
-SecureDrop repository`_.
+As string changes are merged into the ``develop`` branch
+in the `main SecureDrop repository`_, the changes will automatically
+appear in Weblate, and translation can begin. Translations take
+place continuously, at any time. Translations for a release are
+reviewed and finalized during the release process.
 
 What languages are available where?
 -----------------------------------
@@ -84,16 +79,6 @@ What languages are available where?
   administrators to *configure* in ``securedrop-admin sdconfig``.
 * Those languages that are both *configured* and *available* on the
   *Application Server* are *usable* for users to select.
-
-i18n_tool.py
-------------
-
-Most of the work in managing translations within the SecureDrop code
-base is supported by ``securedrop/i18n_tool.py``. It provides
-convenient wrappers around `pybabel`_ and `gettext`_ , and is used to
-update strings to be translated; pull translations from Weblate; to
-compile translations before running tests and while packaging
-SecureDrop.
 
 Development tasks
 -----------------
@@ -119,10 +104,8 @@ Python code, HTML templates, or desktop icon labels, the translation
 files should also be updated by running ``make translate`` in the root
 of the SecureDrop working copy.
 
-The ``translate`` target runs ``i18n_tool.py translate-messages`` and
-``i18n_tool.py translate-desktop``, which in turn use ``pybabel
-extract`` to gather source strings.  These commands update the `.pot`_
-files for the SecureDrop server code and the desktop icons, as well as
+The ``translate`` target gathers source strings, then updates the 
+`.pot`_ files for the SecureDrop server code and the desktop icons, as well as
 the `.po`_ files for each language.
 
 After running ``make translate``, carefully review the output of ``git
@@ -147,16 +130,6 @@ Once you've reviewed the changes, submit them in a pull request for the
 ``develop`` branch in the `main SecureDrop repository`_.  Use the previous
 ``l10n: update strings to be translated for vX.Y.Z`` pull request as a
 template.
-
-The new source strings will only be visible to translators in
-`Weblate`_ after they've been merged to ``securedrop/develop`` and
-that branch has been merged into ``securedrop-i18n/i18n``. The
-localization manager does this at the beginning of our release cycle.
-
-If this pull request is merged into ``develop`` after the ``release/X.Y.Z``
-branch has been cut, make sure to backport it, or you'll have to do so as part
-of the :ref:`release-day procedure <release_day>`, when it will be more
-confusing.
 
 .. _merge_develop_to_weblate:
 
@@ -275,7 +248,7 @@ web interfaces, these need to be created:
 
 .. code:: sh
 
-    $ securedrop/bin/dev-shell ./i18n_tool.py --verbose translate-messages --compile
+    $ securedrop/bin/dev-shell make extract-strings
 
 For the desktop icons of the source and journalist interfaces,
 compilation updates their template files with all the translations
@@ -285,7 +258,7 @@ This can be done by running the following command:
 
 .. code:: sh
 
-    $ securedrop/bin/dev-shell ./i18n_tool.py --verbose translate-desktop --compile
+    $ securedrop/bin/dev-shell make extract-desktop-strings
 
 Verify translations
 ~~~~~~~~~~~~~~~~~~~
