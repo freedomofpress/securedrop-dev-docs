@@ -64,8 +64,8 @@ configured to use a fork of the `main SecureDrop repository`_.
 
 As string changes are merged into the ``develop`` branch
 in the `main SecureDrop repository`_, the changes will automatically
-appear in Weblate, and translation can begin. Translations take
-place continuously, at any time. Translations for a release are
+appear in Weblate, and translation can begin. Translation and review can take
+place continuously, at any time. Translations for supported languages [link] are
 reviewed and finalized during the release process.
 
 What languages are available where?
