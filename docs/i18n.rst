@@ -125,140 +125,6 @@ focus on new translations, which are often marked `fuzzy
 is no need to review multiple languages' ``.po`` files because they
 are processed in the same way.
 
-Once you've reviewed the changes, submit them in a pull request for the
-``develop`` branch in the `main SecureDrop repository`_.  Use the previous
-``l10n: update strings to be translated for vX.Y.Z`` pull request as a
-template.
-
-.. _merge_develop_to_weblate:
-
-Merge develop into the Weblate fork
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1) First make sure the translation files on the ``develop`` branch of
-the `main SecureDrop repository`_ contain the latest source
-strings. Follow the steps under
-:ref:`update_strings_to_be_translated`.
-
-2) Then, translation must be suspended in `Weblate`_, and any
-uncommitted changes committed and pushed, to avoid conflicts:
-
-* Go to the `Weblate repository page for SecureDrop`_.
-
-|Weblate commit Lock|
-
-* Click ``Commit``.
-* Click ``Push``.
-* And finally, click ``Lock``.
-
-|Weblate commit Locked|
-
-3) The ``securedrop/develop`` branch can now be merged into
-   ``securedrop-i18n/i18n``:
-
-.. code:: sh
-
-    $ git clone https://github.com/freedomofpress/securedrop
-    $ cd securedrop
-    $ git remote add i18n git@github.com:freedomofpress/securedrop-i18n.git
-    $ git fetch i18n
-    $ git checkout -b i18n i18n/i18n
-    $ git merge origin/develop
-    $ git commit --amend -m 'l10n: sync with upstream origin/develop'
-    $ git push i18n i18n
-
-
-4) Verify that Weblate has the latest changes, and unlock the repository.
-
-* Go to the `Weblate commit page for SecureDrop`_ and verify the
-  commit hash matches the last commit of the ``i18n`` branch. This must
-  happen instantly after the branch is pushed because Weblate is
-  notified via a webhook. If it is different,
-  `ask for help <https://gitter.im/freedomofpress/securedrop>`__.
-
-* Click ``Unlock``.
-
-|Weblate commit Unlock|
-
-Translation can now begin. As translators make progress, `Weblate`_
-pushes the translations done via the web interface in commits to the
-``i18n`` branch of the `securedrop-i18n repository`_ (a fork of the
-`main SecureDrop repository`_). When the translation period ends,
-these commits will be collected into a pull request for the `main
-SecureDrop repository`_.
-
-|Weblate commit Unlocked|
-
-
-.. _merge_weblate_to_develop:
-
-Merge translations back to develop
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-`Weblate`_ automatically pushes the translations done via the web
-interface as a series of commits to the ``i18n`` branch in the
-`securedrop-i18n repository`_, which is a fork of the ``develop``
-branch of the `main SecureDrop repository`_. These translations need
-to be submitted back to the ``securedrop/develop`` branch via pull
-requests. When you create a branch for this, begin its name with
-``i18n-``, as that prefix triggers special CI tests for translations.
-
-To fetch the latest translations from the ``securedrop-i18n/i18n`` branch into your
-working copy of the SecureDrop repository, run these commands in your
-repo root:
-
-.. code:: sh
-
-    $ git checkout -b i18n-merge origin/develop
-    $ securedrop/bin/dev-shell ./i18n_tool.py --verbose update-from-weblate
-    $ securedrop/bin/dev-shell ./i18n_tool.py --verbose update-docs --docs-repo-dir /path/to/documentation
-
-You now have the latest translations on your ``i18n-merge`` branch.
-
-.. warning::
-
-    Pending `securedrop#6879`_, ``i18n_tool.py update-from-weblate`` will stage
-    changes from the ``securedrop/desktop`` Weblate component for *all*
-    languages, not only supported ones.  Review ``git status`` and unstage
-    changes in ``install_files/ansible-base/roles/tails-config/templates`` for
-    unsupported languages.
-
-.. note::
-
-    It is **very** important to check that each translated string
-    looks like a plausible translation, with no markup. Even if the
-    reviewer does not understand the language, if a translated string
-    looks strange, someone other than the reviewer must be consulted
-    to verify it means something. It is extremely unlikely that a
-    contributor will manipulate a translated string to introduce a
-    vulnerability in SecureDrop, but any suspicious translation should
-    be investigated.
-
-To check the new translations, you'll need to compile them and verify
-them by running our automated tests and, ideally, by checking them in
-the SecureDrop source and journalist interfaces.
-
-Compile translations
-~~~~~~~~~~~~~~~~~~~~
-
-At runtime, `gettext`_ needs a compiled file for each language (the
-`.mo`_ files). Before you can check the translations in the SecureDrop
-web interfaces, these need to be created:
-
-.. code:: sh
-
-    $ securedrop/bin/dev-shell make extract-strings
-
-For the desktop icons of the source and journalist interfaces,
-compilation updates their template files with all the translations
-collected from the `.po`_ files.
-
-This can be done by running the following command:
-
-.. code:: sh
-
-    $ securedrop/bin/dev-shell make extract-desktop-strings
-
 Verify translations
 ~~~~~~~~~~~~~~~~~~~
 
@@ -399,7 +265,6 @@ Two weeks before the release: string freeze
 
 When features for a new SecureDrop release are frozen, the localization manager for the release will:
 
-* :ref:`merge_develop_to_weblate`.
 * `Update Weblate screenshots`_ so translators can see new or modified source strings in context.
 * Update the `i18n timeline`_ in the translation section of the forum.
 * Add a `Weblate announcement`_ for the ``securedrop/securedrop`` component with
@@ -449,15 +314,6 @@ Release day
     the intermediate pull requests can be reviewed and merged promptly.
 
 Prior to cutting the final release, the localization manager must:
-
-* :ref:`merge_weblate_to_develop`
-  (`see example PR <https://github.com/freedomofpress/securedrop/pull/6646>`__)
-* Submit a backport PR of these changes into the release branch
-  (`see example PR <https://github.com/freedomofpress/securedrop/pull/6647>`__)
-
-  * If you forgot to backport the *source-string* changes into the release branch,
-    you'll need to include those too for a clean cherry-pick
-    (`see example PR <https://github.com/freedomofpress/securedrop/pull/6872>`__)
 
 * :ref:`Update the documentation screenshots <updating_screenshots>`.
 * Provide translator credits to add to the SecureDrop release announcement.
