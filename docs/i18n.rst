@@ -104,9 +104,8 @@ Python code, HTML templates, or desktop icon labels, the translation
 files should also be updated by running ``make extract-strings`` in the root
 of the SecureDrop working copy.
 
-The ``translate`` target gathers source strings, then updates the 
-`.pot`_ files for the SecureDrop server code and the desktop icons, as well as
-the `.po`_ files for each language.
+The ``extract-strings`` target gathers source strings, then updates the 
+`.pot`_ files for the SecureDrop server code and the desktop icons.
 
 After running ``make translate``, carefully review the output of ``git
 diff``. Check ``securedrop/messages.pot`` first for updated strings,
