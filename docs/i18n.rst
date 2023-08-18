@@ -101,7 +101,7 @@ Update strings to be translated
 
 Whenever strings are modified in the SecureDrop source, whether in
 Python code, HTML templates, or desktop icon labels, the translation
-files should also be updated by running ``make translate`` in the root
+files should also be updated by running ``make extract-strings`` in the root
 of the SecureDrop working copy.
 
 The ``translate`` target gathers source strings, then updates the 
