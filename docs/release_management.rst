@@ -330,7 +330,7 @@ Post-Release
 .. _tails_only_releases:
 
 Releases that only modify code on Tails workstations
-----------------------------------------------------------
+----------------------------------------------------
 On occasion, a point release may only modify code that is deployed to Tails-based
 *Admin Workstations* and *Journalist Workstations*. Even in those cases, it is
 generally preferred to issue a release that also updates the server packages
