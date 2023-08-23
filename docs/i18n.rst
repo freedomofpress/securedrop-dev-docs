@@ -285,23 +285,11 @@ Then, post-release, either same day or day-after, the localization manager shoul
 Translator credits
 ^^^^^^^^^^^^^^^^^^
 
-Correct acknowledgment of translators' contributions is important, so
-``i18n_tool.py`` makes it easy to list the translators who have helped
-since the last merge of Weblate translations, with ``i18n_tool.py
-list-translators``. A list of everyone who has ever contributed
-translations to SecureDrop can be obtained with ``i18n_tool.py
-list-translators --all``. There are ``Makefile`` targets for these,
-``list-translators`` and ``list-all-translators``, e.g:
-
-.. code:: sh
-
-    $ make list-all-translators
-    ar:
-      A. Nonymous
-      Ahmad Gharbeia
-      Ahmed Essam
-      Ali Boshanab
-    [...]
+Correct acknowledgment of translators' contributions is important, so `Weblate
+makes it easy to list the translators`_ who have contributed in a specific
+period or at any point in the project's history.  For example, the
+Communications Manager for a release can generate a "Credits" report since the
+date of the last minor (X.Y.0) release and copy-paste it into the release notes.
 
 .. _i18n-administrator-permissions:
 
@@ -381,6 +369,7 @@ with a release looming, the server can be rebooted.
 .. _`Weblate repository page for SecureDrop`: https://weblate.securedrop.org/projects/securedrop/securedrop/#repository
 .. _`Weblate translation creation page`: https://weblate.securedrop.org/new-lang/securedrop/securedrop/
 .. _`Weblate desktop translation creation page`: https://weblate.securedrop.org/new-lang/securedrop/desktop/
+.. _`Weblate makes it easy to list the translators`: https://docs.weblate.org/en/latest/devel/reporting.html
 .. _`i18n timeline`: https://forum.securedrop.org/t/about-the-translations-category/16
 .. _`Weblate announcement`: https://weblate.securedrop.org/projects/securedrop/securedrop/#announcement
 .. _`Django admin panel`: https://weblate.securedrop.org/admin/trans/announcement/
