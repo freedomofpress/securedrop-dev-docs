@@ -172,52 +172,6 @@ The translated templates for the desktop icons are:
 
 Check that each of them contains a ``Name`` line for each of SecureDrop's supported locales.
 
-Push your branch and create a pull request
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-After you've checked the translations, you're ready to push your
-``i18n-merge`` branch and create a pull request to get the
-translations merged to the SecureDrop ``develop`` branch.
-
-.. note:: If there have been multiple commits per language, as can
-          happen if source strings need to be translated again after
-          being changed to correct critical errors, or to incorporate
-          suggestions from the source string feedback period, they
-          should be combined via an interactive rebase. Reorder the
-          commits to group them by language, then squash the commits
-          for each language into one. The goal is to end up with one
-          commit per supported language on the merge branch.
-
-When you're happy with the state of language commits on your merge branch:
-
-.. code:: sh
-
-    $ git commit -m "l10n: compile desktop icons' translations" # if needed
-    $ git push -u origin i18n-merge
-
-.. note:: The CI job ``translation-tests`` will automatically run the
-          above page layout tests in all supported languages on
-          branches named with the prefix ``i18n-``. If you've followed
-          that naming convention, the translation tests should soon be
-          run on your pull request.
-
-          If you have an abundance of time, you can run all the
-          translation tests locally with:
-
-          .. code:: sh
-
-              $ make translation-test
-
-And at long last, you're done. Go to
-https://github.com/freedomofpress/securedrop and propose a pull
-request.
-
-.. note:: Unlike the SecureDrop application translations, the desktop
-          icon translations are compiled and merged into the
-          repository. They need to be available in their translated
-          form when ``securedrop-admin tailsconfig`` is run, because
-          the development environment is not available.
-
 .. _i18n_release:
 
 
