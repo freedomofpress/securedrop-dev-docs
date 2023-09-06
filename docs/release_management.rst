@@ -36,6 +36,8 @@ Pre-Release
 
 1. Open a **Release SecureDrop <major>.<minor>.<patch>** issue to track release-related activity.
    Keep this issue updated as you proceed through the release process for transparency.
+   If applicable, consult the `specific considerations  <tails_only_releases>` for releases
+   that only modify code running on Tails-based workstations.
 
 #. Copy a link of the latest release or release candidate from the `Tails apt repo
    <https://deb.tails.boum.org/dists/>`_ and include it in the issue. The
@@ -324,3 +326,35 @@ Post-Release
 #. Monitor the `FPF support portal <https://support.freedom.press>`_ and the
    `SecureDrop community support forum <https://forum.securedrop.org/c/support>`_ for any new user
    issues related to the release.
+
+.. _tails_only_releases:
+
+Releases that only modify code on Tails workstations
+----------------------------------------------------
+On occasion, a point release may only modify code that is deployed to Tails-based
+*Admin Workstations* and *Journalist Workstations*. Even in those cases, it is
+generally preferred to issue a release that also updates the server packages
+(bumping the version number):
+
+- This ensures that users attentive to version numbers are not confused by the
+  discrepancy between the version shown on their workstations compared with the
+  version number shown in other parts of the SecureDrop user interface.
+- It also mitigates the risk of any unexpected side effects. Notably, our uptime
+  monitoring of known SecureDrop instances checks for differences between the
+  version number returned by a server's metadata endpoint, and the latest
+  GitHub release object.
+
+If, because of time sensitivity and team availability, a release manager decides
+to proceed with a workstation-only release, they should observe the following:
+
+- As with regular releases, create tags for any release candidates and test
+  the expected behavior on *Admin* and *Journalist Workstations* as appropriate.
+- Coordinate with the infrastructure team to ensure that uptime monitoring will
+  not alert on the discrepancy between server-side version numbers and the latest
+  release object on GitHub.
+- After the release passes QA, push a signed tag. This will enable the graphical
+  updater on Tails workstations to detect the new release.
+- Follow the standard release communications process, including publication of
+  a release object on GitHub. Make note of the fact that this is a workstation-only
+  release (see the `SecureDrop 2.6.1 release communications <https://securedrop.org/news/securedrop-261-released/>`_
+  as an example).
