@@ -13,7 +13,7 @@ accurately for Tor to start and hidden services to be available.
 Overview
 --------
 Follow the Qubes platform instructions in :doc:`setup_development`
-to create a Debian 10 ``sd-dev`` Standalone VM. Once done, we'll create three new
+to create a Debian 11 ``sd-dev`` Standalone VM. Once done, we'll create three new
 Standalone (HVM) Qubes VMs for use with staging:
 
 - ``sd-staging-base-focal``, a base VM for cloning reusable staging VMs
