@@ -169,12 +169,12 @@ Inter-VM networking
 
 We want to be able to SSH connections from ``sd-dev`` to these new standalone VMs.
 In order to do so, we have to adjust the firewall rules. Make the following changes on
-``fedora-37-dvm``, which is the template for ``sys-firewall`` under a default setup.
+``fedora-38-dvm``, which is the template for ``sys-firewall`` under a default setup.
 
 .. note::
 
    These changes to the firewall rules will also apply to all other DispVMs based off
-   ``fedora-37-dvm``, and are meant for a testing/development machine only.
+   ``fedora-38-dvm``, and are meant for a testing/development machine only.
 
 Let's get the IP address of ``sd-dev``. On ``dom0``:
 
@@ -182,7 +182,7 @@ Let's get the IP address of ``sd-dev``. On ``dom0``:
 
    qvm-prefs sd-dev ip
 
-Get a shell on ``fedora-37-dvm``. Create or edit
+Get a shell on ``fedora-38-dvm``. Create or edit
 ``/rw/config/qubes-firewall-user-script``, to include the following:
 
 .. code:: sh
@@ -196,7 +196,7 @@ Get a shell on ``fedora-37-dvm``. Create or edit
    iptables -I FORWARD 2 -s "$sd_app" -d "$sd_mon" -j ACCEPT
    iptables -I FORWARD 2 -s "$sd_mon" -d "$sd_app" -j ACCEPT
 
-Shut down ``fedora-37-dvm``, then restart ``sys-firewall``.
+Shut down ``fedora-38-dvm``, then restart ``sys-firewall``.
 
 Now from ``sd-dev``, you should be able to do
 
