@@ -215,7 +215,36 @@ Then you can audit both new and updated crates:
    [...]
    $ cargo vet certify
 
+Running ``cargo vet suggest`` after updating or modifying dependencies will automatically
+provide you with the relevant ``diff`` and ``inspect`` commands to run.
+
 Consult `Cargo Vet's policy documentation
 <https://mozilla.github.io/cargo-vet/specifying-policies.html>`_ on
 the difference between auditing a given crate as `safe-to-deploy`
 versus `safe-to-run`.
+
+Trusting third-parties
+^^^^^^^^^^^^^^^^^^^^^^
+
+To benefit from work others have done in reviewing crates, we import and trust other organizations'
+audits. New organizations should be reviewed and discussed on a case-by-case basis amongst
+SecureDrop maintainers.
+
+We also trust individual developers who are writing and releasing crates that we use. Currently we
+trust developers who are members of either the Rust Project or Sequoia-PGP. This trust is valid for
+6 months and must be extended regularly.
+
+Exemptions
+^^^^^^^^^^
+
+SecureDrop only runs on the ``x86_64-unknown-linux-gnu`` `target
+<https://doc.rust-lang.org/nightly/rustc/platform-support.html>`_, so we only need to audit code
+and crates that apply to it. For example, we can ignore all of the ``windows-sys`` crates.
+
+Exemptions can be specified in ``supply-chain/config.toml``:
+
+.. code:: toml
+
+    [policy.windows-sys]
+    criteria = []
+    notes = "Windows-only"
