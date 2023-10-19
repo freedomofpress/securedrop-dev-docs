@@ -196,3 +196,26 @@ diff review for ``cryptography`` 2.3 to 2.7:
 6. Comment on the PR indicating that the diff review is approved.
 
 7. Send the same content from the wiki to diff-review@python.org.
+
+
+Auditing Rust dependencies
+--------------------------
+We audit Rust crates using the `Cargo Vet <https://mozilla.github.io/cargo-vet/index.html>`_ tool.  To get started:
+
+.. code::
+
+   $ cargo install --locked cargo-vet
+
+Then you can audit both new and updated crates:
+
+.. code::
+
+   $ cargo vet diff $CRATE $OLD $NEW  # $CRATE has been updated from $OLD to $NEW.
+   $ cargo vet inspect $CRATE $VERSION    # $CRATE is entirely new at $VERSION.
+   [...]
+   $ cargo vet certify
+
+Consult `Cargo Vet's policy documentation
+<https://mozilla.github.io/cargo-vet/specifying-policies.html>`_ on
+the difference between auditing a given crate as `safe-to-deploy`
+versus `safe-to-run`.
