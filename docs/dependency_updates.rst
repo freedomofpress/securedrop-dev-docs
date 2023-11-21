@@ -210,8 +210,8 @@ Then you can audit both new and updated crates:
 
 .. code::
 
-   $ cargo vet diff $CRATE $OLD $NEW  # $CRATE has been updated from $OLD to $NEW.
-   $ cargo vet inspect $CRATE $VERSION    # $CRATE is entirely new at $VERSION.
+   $ cargo vet diff $CRATE $OLD $NEW    # $CRATE has been updated from $OLD to $NEW.
+   $ cargo vet inspect $CRATE $VERSION  # $CRATE is entirely new at $VERSION.
    [...]
    $ cargo vet certify
 
@@ -223,8 +223,8 @@ Consult `Cargo Vet's policy documentation
 the difference between auditing a given crate as `safe-to-deploy`
 versus `safe-to-run`.
 
-Trusting third-parties
-^^^^^^^^^^^^^^^^^^^^^^
+Trusting third-party audits
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To benefit from work others have done in reviewing crates, we import and trust other organizations'
 audits. New organizations should be reviewed and discussed on a case-by-case basis amongst
