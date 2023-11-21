@@ -218,10 +218,13 @@ Then you can audit both new and updated crates:
 Running ``cargo vet suggest`` after updating or modifying dependencies will automatically
 provide you with the relevant ``diff`` and ``inspect`` commands to run.
 
-Consult `Cargo Vet's policy documentation
-<https://mozilla.github.io/cargo-vet/specifying-policies.html>`_ on
-the difference between auditing a given crate as `safe-to-deploy`
-versus `safe-to-run`.
+Cargo Vet has two `default policies
+<https://mozilla.github.io/cargo-vet/specifying-policies.html>`_:
+`safe-to-deploy` and `safe-to-run`.  We consider the lower `safe-to-run`
+policy to be equivalent to our standard practice for reviewing Python
+dependencies.  Your own audits should certify `safe-to-run` unless you
+have the expertise, and have invested the time, to review up to the
+higher `safe-to-deploy` standard.
 
 Trusting third-party audits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
