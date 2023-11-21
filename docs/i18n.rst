@@ -65,8 +65,8 @@ configured to use a fork of the `main SecureDrop repository`_.
 As string changes are merged into the ``develop`` branch
 in the `main SecureDrop repository`_, the changes will automatically
 appear in Weblate, and translation can begin. Translation and review can take
-place continuously, at any time. Translations for supported languages [link] are
-reviewed and finalized during the release process.
+place continuously, at any time. Translations for :doc:`supported languages
+<supported_languages>` reviewed and finalized during the release process.
 
 What languages are available where?
 -----------------------------------
@@ -208,7 +208,7 @@ If new screenshots were added as part of this run, make sure to associate them
 with relevant strings in Weblate, which you can do from the
 `screenshots list <https://weblate.securedrop.org/screenshots/securedrop/securedrop/>`__.
 
-.. _release_management:
+.. _i18n_release_management:
 
 Release Management
 ------------------
@@ -262,18 +262,22 @@ current set of supported languages at 100% translation in Weblate.
 Localization Lab can marshal individual translators to help meet this
 goal.
 
+During QA
+^^^^^^^^^
+
+Review, merge, and backport ``Translations update from Weblate`` pull requests
+at most once before each release candidate is cut.  Coordinate with the release
+manager.
+
 .. _release_day:
 
 Release day
 ^^^^^^^^^^^
-.. note::
-
-    If both a Localization Manager and a deputy are assigned for this release,
-    consider pairing on this ceremony, both for knowledge-sharing and so that
-    the intermediate pull requests can be reviewed and merged promptly.
 
 Prior to cutting the final release, the localization manager must:
 
+* Review, merge, and backport the final ``Translations update from Weblate``
+  pull request.
 * :ref:`Update the documentation screenshots <updating_screenshots>`.
 * Provide translator credits to add to the SecureDrop release announcement.
 

@@ -37,6 +37,9 @@ Pre-Release
 1. Open a **Release SecureDrop <major>.<minor>.<patch>** issue to track release-related activity.
    Keep this issue updated as you proceed through the release process for transparency.
 
+#. If this is a regular release, work with the localization manager for this
+   release cycle to :ref:`review and merge translations <i18n_release_management>`.
+
 #. Copy a link of the latest release or release candidate from the `Tails apt repo
    <https://deb.tails.boum.org/dists/>`_ and include it in the issue. The
    goal is to make sure we test against the lastest Tails release, including release candidates,
@@ -180,12 +183,6 @@ Pre-Release
 Release Process
 ---------------
 
-1. If this is a regular release, work with the translation administrator
-   responsible for this release cycle to review and merge the final translations
-   and screenshots (if necessary) they prepare. Refer to the
-   :ref:`i18n documentation <i18n_release>` for more information about the i18n
-   release process. Note that you *must* manually inspect each line in the diff
-   to ensure no malicious content is introduced.
 #. Prepare the final release commit and tag. Do not push the tag file.
 #. Step through the signing ceremony for the tag file. If you do not
    have permissions to do so, coordinate with someone that does.
