@@ -72,23 +72,24 @@ Workflow Diagram
    A workflow diagram showing the continuous translations process.
 
 
+.. _translation_responsibilities:
+
 Translation Responsibilities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. **Developers** must use `make extract-strings` to keep the
+1. **Developers** must use ``make extract-strings`` to keep the
    catalog template up to date with changes they've
    made to UI strings in the Python source code. Developers are
-   encouraged to commit `make extract-strings` changes *along with*
+   encouraged to commit ``make extract-strings`` changes *along with*
    the source-code changes that caused them, for a cleaner Git history
-   to review and (if necessary) `blame` and `revert`.
+   to review and (if necessary) ``blame`` and ``revert``.
 
-    * CI will enforce this requirement via `make check-strings` on
+    * CI will enforce this requirement via ``make check-strings`` on
       branches pushed to this repository.  Like the other linters,
       this check must pass for a pull request to be approved for
-      merge into `main`.
+      merge into ``main``.
 
-    * Developers can run `make check-strings` locally or have it
-      run automatically on every commit by running `make hooks`.
+    * Developers can run ``make check-strings`` locally.
 
 2. **Maintainers** should keep in mind that pull requests they
    review will include changes to the catalog template
@@ -96,7 +97,7 @@ Translation Responsibilities
    the impact and timing of these changes on translators---just as
    they consider the impact and timing of code changes on other
    developers---as part of their review of a pull request prior to
-   approving it for merge into `main` and thereby into Weblate.
+   approving it for merge into ``main`` and thereby into Weblate.
 
 3. **Translators** can always see the latest strings available to
    translate in `weblate`_. They can translate new and
@@ -107,18 +108,8 @@ Translation Responsibilities
 4. **Release and localization managers** do not need to do anything special
    outside of preflight testing! As summarized above, developers are
    responsible for keeping strings up to date; Weblate is responsible for
-   keeping the per-language editable `.po` catalogs and loadable `.mo` machine
+   keeping the per-language editable ``.po`` catalogs and loadable ``.mo`` machine
    objects up to date.
-
-5. **The Client** at startup attempts to load the `.mo` machine object
-   corresponding to the value of `$LANG` in the environment and, if successful,
-   displays those strings in the GUI.  If `$LANG` is unset, or if there is no
-   corresponding `.mo` machine object providing a translation, the application
-   falls back to the English source strings.
-
-   **The Server** must (a) let each user change their preferred language across
-   requests but (b) persist that preference during a session.  By contrast, 
-   the SecureDrop Client need only load and use the translation specified in `$LANG`.
 
 Tutorial for Developers
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -141,22 +132,14 @@ Python source code::
 		         )
 		     )
 
+When you commit and push this change, you'll receive the following error in CI::
 
-When you go to commit, you'll receive the following error::
 
-
-	$ git commit --all --message "changes a string"
-	[...]
 	writing PO template file to securedrop_client/locale/messages.pot
 	Translation catalog is out of date. Please run "make extract-strings" and commit the changes.
 	make: *** [check-strings] Error 1
 
-
-.. note::
-    If you *don't* receive this error above locally, run `make hooks`.
-    (Otherwise, you *will* receive this error when your branch fails linting in CI.)
-
-As prompted, run `make extract-strings` and try again::
+As prompted, run ``make extract-strings`` and commit and push the changes::
 
 	$ make extract-strings
 	[...]
@@ -192,9 +175,8 @@ As prompted, run `make extract-strings` and try again::
 	[i18n 3637b3d] changes a string
 	 2 files changed, 2 insertions(+), 2 deletions(-)
 
-This check is also performed during linting in CI.  When you open
-a pull request for your branch, a maintainer will review your string
-changes for their translation impact.
+When you open a pull request for your branch, a maintainer will review your
+string changes for their translation impact.
 
 
 Weblate

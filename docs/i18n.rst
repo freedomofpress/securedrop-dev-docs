@@ -105,11 +105,12 @@ files should also be updated by running ``make extract-strings`` in the root
 of the SecureDrop working copy.
 
 The ``extract-strings`` target gathers source strings, then updates the 
-`.pot`_ files for the SecureDrop server code and the desktop icons.
+`.pot`_ files for the SecureDrop server code and the desktop icons.  (This step
+is enforced by CI, which will fail if you skip it.)
 
-After running ``make translate``, carefully review the output of ``git
-diff``. Check ``securedrop/messages.pot`` first for updated strings,
-looking for problems like:
+After running ``make extract-strings``, carefully review the output of ``git
+diff``. Check ``securedrop/messages.pot`` first for updated strings, looking for
+problems like:
 
 * overly idiomatic English
 * fragmented text, such as pieces of a sentence intended to be
@@ -119,17 +120,18 @@ looking for problems like:
   marked with ``ngettext`` so that they can be translated properly in
   languages with complex plural forms
 
-Then review the ``messages.po`` of one existing translation, with a
-focus on new translations, which are often marked `fuzzy
-<https://www.gnu.org/software/gettext/manual/html_node/Fuzzy-Entries.html>`__. There
-is no need to review multiple languages' ``.po`` files because they
-are processed in the same way.
+Then review the ``messages.po`` of one existing translation.  There is no need
+to review multiple languages' ``.po`` files because they are processed in the
+same way.
+
+Commit and push these changes for review along with your source changes.  See
+:ref:`translation_responsibilities` for the complete workflow.
 
 Verify translations
 ~~~~~~~~~~~~~~~~~~~
 
-SecureDrop web interfaces
-"""""""""""""""""""""""""
+SecureDrop web interfaces (``securedrop/securedrop``)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 After a translation is compiled, the web page in which it appears can
 be verified visually by starting the SecureDrop development servers
@@ -162,8 +164,8 @@ filenames can be found in the tests that created them, in
 ``securedrop/tests/pageslayout/test_journalist.py`` or
 ``securedrop/tests/pageslayout/test_source.py``.
 
-Desktop icons
-"""""""""""""
+Desktop icons (``securedrop/desktop``)
+""""""""""""""""""""""""""""""""""""""
 
 The translated templates for the desktop icons are:
 
@@ -172,7 +174,10 @@ The translated templates for the desktop icons are:
 
 Check that each of them contains a ``Name`` line for each of SecureDrop's supported locales.
 
-.. _i18n_release:
+If there have been new changes to the ``securedrop/desktop`` component, CI will
+fail on the pull request from Weblate with a warning to run ``make
+update-desktop-files``.  Run this command locally and push the changes to the
+``weblate-fpf/securedrop`` fork, and CI should pass.
 
 
 Update Weblate screenshots
