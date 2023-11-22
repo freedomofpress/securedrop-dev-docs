@@ -158,8 +158,8 @@ Pre-Release
      for transparency and for future reference.
 
    * Backport release QA fixes merged into ``develop`` into the release
-     branch using ``git cherry-pick -x <commit>`` to clearly indicate
-     where the commit originated from.
+     branch using ``utils/backport.py``, which uses ``git cherry-pick -x
+     <commit>`` to clearly indicate where the commit originated from.
 
    * At your discretion -- for example when a significant fix is merged
      -- prepare additional release candidates and have fresh Debian
