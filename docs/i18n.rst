@@ -130,6 +130,12 @@ Commit and push these changes for review along with your source changes.  See
 Verify translations
 ~~~~~~~~~~~~~~~~~~~
 
+*Content review* is the responsibilty of Localization Lab and their reviewers,
+in Weblate's review process.  *Security review* of translations, primarily
+checking for malicious HTML or interpolation not caught by Weblate's checks, is
+the responsibility of SecureDrop maintainers, especially the localization
+manager and release manager for a given release.
+
 SecureDrop web interfaces (``securedrop/securedrop``)
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
