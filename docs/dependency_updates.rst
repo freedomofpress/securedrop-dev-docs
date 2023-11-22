@@ -196,3 +196,58 @@ diff review for ``cryptography`` 2.3 to 2.7:
 6. Comment on the PR indicating that the diff review is approved.
 
 7. Send the same content from the wiki to diff-review@python.org.
+
+
+Auditing Rust dependencies
+--------------------------
+We audit Rust crates using the `Cargo Vet <https://mozilla.github.io/cargo-vet/index.html>`_ tool.  To get started:
+
+.. code::
+
+   $ cargo install --locked cargo-vet
+
+Then you can audit both new and updated crates:
+
+.. code::
+
+   $ cargo vet diff $CRATE $OLD $NEW    # $CRATE has been updated from $OLD to $NEW.
+   $ cargo vet inspect $CRATE $VERSION  # $CRATE is entirely new at $VERSION.
+   [...]
+   $ cargo vet certify
+
+Running ``cargo vet suggest`` after updating or modifying dependencies will automatically
+provide you with the relevant ``diff`` and ``inspect`` commands to run.
+
+Cargo Vet has two `default policies
+<https://mozilla.github.io/cargo-vet/specifying-policies.html>`_:
+`safe-to-deploy` and `safe-to-run`.  We consider the lower `safe-to-run`
+policy to be equivalent to our standard practice for reviewing Python
+dependencies.  Your own audits should certify `safe-to-run` unless you
+have the expertise, and have invested the time, to review up to the
+higher `safe-to-deploy` standard.
+
+Trusting third-party audits
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To benefit from work others have done in reviewing crates, we import and trust other organizations'
+audits. New organizations should be reviewed and discussed on a case-by-case basis amongst
+SecureDrop maintainers.
+
+We also trust individual developers who are writing and releasing crates that we use. Currently we
+trust developers who are members of either the Rust Project or Sequoia-PGP. This trust is valid for
+6 months and must be extended regularly.
+
+Exemptions
+^^^^^^^^^^
+
+SecureDrop only runs on the ``x86_64-unknown-linux-gnu`` `target
+<https://doc.rust-lang.org/nightly/rustc/platform-support.html>`_, so we only need to audit code
+and crates that apply to it. For example, we can ignore all of the ``windows-sys`` crates.
+
+Exemptions can be specified in ``supply-chain/config.toml``:
+
+.. code:: toml
+
+    [policy.windows-sys]
+    criteria = []
+    notes = "Windows-only"
