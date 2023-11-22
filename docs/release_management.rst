@@ -61,7 +61,11 @@ Pre-Release
 #. For each release candidate, update the version files, code repo changelog, and Debian package
    changelog.
 
-   a. First collect a list of changes since the last release. For example, if the last release was
+   #. If there have been new translations since the release branch or the last
+      release candidate was cut, ask the localization manager to review them for
+      merge into ``develop`` and then backport them into the release branch.
+
+   #. First collect a list of changes since the last release. For example, if the last release was
       version 1.6.0, you can view changes in GitHub by running::
 
          https://github.com/freedomofpress/securedrop/compare/release/1.6.0...develop

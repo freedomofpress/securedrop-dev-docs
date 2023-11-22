@@ -228,7 +228,13 @@ Two weeks before the release: string freeze
     consider pairing on this ceremony, both for knowledge-sharing and so that
     the intermediate pull requests can be reviewed and merged promptly.
 
-When features for a new SecureDrop release are frozen, the localization manager for the release will:
+When features for a new SecureDrop release are frozen, so are the source
+strings. The localization manager should apply any source-string suggestions
+that have been made by translators *before* the release branch has been cut,
+since only translations will be updated for release candidates and the final
+release.
+
+Then, the localization manager for the release will:
 
 * `Update Weblate screenshots`_ so translators can see new or modified source strings in context.
 * Update the `i18n timeline`_ in the translation section of the forum.
