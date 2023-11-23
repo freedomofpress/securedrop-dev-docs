@@ -22,12 +22,13 @@ environment for your operating system.
 
 Ubuntu or Debian GNU/Linux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-Run the following commands to update the package index and to install Git and ``make``:
+Run the following commands to update the package index and to install the
+necessary development tools:
 
 .. code:: sh
 
    sudo apt-get update
-   sudo apt-get install -y make git
+   sudo apt-get install -y git jq make
 
 We recommend using the stable version of Docker CE (Community Edition) which can
 be installed via the official documentation links:

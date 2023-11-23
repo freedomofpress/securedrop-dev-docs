@@ -39,6 +39,9 @@ Pre-Release
    If applicable, consult the `specific considerations  <tails_only_releases>` for releases
    that only modify code running on Tails-based workstations.
 
+#. If this is a regular release, work with the localization manager for this
+   release cycle to :ref:`review and merge translations <i18n_release_management>`.
+
 #. Copy a link of the latest release or release candidate from the `Tails apt repo
    <https://deb.tails.boum.org/dists/>`_ and include it in the issue. The
    goal is to make sure we test against the lastest Tails release, including release candidates,
@@ -60,7 +63,11 @@ Pre-Release
 #. For each release candidate, update the version files, code repo changelog, and Debian package
    changelog.
 
-   a. First collect a list of changes since the last release. For example, if the last release was
+   #. If there have been new translations since the release branch or the last
+      release candidate was cut, ask the localization manager to review them for
+      merge into ``develop`` and then backport them into the release branch.
+
+   #. First collect a list of changes since the last release. For example, if the last release was
       version 1.6.0, you can view changes in GitHub by running::
 
          https://github.com/freedomofpress/securedrop/compare/release/1.6.0...develop
@@ -153,8 +160,8 @@ Pre-Release
      for transparency and for future reference.
 
    * Backport release QA fixes merged into ``develop`` into the release
-     branch using ``git cherry-pick -x <commit>`` to clearly indicate
-     where the commit originated from.
+     branch using ``utils/backport.py``, which uses ``git cherry-pick -x
+     <commit>`` to clearly indicate where the commit originated from.
 
    * At your discretion -- for example when a significant fix is merged
      -- prepare additional release candidates and have fresh Debian
@@ -182,12 +189,6 @@ Pre-Release
 Release Process
 ---------------
 
-1. If this is a regular release, work with the translation administrator
-   responsible for this release cycle to review and merge the final translations
-   and screenshots (if necessary) they prepare. Refer to the
-   :ref:`i18n documentation <i18n_release>` for more information about the i18n
-   release process. Note that you *must* manually inspect each line in the diff
-   to ensure no malicious content is introduced.
 #. Prepare the final release commit and tag. Do not push the tag file.
 #. Step through the signing ceremony for the tag file. If you do not
    have permissions to do so, coordinate with someone that does.
