@@ -110,13 +110,17 @@ In this step, you will build a production version of the package to first be dep
 
 5. Save and publish :doc:`build metadata <build_metadata>`.
 6. Add your package to a new branch called ``release`` in https://github.com/freedomofpress/securedrop-apt-prod.
-7. Update the apt repo distribution files by running ``./tools/publish`` and push those changes to the ``release`` branch as well. This will deploy your pakcage to https://apt-qa.freedom.press.
+7. Update the apt repo distribution files by running ``./tools/publish`` and push those changes to the ``release`` branch as well. This will deploy your package to https://apt-qa.freedom.press.
 8. Open a PR to merge the ``release`` branch into ``main``. DO NOT MERGE. First, you will perform the ``apt-qa`` preflight check in the next step.
 
 Step 6: Perform the ``apt-qa`` preflight check
 ----------------------------------------------
 
-Ensure you are able to update and install the package directly in the package's Template VM by updating the apt sources file to point to https://apt-qa.freedom.press.
+1. Start the package's Template VM.
+2. Edit the apt sources file to point to https://apt-qa.freedom.press.
+3. Update the package system and install the new packages via ``apt update && apt upgrade -y``.
+4. Open the Qube Manager and restart all VMs using the Template VM you just updated.
+5. Start the Client application and verify that everything is working as expected. 
 
 Step 7: Deploy the package to ``apt-prod``
 ------------------------------------------
