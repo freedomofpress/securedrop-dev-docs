@@ -131,8 +131,100 @@ Step 7: Deploy the package to ``apt-prod``
 Release an RPM package
 ======================
 
-Release ``securedrop-workstation-dom0-config``
-----------------------------------------------
+Release Process for ``securedrop-workstation-dom0-config``
+----------------------------------------------------------
+
+Step 1: Create a release candidate (rc) tag
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Create a release branch in the ``securedrop-workstation`` repository.
+2. Push a changelog commit.
+3. Push an rc tag in the format ``<major>.<minor>.<patch>~rcN`` on your new commit. 
+   We will be building from this tag in the next step.
+
+Step 2: Build and deploy the package to ``yum-test``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Run ``update_version.sh <major>.<minor>.<patch>~rcN``.
+2. Manually update the changelog in the spec file (``rpm-build/SPECS``).
+3. Manually cut a <major>.<minor>.<patch>~rcN tag (must be signed, even
+   if it's with a personal key).
+4. Create a pull request into the ``release/<major>.<minor>.<patch>~rcN`` branch for 
+   N>1 (otherwise it's just the first push of release/<major>.<minor>.<patch>).
+5. Build from this tag in a clean environment, then create a pull request for the
+   ``securedrop-yum-test`` repository and commit the logs to the ``securedrop-build-logs`` 
+   repository.
+6. Once the pull request is merged, QA can begin.
+
+Step 3: Begin QA
+~~~~~~~~~~~~~~~~
+
+You can start the QA process on the rc package that you deployed to
+https://yum-test.freedom.press. If a bug is found, the fix can be added to the release
+branch and you can begin the rc process all over again with a new rc version.
+
+Once an rc package has been approved, you are ready to move on to the next step.
+
+Step 4: Create a release tag
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Begin this step on the day you want to release the package. It's best to start this
+process early in the day to ensure there is enough time for final QA checks,
+signing ceremonies, and stakeholder communications.
+
+1. Push a release tag on the same commit of the rc tag that was approved during QA.
+2. :ref:`Sign the tag with the SecureDrop release key` (or ask another maintainer to do this).
+
+Step 5: Build and deploy the package to ``yum-qa``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once the package on ``yum-test`` has passed QA and it appears that no additional
+release candidates are needed, repeat the process from Step 2, this time opening
+the pull request against ``securedrop-yum-qa``. Once the package is uploaded there,
+go ahead and begin preflight checks.
+
+
+Step 6: Perform the ``yum-qa`` preflight check
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. On a Qubes workstation already configured for SecureDrop Workstation, open the
+   ``work`` Terminal, then edit the ``/etc/yum.repos.d/securedrop-temp.repo`` file
+   to match the contents below (which pulls in the ``yum-qa`` repo):
+   
+  .. code-block:: sh
+
+   [securedrop-workstation-temporary]
+   enabled=1
+   baseurl=https://yum-qa.securedrop.org/workstation/dom0/f32
+   name=SecureDrop Workstation Qubes initial install bootstrap
+   
+2. Download and verify the SecureDrop Workstation config package:
+
+  .. code-block:: sh
+
+   sudo dnf update
+   dnf download securedrop-workstation-dom0-config
+   rpm -Kv securedrop-workstation-dom0-config-<versionNumber>-1.fc32.noarch.rpm
+
+
+3. Transfer to ``dom0``:
+
+  .. code-block:: sh
+   
+   qvm-run --pass-io work \
+     "cat /home/user/securedrop-workstation-dom0-config-<versionNumber>-1.fc32.noarch.rpm" \
+     > securedrop-workstation.rpm
+     
+4. Install the new package and re-apply the configuration in ``dom0``:
+
+  .. code-block:: sh
+   
+   sudo dnf install securedrop-workstation.rpm
+   sdw-admin --apply
+   
+5. Open the client and make sure everything works as expected.
+
+
+Step 7: Deploy to ``yum-prod``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.  Verify the tag of the project you wish to build:
     ``git tag -v VERSION`` and ensure the tag is signed with the
@@ -164,8 +256,8 @@ Release ``securedrop-workstation-dom0-config``
 12. Upon merge to master, ensure that changes deploy to
     ``yum.securedrop.org`` without issue.
 
-Release ``qubes-template-securedrop-workstation``
--------------------------------------------------
+Release Process for  ``qubes-template-securedrop-workstation``
+--------------------------------------------------------------
 
 The SecureDrop workstation template is RPM packaged, and is first
 deployed to ``yum-test.securedrop.org`` before being promoted to
