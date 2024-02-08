@@ -94,12 +94,12 @@ Building the Templates
 To build the base template, please follow the instructions in
 https://github.com/freedomofpress/qubes-template-securedrop-workstation
 
-Building workstation deb packages
----------------------------------
+Building workstation Debian packages
+------------------------------------
 
 Debian packages for the SecureDrop Workstation components are maintained
 in a separate repository:
-https://github.com/freedomofpress/securedrop-builder/
+https://github.com/freedomofpress/securedrop-client/
 
 Building workstation rpm packages
 ---------------------------------
