@@ -65,7 +65,7 @@ Step 4: Create a release tag
 ----------------------------
 
 1. Update the changelog and version. Remove any references to the RC versions from the changelogs.
-2. Generate a release tag named``<major>.<minor>.<patch>`` (same as the previous tags, without the ``~rcN`` part).
+2. Generate a release tag named ``<major>.<minor>.<patch>`` (same as the previous tags, without the ``~rcN`` part).
 3. :ref:`Sign the tag with the SecureDrop release key` or ask another maintainer to do this and push the signed tag
 
 Step 5: Build and deploy the packages to ``apt-qa``
@@ -83,6 +83,7 @@ Step 5: Build and deploy the packages to ``apt-qa``
   .. code-block:: sh
 
    cd securedrop-client
+   git tag -v <major>.<minor>.<patch> # Signed by SecureDrop Release Key
    git checkout <major>.<minor>.<patch>
    make build-debs
 
@@ -96,12 +97,26 @@ Step 5: Build and deploy the packages to ``apt-qa``
 
 Step 6: Perform the ``apt-qa`` preflight check
 ----------------------------------------------
+First, provision a production workstation from the most recently-released
+``securedrop-workstation-dom0-config`` production package. Ensure your machine
+has been updated (either via Qubes native updater or SDW GUI updater).
 
-1. Start the package's Template VM.
-2. Edit the apt sources file to point to https://apt-qa.freedom.press.
+At minimum, perform the full test. Additional QAers may perform smoketest to
+save time if there is already full test coverage.
+
+**Full test (includes updater)**
+
+1. As root, edit ``/srv/salt/sd-default-config.yml`` so that the ``prod`` ``apt_repo_url`` points to ``https://apt-qa.freedom.press``.
+2. Run the SDW GUI updater. To force an updater run, invoke the updater via ``/opt/securedrop/launcher/sdw-launcher.py --skip-delta 0``.
+3. Start the Client application, and observe the updated version string, indicating the required packages were installed. Perform testing according to the test plan.
+
+**Smoketest (no updater run)**
+
+1. Start the Template VMs.
+2. In each template VM, edit ``/etc/apt/sources.list.d/securedrop_workstation.list`` file to point to https://apt-qa.freedom.press.
 3. Update the package system and install the new packages via ``apt update && apt upgrade -y``.
-4. Open the Qube Manager and restart all VMs using the Template VM you just updated.
-5. Start the Client application and verify that everything is working as expected.
+4. Verify that the updated packages were installed in the templates. Shut down template VMs and all VMs associated with SecureDrop Workstation.
+5. Start the Client application and perform testing according to test plan.
 
 Step 7: Deploy the package to ``apt-prod``
 ------------------------------------------
