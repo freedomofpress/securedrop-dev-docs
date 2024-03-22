@@ -24,12 +24,12 @@ Before beginning the release proces, create a tracking issue titled ``Release <p
 estimated timelines and assignees for release management, QA, and stakeholder communications. Pin the issue for ease of access
 and visibility.
 
-Step 1: Create a release candidate (rc) tag
+Step 1: Create a release candidate (RC) tag
 -------------------------------------------
 
 1. Create a release branch named ``release/<major>.<minor>.<patch>``.
 2. Push a commit adding a new changelog entry and incrementing the version.
-3. Push an rc tag in the format ``<major>.<minor>.<patch>~rcN`` on your new commit. We will be building from this tag in the next step.
+3. Push an RC tag in the format ``<major>.<minor>.<patch>~rcN`` on your new commit. We will be building from this tag in the next step.
 
 Step 2: Build and deploy the package to ``apt-test``
 ----------------------------------------------------
@@ -46,7 +46,7 @@ Step 2: Build and deploy the package to ``apt-test``
   .. code-block:: sh
 
    cd securedrop-client
-   git checkout ``<major>.<minor>.<patch>~rcN``
+   git checkout <major>.<minor>.<patch>~rcN
    make build-debs
 
 3. Save and publish :doc:`build metadata <build_metadata>`.
@@ -57,19 +57,19 @@ Step 3: Begin QA
 ----------------
 
 You can now start the QA process! If a bug is found, a fix should be developed, merged into the main branch and
-cherry-picked into the release branch. If desired, release another RC package for further testing.
+cherry-picked into the release branch. If desired, release another RC set of packages for further testing.
 
-Once QA testers are satisfied with the package, you are ready to move on to the next step.
+Once QA testers are satisfied with the packages, you are ready to move on to the next step.
 
 Step 4: Create a release tag
 ----------------------------
 
-1. Update the changelog and version.
+1. Update the changelog and version. Remove any references to the RC versions from the changelogs.
 2. Generate a release tag named``<major>.<minor>.<patch>`` (same as the previous tags, without the ``~rcN`` part).
 3. :ref:`Sign the tag with the SecureDrop release key` or ask another maintainer to do this and push the signed tag
 
-Step 5: Build and deploy the package to ``apt-qa``
---------------------------------------------------
+Step 5: Build and deploy the packages to ``apt-qa``
+---------------------------------------------------
 
 1. Clone ``securedrop-client`` and ``securedrop-builder``.
 
@@ -83,16 +83,16 @@ Step 5: Build and deploy the package to ``apt-qa``
   .. code-block:: sh
 
    cd securedrop-client
-   git checkout ``<major>.<minor>.<patch>``
+   git checkout <major>.<minor>.<patch>
    make build-debs
 
 3. Save and publish :doc:`build metadata <build_metadata>`.
-4. Add your package to a new branch called ``release`` in https://github.com/freedomofpress/securedrop-apt-prod.
+4. Add your packages to a new branch called ``release`` in https://github.com/freedomofpress/securedrop-apt-prod.
 5. Update the apt repo distribution files by running ``./tools/publish`` and push those changes to the ``release`` branch as well.
-6. :ref:`Regenerate and sign the apt release file` or ask another maintainer to do this. The package will now be installable from https://apt-qa.freedom.press.
+6. :ref:`Regenerate and sign the apt release file` or ask another maintainer to do this. The packages will now be installable from https://apt-qa.freedom.press.
 7. Open a PR to merge the ``release`` branch into ``main``.
-8. Another maintainer should also build the package (following the same steps as earlier) and verify their newly built packages
-   are identical to those pushed to apt-qa.
+8. Another maintainer should also build the packages (following the same steps as earlier) and verify their newly built packages
+   are `bit-for-bit identical <https://reproducible-builds.org/docs/definition/>`_ to those pushed to apt-qa.
 
 Step 6: Perform the ``apt-qa`` preflight check
 ----------------------------------------------
@@ -101,7 +101,7 @@ Step 6: Perform the ``apt-qa`` preflight check
 2. Edit the apt sources file to point to https://apt-qa.freedom.press.
 3. Update the package system and install the new packages via ``apt update && apt upgrade -y``.
 4. Open the Qube Manager and restart all VMs using the Template VM you just updated.
-5. Start the Client application and verify that everything is working as expected. 
+5. Start the Client application and verify that everything is working as expected.
 
 Step 7: Deploy the package to ``apt-prod``
 ------------------------------------------
@@ -192,15 +192,15 @@ Signing procedures
 Sign the tag with the SecureDrop release key
 --------------------------------------------
 
-1. If the tag does not already exist, create a new release tag: ``git tag -a VERSION``.
+1. If the tag does not already exist, create a new annotated and unsigned tag: ``git tag -a VERSION``.
 2. Output the tag to a file: ``git cat-file tag VERSION > VERSION.tag``.
 3. Copy the tag file into your signing environment and then verify the tag commit hash.
 4. Sign the tag with the SecureDrop release key: ``gpg --armor --detach-sign VERSION.tag``.
 5. Append ASCII-armored signature to tag file (ensure there are no blank lines): ``cat VERSION.tag.sig >> VERSION.tag``.
 6. Move tag file with signature appended back to the release environment.
-7. Delete old (unsigned) tag: ``git tag -d VERSION``.
-8. Create new (signed) tag: ``git mktag < VERSION.tag > .git/refs/tags/VERSION``.
-9. Verify the tag: ``git tag -v VERSION``.
+7. Delete old unsigned tag: ``git tag -d VERSION``.
+8. Create new signed tag: ``git mktag < VERSION.tag > .git/refs/tags/VERSION``.
+9. Verify the tag's signature: ``git tag -v VERSION``.
 10. Push the tag to the shared remote: ``git push origin VERSION``.
 
 .. _Regenerate and sign the apt release file:
