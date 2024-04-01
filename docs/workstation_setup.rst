@@ -193,7 +193,7 @@ in dom0 will be overwritten by ``make dev``.
 Staging Environment
 -------------------
 
-Update ``dom0``, ``fedora-37``, ``whonix-gw-16`` and ``whonix-ws-16`` templates
+Update ``dom0``, ``fedora-38``, ``whonix-gw-16`` and ``whonix-ws-16`` templates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Updates to these VMs will be performed by the installer and updater, but
