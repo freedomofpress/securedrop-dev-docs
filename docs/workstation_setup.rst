@@ -5,7 +5,7 @@ is a project currently in the beta stages of software development which aims to
 improve journalists' experience working with SecureDrop while retaining
 the current security and privacy features SecureDrop provides.
 
-Installing the project requires an up-to-date Qubes 4.1 installation
+Installing the project requires an up-to-date Qubes 4.2 installation
 running on a machine with at least 16GB of RAM (32 GB recommended).
 You'll need access to a SecureDrop staging server as well.
 
@@ -18,7 +18,7 @@ Install Qubes
 -------------
 
 Before trying to use this project, install `Qubes
-4.1.2 <https://www.qubes-os.org/downloads/>`__ on your development
+4.2.1 <https://www.qubes-os.org/downloads/>`__ on your development
 machine. Accept the default VM configuration during the install process.
 
 After installing Qubes, you must update both dom0 and the base templates
@@ -193,8 +193,8 @@ in dom0 will be overwritten by ``make dev``.
 Staging Environment
 -------------------
 
-Update ``dom0``, ``fedora-38``, ``whonix-gw-16`` and ``whonix-ws-16`` templates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Update ``dom0``, ``fedora-39``, ``whonix-gateway-17`` and ``whonix-workstation-17`` templates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Updates to these VMs will be performed by the installer and updater, but
 updating them prior to install makes it easier to debug any errors.
@@ -204,10 +204,9 @@ bootstrap to the Tor network. In the Qubes menu, navigate to
 ``sys-whonix`` and click on ``Anon Connection Wizard`` and click
 ``Next`` and ensure the Tor Bootstrap process completes successfully.
 
-In the Qubes Menu, navigate to ``System Tools`` and click on
-``Qubes Update``. Click the
-``Enable updates for qubes without known available updates`` and select
-all VMs in the list. Click on ``Next`` and wait for updates to complete.
+In the Qubes Menu, select the cog icon to access the Settings submenu,
+navigate to ``Qubes Tools`` and click on ``Qubes Update``. In the updater,
+select all VMs in the list, then click  ``Next`` and wait for updates to complete.
 
 Choose your installation method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -251,7 +250,7 @@ contents:
 
    [securedrop-workstation-temporary]
    enabled=1
-   baseurl=https://yum-test.securedrop.org/workstation/dom0/f32
+   baseurl=https://yum-test.securedrop.org/workstation/dom0/f37
    name=SecureDrop Workstation Qubes initial install bootstrap
 
 3. Download the RPM package
@@ -266,14 +265,14 @@ The RPM file will be downloaded to your current working directory.
 
 ::
 
-   [user@work ~]$ rpm -Kv securedrop-workstation-dom0-config-x.y.z-1.fc32.noarch.rpm
+   [user@work ~]$ rpm -Kv securedrop-workstation-dom0-config-x.y.z-1.fc37.noarch.rpm
 
 The output should match the following, and return ``OK`` for all lines
 as follows:
 
 ::
 
-   securedrop-workstation-dom0-config-x.y.z-1.fc32.noarch.rpm:
+   securedrop-workstation-dom0-config-x.y.z-1.fc37.noarch.rpm:
        Header V4 RSA/SHA256 Signature, key ID 2211b03c: OK
        Header SHA1 digest: OK
        V4 RSA/SHA256 Signature, key ID 2211b03c: OK
@@ -288,7 +287,7 @@ its current value):
 
 ::
 
-   [dom0]$ qvm-run --pass-io work 'cat /home/user/securedrop-workstation-dom0-config-x.y.z-1.fc32.noarch.rpm' > securedrop-workstation.rpm
+   [dom0]$ qvm-run --pass-io work 'cat /home/user/securedrop-workstation-dom0-config-x.y.z-1.fc37.noarch.rpm' > securedrop-workstation.rpm
    sudo dnf install securedrop-workstation.rpm
 
 The provisioning scripts and tools should now be in place, and you can
