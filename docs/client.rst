@@ -25,10 +25,9 @@ If you'd like to chat with other developers working on the client drop
 into our `Gitter chat channel for the project <https://gitter.im/freedomofpress/securedrop>`_.
 
 Every non-public holiday weekday (except Fridays) at 10am (Pacific Time) we
-take part in a public daily stand-up, usually via a
-`meeting on Google Meet <https://meet.google.com/ekb-kkhf-mrk>`_
-(although the details of each daily meeting are published on the Gitter channel
-five minutes before the start of the meeting). All are welcome to contribute.
+take part in a public daily stand-up, usually via a meeting on Google Meet.
+Connection information for standups is published periodically on the Gitter channel.
+All are welcome to contribute.
 
 Otherwise, read on.
 

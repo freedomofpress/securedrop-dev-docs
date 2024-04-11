@@ -88,12 +88,6 @@ The ``make clone`` command will build a new version of the RPM package
 that contains the provisioning logic in your development VM (e.g.,
 ``sd-dev``) and copy it to ``dom0``.
 
-Building the Templates
-----------------------
-
-To build the base template, please follow the instructions in
-https://github.com/freedomofpress/qubes-template-securedrop-workstation
-
 Building workstation Debian packages
 ------------------------------------
 
