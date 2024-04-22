@@ -34,7 +34,7 @@ Otherwise, read on.
 Client Architecture
 -------------------
 
-The SecureDrop client is a PyQt application. It's written using Python 3.5 and
+The SecureDrop client is a PyQt application. It's written using Python 3.11 and
 the Python bindings for the Qt UI framework (`PyQt <https://riverbankcomputing.com/software/pyqt/intro>`_).
 
 In the root directory of the repository are two important directories:
@@ -62,9 +62,8 @@ We encourage developers to make sure all classes, methods and functions have doc
 intention behind the code. Obviously, it's important that such docstrings **remain up to date**
 as the code evolves.
 
-If possible, please use `Python type hints <https://docs.python.org/3.5/library/typing.html>`_
-for new code. We're going to transition the code base to this style in the
-not-too-distant future.
+We make use of `ruff`, `mypy`, and other linting tools to standardize code style. Please run
+`make lint` locally from both the project root and the client directories before submitting a PR.
 
 Client Database Structure
 -------------------------
