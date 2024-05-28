@@ -22,14 +22,12 @@ Before trying to use this project, install `Qubes
 machine. Accept the default VM configuration during the install process.
 
 After installing Qubes, you must update both dom0 and the base templates
-to include the latest versions of apt packages, as well as install an
-additional dependency (``make``) in dom0. Open a terminal in
+to include the latest versions of apt packages. Open a terminal in
 ``dom0`` by clicking on the Qubes menu top-right of the screen and
 left-clicking on Terminal Emulator and run:
 
 ::
 
-   sudo qubes-dom0-update -y make
    sudo qubes-dom0-update
 
 After dom0 updates complete, reboot your computer to ensure the updates
