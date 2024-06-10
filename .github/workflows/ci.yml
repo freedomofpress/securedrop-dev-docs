@@ -5,4 +5,5 @@ on: [merge_group, push, pull_request]
 
 jobs:
   reusable:
-    uses: freedomofpress/securedrop-docs/.github/workflows/ci.yml@main
+    # TODO: switch back to main once securedrop-docs is on bookworm
+    uses: freedomofpress/securedrop-docs/.github/workflows/ci.yml@bookworm
