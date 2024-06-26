@@ -7,5 +7,4 @@ on:
 
 jobs:
   reusable:
-    # TODO: switch back to main once securedrop-docs is on bookworm
-    uses: freedomofpress/securedrop-docs/.github/workflows/linkcheck.yml@bookworm
+    uses: freedomofpress/securedrop-docs/.github/workflows/linkcheck.yml@main
