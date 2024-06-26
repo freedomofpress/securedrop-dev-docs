@@ -95,13 +95,11 @@ Debian packages for the SecureDrop Workstation components are maintained
 in a separate repository:
 https://github.com/freedomofpress/securedrop-client/
 
-Building workstation rpm packages
+Building workstation RPM packages
 ---------------------------------
 
 ::
 
-   make dom0-rpm
+   make build-rpm
 
-The build assumes use of Debian Stable as the build environment. You can
-install the necessary dependencies from system packages via the
-``make install-deps`` target.
+The build runs in a container and requires either Docker or Podman to be installed.

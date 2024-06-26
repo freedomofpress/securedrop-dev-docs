@@ -136,7 +136,7 @@ Release ``securedrop-workstation-dom0-config``
 2.  ``git checkout VERSION``
 3.  Now you are ready to build. Build RPMs following the documentation
     in an environment sufficient for building production artifacts. For
-    ``securedrop-workstation`` you run ``make dom0-rpm`` to build the
+    ``securedrop-workstation`` you run ``make build-rpm`` to build the
     RPM.
 4.  sha256sum the built template (and store hash in the build
     logs/commit message).
