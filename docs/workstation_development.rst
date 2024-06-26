@@ -60,7 +60,9 @@ Automatic updates
 Double-clicking the “SecureDrop” desktop icon will launch a preflight
 updater that applies any necessary updates to VMs, and may prompt a
 reboot. In a development environment, this will install the latest
-nightly packages, and the latest RPM published to ``yum-test``.
+nightly packages (unless there is a more recent release candidate
+on ``apt-test`` in ``main``), and the latest RPM published to 
+``yum-test``.
 
 Manually updating dom0 code
 ---------------------------
