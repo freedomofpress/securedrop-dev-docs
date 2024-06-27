@@ -28,8 +28,12 @@ Step 1: Create a release candidate (RC) tag
 -------------------------------------------
 
 1. Create a release branch named ``release/<major>.<minor>.<patch>``.
-2. Push a commit adding a new changelog entry and incrementing the version.
-3. Push an RC tag in the format ``<major>.<minor>.<patch>~rcN`` on your new commit. We will be building from this tag in the next step.
+2. Ensure that the version is set to the expected value; if not, increment it as needed using ``update_version.sh``.
+3. Push a commit adding the changelog for this release.
+4. Push an RC tag in the format ``<major>.<minor>.<patch>~rcN`` on your new commit. We will be building from this tag in the next step.
+5. Unless this is a patch-level release, create a PR to bump the version on ``main``
+   to ``<major>.<minor+1>.<patch>-rc1``. In other words, if you are in the process of
+   releasing ``0.5.0``, ``main`` should be bumped to ``0.6.0-rc1``.
 
 Step 2: Build and deploy the package to ``apt-test``
 ----------------------------------------------------
@@ -121,8 +125,10 @@ save time if there is already full test coverage.
 Step 7: Deploy the package to ``apt-prod``
 ------------------------------------------
 
-1. Merge the ``release`` branch into ``main`` to deploy your package to https://apt.freedom.press.
+1. In ``securedrop-apt-prod``, merge the ``release`` branch into ``main`` to deploy your package to https://apt.freedom.press.
 2. Once you see the package land on https://apt.freedom.press, run the updater to install it in a production environment and ensure that it works as expected.
+3. In the source repository (e.g., ``securedrop-client``), port the changelog to the ``main`` branch.
+   Ensure that the version number on ``main`` designates it as RC1 for the *next* release.
 
 Release an RPM package
 ======================
