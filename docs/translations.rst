@@ -28,7 +28,6 @@ Getting help
 If you're interested in helping with translation and have questions
 about anything in this document, here's how to ask for help:
 
-* Post a message in the `translations category of the SecureDrop forum`_
 * Chat in the `SecureDrop instant messaging channel`_
 
    * `Localization Lab`_, with whom we coordinate SecureDrop's translation, also
@@ -576,7 +575,6 @@ are never translated.
 .. _`SecureDrop Weblate instance`: https://weblate.securedrop.org/
 .. _`Weblate registration page`: https://weblate.securedrop.org/accounts/register/
 .. _`Weblate dashboard`: https://weblate.securedrop.org/
-.. _`translations category of the SecureDrop forum`: https://forum.securedrop.org/c/translations
 .. _`SecureDrop instant messaging channel`: https://gitter.im/freedomofpress/securedrop
 .. _`Weblate documentation`: https://docs.weblate.org/
 .. _`EFF Surveillance Self-Defense glossary`: https://ssd.eff.org/en/glossary/

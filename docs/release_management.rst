@@ -324,8 +324,7 @@ Post-Release
 
    #. Make a PR to merge these changes into ``develop``.
 
-#. Monitor the `FPF support portal <https://support.freedom.press>`_ and the
-   `SecureDrop community support forum <https://forum.securedrop.org/c/support>`_ for any new user
+#. Monitor the `FPF support portal <https://support.freedom.press>`_ for any new user
    issues related to the release.
 
 .. _tails_only_releases:
