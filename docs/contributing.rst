@@ -11,13 +11,10 @@ are a variety of ways to help. We are always looking for help from:
 * `UX contributors`_, to help improve the product experience for end users;
 * `Translators`_, to translate SecureDrop;
 * `Release managers`_, to create and maintain Debian GNU/Linux packages and repositories;
-* `Forum moderators and support`_ volunteers, to help with the support forums.
 
 You can always find a regular project contributor to answer any questions you
 may have on the `SecureDrop instant messaging channel
-<https://gitter.im/freedomofpress/securedrop>`__. You can also register on `the
-forum <https://forum.securedrop.org/>`__ for more information and to
-participate in longer discussions.
+<https://gitter.im/freedomofpress/securedrop>`__.
 
 
 .. note::
@@ -168,10 +165,9 @@ another language, we would welcome your help.
 
 SecureDrop is translated using `Weblate
 <https://weblate.securedrop.org/>`__. We provide a :doc:`detailed
-guide <translations>` for translators, and feel free to contact us in the
-`translation section of the SecureDrop forum
-<https://forum.securedrop.org/c/translations>`__ for help. Non-English
-forum discussions are also welcome.
+guide <translations>` for translators, and feel free to contact us in our
+`Gitter chat room <https://gitter.im/freedomofpress/securedrop>`__ or through Localization Lab
+communications platforms.
 
 |SecureDrop translation status|
 
@@ -182,23 +178,3 @@ forum discussions are also welcome.
 
 .. |SecureDrop language status| image:: https://weblate.securedrop.org/widgets/securedrop/-/horizontal-auto.svg
    :alt: SecureDrop language status
-
-
-
-Forum Moderators and Support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Those running a production instance of SecureDrop are encouraged to `read the
-support documentation <https://support-docs.securedrop.org/>`__ to get
-help from the `Freedom of the Press Foundation <https://freedom.press>`__. For
-less sensitive topics such as running a demo or getting help to understand a
-concept, a `public forum section <https://forum.securedrop.org/c/support>`__ is
-better suited. To assist on the forum:
-
-* Look for `the latest unanswered questions in the
-  <https://forum.securedrop.org/c/support>`__ forum and answer them.
-* If you find questions `elsewhere in the forum
-  <https://forum.securedrop.org>`__ that have a better chance at
-  getting an answer in the `support section
-  <https://forum.securedrop.org/c/support>`__, suggest in Gitter
-  to move topics from a category to another.
