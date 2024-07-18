@@ -59,7 +59,7 @@ instructions:
    ``apt.freedom.press`` repositories, verified using the production
    signing key. Its setup is not covered below; see our `production
    install
-   docs <https://workstation.securedrop.org/en/stable/admin/install.html>`__
+   docs <https://workstation.securedrop.org/en/stable/admin/install/overview.html>`__
    for details.
 
 Development Environment
