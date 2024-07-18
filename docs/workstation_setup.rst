@@ -59,7 +59,7 @@ instructions:
    ``apt.freedom.press`` repositories, verified using the production
    signing key. Its setup is not covered below; see our `production
    install
-   docs <https://workstation.securedrop.org/en/stable/admin/install.html>`__
+   docs <https://workstation.securedrop.org/en/stable/admin/install/overview.html>`__
    for details.
 
 Development Environment
@@ -191,8 +191,8 @@ in dom0 will be overwritten by ``make dev``.
 Staging Environment
 -------------------
 
-Update ``dom0``, ``fedora-39``, ``whonix-gateway-17`` and ``whonix-workstation-17`` templates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Update ``dom0``, ``fedora-40-xfce``, ``whonix-gateway-17`` and ``whonix-workstation-17`` templates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Updates to these VMs will be performed by the installer and updater, but
 updating them prior to install makes it easier to debug any errors.

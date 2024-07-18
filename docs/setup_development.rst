@@ -44,7 +44,6 @@ environment variable to enable it.
 
 Fedora Linux
 ~~~~~~~~~~~~
-.. note:: To install Docker Engine, you need the 64-bit version of Fedora 30 or higher.
 
 Run the following command to update the package index and to install Git and ``make``:
 
@@ -81,13 +80,13 @@ Install Docker_.
 Qubes
 ~~~~~
 
-Create a StandaloneVM based on Debian 11, called ``sd-dev``.
+Create a StandaloneVM based on Debian 12, called ``sd-dev``.
 You can use the **Q** menu to configure a new VM, or run
 the following in ``dom0``:
 
 .. code:: sh
 
-   qvm-clone --class StandaloneVM debian-11 sd-dev
+   qvm-clone --class StandaloneVM debian-12-xfce sd-dev
    qvm-start sd-dev
    qvm-sync-appmenus sd-dev
 
