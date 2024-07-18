@@ -137,6 +137,7 @@ To get started, you can try the following:
 
    cd securedrop
    make dev                                               # run development servers
+   make dev-tor                                           # run development servers (onion addresses)
    make test                                              # run tests
    securedrop/bin/dev-shell bin/run-test tests/functional # functional tests only
    securedrop/bin/dev-shell bash                          # shell inside the container
