@@ -44,7 +44,6 @@ environment variable to enable it.
 
 Fedora Linux
 ~~~~~~~~~~~~
-.. note:: To install Docker Engine, you need the 64-bit version of Fedora 30 or higher.
 
 Run the following command to update the package index and to install Git and ``make``:
 
