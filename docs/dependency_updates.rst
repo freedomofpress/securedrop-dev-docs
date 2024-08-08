@@ -251,3 +251,6 @@ Exemptions can be specified in ``supply-chain/config.toml``:
     [policy.windows-sys]
     criteria = []
     notes = "Windows-only"
+
+Note that within crates do review, you should still review all the code, regardless of what
+platform it is targeting.
