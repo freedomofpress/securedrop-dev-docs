@@ -45,11 +45,12 @@ When updating a dependency, one should:
 
 1. **Review the changelog:** were any high-risk areas of the code modified? Were
    bugs with security implications fixed?
-2. **Review the diff:** (If the dependency a major tool in the Python ecosystem,
-   such as ``pip``, ``setuptools``, or ``wheel``, you can skip this step.) Perform a
-   timeboxed review of the diff. Are there any concerning areas (primarily in
-   terms of security)?  One can use the diffoscope tool from https://try.diffoscope.org/
-   locally to view the diffs in the source code.
+2. **Review the diff:** Perform a timeboxed review of the diff. Are there any
+   concerning areas (primarily in terms of security)?  One can use the diffoscope
+   tool from https://try.diffoscope.org/ locally to view the diffs in the source code.
+
+   * Note: we trust packages managed by the `Python Packaging Authority <https://www.pypa.io/en/latest/>`_
+     (PyPA) and don't diff review them.
 3. **Explain version specifiers:** Use comments in ``.in`` or ``pyproject.toml``
    files to explain why you are specifying certain versions or ranges.
 
