@@ -3,9 +3,9 @@
 Testing: Configuration Tests
 ============================
 
-Testinfra_ tests verify the end state of the staging VMs. Any
-changes to the Ansible configuration should have a corresponding
-spectest.
+Testinfra_ tests verify the end state of a full SecureDrop server, whether on
+physical hardware or in staging VMs. Any changes to the Ansible configuration
+should have a corresponding test.
 
 .. _Testinfra: https://testinfra.readthedocs.io/en/latest/
 
@@ -91,13 +91,35 @@ mirroring the Ansible configuration. Prior to the reorganization of
 the Ansible layout, the tests are rather tightly coupled to hosts. The
 layout of config tests is therefore subject to change.
 
-Config Testing Strategy
------------------------
+Running the CI Staging Environment
+----------------------------------
 
-The config tests currently emphasize testing implementation rather than
-functionality. This was a temporary measure to increase the testing
-baseline for validating the Ansible provisioning flow, which aided in migrating
-to a current version of Ansible (v2+). Now that the Ansible version is current,
-the config tests can be improved to validate behavior, such as confirming
-ports are blocked via external network calls, rather than simply checking
-that the iptables rules are formatted as expected.
+The staging environment can also run via CI, running in GCE. These tests are
+run every night or if you push to a branch that starts with ``stg-``. Currently
+this can only be done by members of the ``freedomofpress`` GitHub organization,
+please ask if you'd like someone to run the tests for you.
+
+You can also run them yourself if you have a Google Cloud Platform account and Docker
+installed locally.
+
+Source the setup script using the following command:
+
+.. code:: sh
+
+    source ./devops/gce-nested/ci-env.sh
+
+You will be prompted for the values of the required environment variables. There
+are some defaults set that you may want to change. You will need to export
+``GOOGLE_CREDENTIALS`` with authentication details for your GCP account,
+which is outside the scope of this guide. Some parameters are specific to FPF's
+GCE setup and may need adjusting if you are running elsewhere.
+
+Then to run the tests locally:
+
+.. code:: sh
+
+    make ci-go
+
+You can use ``./devops/gce-nested/ci-runner.sh`` to provision the remote hosts
+while making changes, including rebuilding the Debian packages used in the
+Staging environment. See :doc:`virtual_environments` for more information.

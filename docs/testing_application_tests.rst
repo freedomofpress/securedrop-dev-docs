@@ -3,66 +3,30 @@
 Testing: Application Tests
 ==========================
 
-The application test suite uses:
-
-  * Pytest_
-  * Selenium_
+The application test suite uses pytest_, selenium_, and other Python tools
+to comprehensively test the SecureDrop server.
 
 The application tests consist of unit tests for the Python application code
 and functional tests that verify the functionality of the application code
 from the perspective of the user through a web browser.
 
-The functional tests use an outdated version of Firefox chosen specifically
-for compatibility with Selenium 2, and a rough approximation of the most
-recent Tor Browser.
-
-.. note:: We're working on running the Selenium tests in Tor Browser.
-          See `GitHub #1629`_ for more info.
-
-.. _`GitHub #1629`: https://github.com/freedomofpress/securedrop/pull/1629
-
-.. _Pytest: https://docs.pytest.org/en/latest/
-.. _Selenium: https://www.selenium.dev/documentation/
-
-Installation
-------------
-
-The application tests are installed automatically in the development
-and app-staging VMs, based on the contents of
-``securedrop/requirements/test-requirements.txt``.
-If you wish to change the dependencies, see :ref:`updating_pip_dependencies`.
+.. _pytest: https://docs.pytest.org/en/latest/
+.. _selenium: https://www.selenium.dev/documentation/
 
 Running the Application Tests
 -----------------------------
 
-The tests can be run inside the development VM:
+The tests are written to be run inside the development container:
 
 .. code:: sh
 
     make test
 
-Or the app-staging VM:
-
-.. code:: sh
-
-    vagrant ssh app-staging
-    sudo bash
-    cd /var/www/securedrop
-    pytest -v tests
-    chown -R www-data /var/lib/securedrop /var/www/securedrop
-
-.. warning:: The ``chown`` is necessary because running the tests as
-             root will change ownership of some files, creating
-             problems with the source and journalist interfaces.
-
-For explanation of the difference between these machines, see
-:doc:`virtual_environments`.
-
 If you just want to run the functional tests, you can use:
 
 .. code:: sh
 
-    securedrop/bin/dev-shell bin/run-test -v tests/functional
+    make test-functional
 
 Similarly, if you want to run a single test, you can specify it through the
 file, class, and test name:
@@ -72,13 +36,6 @@ file, class, and test name:
     securedrop/bin/dev-shell bin/run-test \
         tests/test_journalist.py::TestJournalistApp::test_invalid_credentials
 
-The `gnupg
-<https://pythonhosted.org/python-gnupg>`_ library can be quite verbose in its
-output. The default log level applied to this package is ``ERROR`` but this can
-be controlled via the ``GNUPG_LOG_LEVEL`` environment variable. It can have values
-such as ``INFO`` or ``DEBUG`` if some particular test case or test run needs
-greater verbosity.
-
 Page Layout Tests
 ~~~~~~~~~~~~~~~~~
 
@@ -87,12 +44,11 @@ language using the page layout tests. These will generate screenshots of
 each page and can be used for example to update the SecureDrop user guides
 when modifications are made to the UI.
 
-You can run all tests, including the page layout tests with the `--page-layout`
-option:
+To run just these tests:
 
 .. code:: sh
 
-    securedrop/bin/dev-shell bin/run-test --page-layout tests
+    make test-pageslayout
 
 
 Updating the Application Tests
