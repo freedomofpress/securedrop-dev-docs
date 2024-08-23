@@ -94,13 +94,13 @@ layout of config tests is therefore subject to change.
 Running the CI Staging Environment
 ----------------------------------
 
-The staging environment can also run via CI, running in GCE. These tests are
-run every night or if you push to a branch that starts with ``stg-``. Currently
-this can only be done by members of the ``freedomofpress`` GitHub organization,
-please ask if you'd like someone to run the tests for you.
+The staging environment can also run via CI in Google Cloud (GCE). These tests are
+run every night or if a member of the ``freedomofpress`` Github Organization
+pushes to a branch that starts with ``stg-``. Please ask in your PR if you'd like
+someone to run the tests for you.
 
-You can also run them yourself if you have a Google Cloud Platform account and Docker
-installed locally.
+The tests can also be run manually with a Google Cloud Platform account and Docker
+installed locally:
 
 Source the setup script using the following command:
 
@@ -110,9 +110,9 @@ Source the setup script using the following command:
 
 You will be prompted for the values of the required environment variables. There
 are some defaults set that you may want to change. You will need to export
-``GOOGLE_CREDENTIALS`` with authentication details for your GCP account,
-which is outside the scope of this guide. Some parameters are specific to FPF's
-GCE setup and may need adjusting if you are running elsewhere.
+``GOOGLE_CREDENTIALS`` with `authentication details <https://cloud.google.com/docs/authentication/use-cases>`_
+for your GCP account, which is outside the scope of this guide. Some parameters
+are specific to FPF's GCE setup and may need adjusting if you are running elsewhere.
 
 Then to run the tests locally:
 
