@@ -88,7 +88,7 @@ Step 5: Build and deploy the packages to ``apt-qa``
    make build-debs
 
 3. Save and publish :doc:`build metadata <build_metadata>`.
-4. Add your packages to a new branch called ``release`` in https://github.com/freedomofpress/securedrop-apt-prod.
+4. Add your packages to a new branch called ``release`` in https://github.com/freedomofpress/securedrop-apt-prod. Include all .deb packages (including ``-dbgsym`` packages) built by the client.
 5. Update the apt repo distribution files by running ``./tools/publish`` and push those changes to the ``release`` branch as well.
 6. :ref:`Regenerate and sign the apt release file` or ask another maintainer to do this. The packages will now be installable from https://apt-qa.freedom.press.
 7. Open a PR to merge the ``release`` branch into ``main``.
