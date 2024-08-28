@@ -251,3 +251,11 @@ Now we’ll sign the RPM:
 
 You can then proceed with distributing the package, via the “test” or
 “prod” repo, as appropriate.
+
+
+Post-Release tasks
+==================
+
+1. Ensure release communications have been published. 
+2. Run the updater on a production setup once packages are live, and conduct a smoketest (successful updater run, and basic functionality if updating client packages).
+3. Backport changelog commit(s) with ``git cherry-pick -x`` from the release branch into the main development branch, and sign the commit(s). In a separate commit, run the ``update_version.sh`` script to bump the version on main to the next minor version's rc1. Open a PR with these commits; this PR can close the release tracking issue.
