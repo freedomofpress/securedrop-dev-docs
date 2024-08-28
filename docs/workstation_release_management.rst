@@ -144,7 +144,7 @@ Release ``securedrop-workstation-dom0-config``
     in an environment sufficient for building production artifacts. For
     ``securedrop-workstation`` you run ``make build-rpm`` to build the
     RPM.
-4.  sha256sum the built template (and store hash in the build
+4.  sha256sum the built RPM (and store hash in the build
     logs/commit message).
 5.  Commit the (unsigned) version of this RPM to a branch in the
     `securedrop-yum-prod <https://github.com/freedomofpress/securedrop-yum-prod>`__
@@ -164,45 +164,6 @@ Release ``securedrop-workstation-dom0-config``
     `securedrop-yum-prod <https://github.com/freedomofpress/securedrop-yum-prod>`__.
     Make a PR.
 12. Upon merge to master, ensure that changes deploy to
-    ``yum.securedrop.org`` without issue.
-
-Release ``qubes-template-securedrop-workstation``
--------------------------------------------------
-
-The SecureDrop workstation template is RPM packaged, and is first
-deployed to ``yum-test.securedrop.org`` before being promoted to
-production (``yum.securedrop.org``) using the following procedure:
-
-1.  Verify the tag in the
-    `qubes-template-securedrop-workstation <https://github.com/freedomofpress/qubes-template-securedrop-workstation>`__
-    repository: ``git tag -v VERSION`` and ensure the tag is signed with
-    the official release key.
-2.  ``git checkout VERSION``
-3.  Rebuild template following documentation in
-    `qubes-template-securedrop-workstation <https://github.com/freedomofpress/qubes-template-securedrop-workstation>`__.
-4.  sha256sum the built template (and store hash in the build
-    logs/commit message).
-5.  Commit unsigned template for historical purposes.
-6.  Sign template RPM with test key (``rpm --resign``) (see Signing section
-    below).
-7.  Commit signed template.
-8.  Push those two commits to a PR in
-    `securedrop-yum-test <https://github.com/freedomofpress/securedrop-yum-test/>`__.
-    Make the PR.
-9.  Save and publish :doc:`build metadata <build_metadata>`.
-10. Upon merge of the PR into
-    `securedrop-yum-test <https://github.com/freedomofpress/securedrop-yum-test/>`__,
-    the template will be deployed to ``yum-test.securedrop.org``.
-11. Install the template in dom0 and test it. Provided you’ve run the Salt configurations, find the template via:
-    ``sudo qubes-dom0-update --action=search qubes-template-securedrop-workstation``.
-12. Once template is sufficiently tested, remove test sig:
-    ``rpm --delsign <file>``.
-13. Verify unsigned template sha256sum from build logs/commit message.
-14. Sign template with prod key: ``rpm --resign <file>``
-15. Push commit to a branch in the
-    `securedrop-yum-prod <https://github.com/freedomofpress/securedrop-yum-prod/>`__
-    repository. Make a PR.
-16. Upon merge to master, ensure that changes deploy to
     ``yum.securedrop.org`` without issue.
 
 Signing procedures
