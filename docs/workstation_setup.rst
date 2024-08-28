@@ -7,7 +7,6 @@ the current security and privacy features SecureDrop provides.
 
 Installing the project requires an up-to-date Qubes 4.2 installation
 running on a machine with at least 16GB of RAM (32 GB recommended).
-You'll need access to a SecureDrop staging server as well.
 
 The project is currently in a closed beta, and we do not recommend
 installing it for production purposes. Documentation for end users is
@@ -79,27 +78,7 @@ Decide on a VM to use for development. We recommend creating a
 standalone VM called ``sd-dev`` by following `these
 instructions <https://developers.securedrop.org/en/latest/setup_development.html#qubes>`__.
 
-Clone this repo to your preferred location on that VM.
-
-Next we need to do some SecureDrop-specific configuration:
-
--  Create a ``config.json`` file based on ``config.json.example`` and
-   include your values for the hidserv fields: ``hostname`` (the
-   Journalist Interface Onion URL) and ``key`` (the private key for
-   client authentication). Set ``submission_key_fpr`` to the submission
-   key fingerprint.
-
-   -  On your Admin Workstation, you can find the Journalist Interface
-      onion address and private key in
-      ``~/Persistent/securedrop/install_files/ansible-base/app-journalist.auth_private``,
-      and the submission key fingerprint in
-      ``~/Persistent/securedrop/install_files/ansible-base/group_vars/all/site-specific``
-      (``securedrop_app_gpg_fingerprint``).
-
--  Create an ``sd-journalist.sec`` file in the root directory with the
-   ASCII-armored GPG private key used to encrypt submissions in your
-   test SecureDrop instance. The included key ``sd-journalist.sec`` is
-   the one used by default in the SecureDrop staging instance.
+Clone the `securedrop-workstation` repo to your preferred location on that VM.
 
 Qubes provisioning is handled by Salt on ``dom0``, so this project must
 be copied there from your development VM.
@@ -142,6 +121,61 @@ also run this command in ``dom0``:
 
 Doing so will permit the ``sd-dev`` AppVM to make RPC calls with the
 same privileges as the ``sd-app`` AppVM.
+
+
+Run Development SecureDrop Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here, you will setup a development version of the SecureDrop server to
+which your workstation will connect. Alternatively, you can setup
+:doc:`virtualized staging environments on Qubes OS <virtual_environments>`,
+which is slightly more involved.
+
+- Setup a :doc:`SecureDrop (server) development environment <setup_development>` on Qubes.
+
+.. note:: You will need to run the following step every time that you want
+   to login on SecureDrop client.
+
+- Start the securedrop server in ``sd-dev`` qube with use ``make dev-tor``
+
+
+Configure the Workstation
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the output of the `make dev-tor` command ran in the previous section, there
+should be a section that looks like this:
+
+::
+
+   {
+      "submission_key_fpr": "65A1B5FF195B56353CC63DFFCC40EF1228271441",
+      "hidserv": {
+         "hostname": "jpweqok4r43xp4si5pattodglw2btdqlpz2utvn4mkwnx2iwbmp4v2id.onion",
+         "key": "DAZHRYYKWHQCIRUMEVIRSOUZA4MKU4C7WPDWLIVB3TMZWZH2V5MA"
+      },
+      "environment": "prod",
+      "vmsizes": {
+         "sd_app": 10,
+         "sd_log": 5
+      }
+   }
+
+Save this text in the file ``securedrop-workstation/config.json``.
+
+Next, set the default encryption key (for development purposes only):
+
+::
+
+   cd securedrop-workstation
+   cp sd-journalist.sec.example sd-journalist.sec
+
+Then, in ``dom0``, clone the workstation again, to obtain these new files:
+
+::
+
+   [dom0]$ cd ~/securedrop-workstation/
+   [dom0]$ make clone
+
 
 Provision the VMs
 ~~~~~~~~~~~~~~~~~
