@@ -49,10 +49,15 @@ instructions:
 
 -  The development environment uses the ``yum-test.securedrop.org`` and
    ``apt-test.freedom.press`` repositories, and is configured to use the
-   ``nightly`` component for apt package. It does not alter power
-   management settings on your laptop to prevent suspension to disk (a
-   security measure for production environments, which the staging
-   environment preserves to be more faithful to prod-like settings).
+   ``nightly`` and ``main`` components for apt packages. This means it
+   will install nightly packages, unless a package is only available
+   in ``main``, or a version with a higher version number has been
+   published there.
+
+   This configuration does not alter your management settings on your
+   laptop to prevent suspension to disk (a security measure for
+   production environments, which the staging environment preserves
+   to be more faithful to prod-like settings).
 
 -  The production environment uses ``yum.securedrop.org`` and
    ``apt.freedom.press`` repositories, verified using the production
