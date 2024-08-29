@@ -18,6 +18,7 @@ administrators <https://docs.securedrop.org/>`_.
    contributor_guidelines
    tips_and_tricks
    supported_languages
+   continuous_integration
    dependency_updates
 
 .. toctree::
@@ -38,7 +39,6 @@ administrators <https://docs.securedrop.org/>`_.
    testing_securedrop
    testing_application_tests
    testing_configuration_tests
-   testing_continuous_integration
    demo
    apt_repo
    updating_ossec
