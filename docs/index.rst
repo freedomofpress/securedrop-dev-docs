@@ -39,6 +39,7 @@ administrators <https://docs.securedrop.org/>`_.
    testing_application_tests
    testing_configuration_tests
    testing_continuous_integration
+   demo
    apt_repo
    updating_ossec
    apparmor_profiles
