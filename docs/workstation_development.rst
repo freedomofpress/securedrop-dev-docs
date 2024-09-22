@@ -6,20 +6,23 @@ provisioning components and working on submission-handling scripts.
 
 For developing salt states and other provisioning components, work is
 done in a development VM and changes are made to individual state and
-top files there. In the ``dom0`` copy of this project: - ``make clone``
-is used to build a new version of the RPM and copy the contents of your
-working directory (including the RPM) from your development VM to
-``dom0`` - ``make <vm-name>`` can be used to rebuild an individual VM -
-``make dev`` installs the latest locally present RPM and performs the
-full installation.
+top files there. In the ``dom0`` copy of this project:
+
+- ``make clone`` is used to build a new version of the RPM and copy the contents
+  of your working directory (including the RPM) from your development VM to
+  ``dom0``
+- ``make <vm-name>`` can be used to rebuild an individual VM
+- ``make dev`` installs the latest locally present RPM and performs the
+  full installation.
 
 Note that ``make clone`` requires two environment variables to be set:
 ``SECUREDROP_DEV_VM`` must be set to the name of the VM where you’ve
 been working on the code, the ``SECUREDROP_DEV_DIR`` should be set to
 the directory where the code is checked out on your development VM.
 
-For work on components such as the SecureDrop Client, see their
-respective repositories for developer documentation.
+For work on components such as the SecureDrop Client, see their individual
+readmes in the `securedrop-client
+<https://github.com/freedomofpress/securedrop-client>`_ repository:
 
 Testing
 -------
