@@ -8,9 +8,8 @@ are a variety of ways to help. We are always looking for help from:
 
 * `Programmers`_, to help us develop SecureDrop;
 * `Technical writers`_, to help improve the documentation;
-* `UX contributors`_, to help improve the product experience for end users;
-* `Translators`_, to translate SecureDrop;
-* `Release managers`_, to create and maintain Debian GNU/Linux packages and repositories;
+* `UX contributors`_, to help improve the product experience for end users; and
+* `Translators`_, to translate SecureDrop.
 
 You can always find a regular project contributor to answer any questions you
 may have on the `SecureDrop instant messaging channel
@@ -31,6 +30,29 @@ may have on the `SecureDrop instant messaging channel
 
 Programmers
 ~~~~~~~~~~~
+SecureDrop Workstation, Client, and supporting applications
+-----------------------------------------------------------
+
+The `SecureDrop Workstation
+<https://github.com/freedomofpress/securedrop-workstation/>`__ is a mixture of
+Python scripts and Salt configuration-as-code.  See :doc:`client` for more
+information.
+
+The graphical `SecureDrop Client
+<https://github.com/freedomofpress/securedrop-client/>`__ app is written in
+Python, using the Qt GUI framework, and includes other supporting apps
+(Python/Rust), services (systemd), and packages (Debian).  See
+:doc:`workstation_development` for more information.
+
+The "good first issue" tag is a good introduction to work available in both the
+`Workstation
+<https://github.com/freedomofpress/securedrop-workstation/labels/good%20first%20issue>`__
+and `Client
+<https://github.com/freedomofpress/securedrop-client/labels/good%20first%20issue>`__
+repositories.
+
+SecureDrop Server
+-----------------
 The SecureDrop system includes `Flask`_-based web applications for sources and
 journalists. It is deployed across multiple machines with `Ansible`_. Most of
 SecureDrop's code is written in `Python`_.
@@ -39,22 +61,10 @@ SecureDrop's code is written in `Python`_.
 .. _`Ansible`: https://github.com/ansible/ansible
 .. _`Python`: https://github.com/freedomofpress/securedrop/search?l=python
 
+The `"good first issue"
+<https://github.com/freedomofpress/securedrop/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22>`__
+tag is a good introduction to work available in the SecureDrop Server.
 
-A contributing programmer can work on either newcomer or advanced developer
-issues.
-
-Newcomer Issues
----------------
-If you are a novice programmer, you can start with these issues in the following
-repositories:
-
-- `SecureDrop <https://github.com/freedomofpress/securedrop/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22>`__
-- `SecureDrop Workstation <https://github.com/freedomofpress/securedrop-workstation/labels/good%20first%20issue>`__
-- `SecureDrop Client <https://github.com/freedomofpress/securedrop-client/labels/good%20first%20issue>`__
-
-
-Advanced Issues
----------------
 Programmers who are more comfortable with contributing to the SecureDrop codebase
 can work on issues related to the following topics:
 
@@ -81,9 +91,6 @@ can work on issues related to the following topics:
 * `IDS noise <https://github.com/freedomofpress/securedrop/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-desc+label%3A%22goals%3A+reduce+IDS+noise%22>`__
 * `OSSEC <https://github.com/freedomofpress/securedrop/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-desc+label%3AOSSEC>`__
 * `Security <https://github.com/freedomofpress/securedrop/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-desc+label%3Asecurity>`__
-
-You may also want to consider contributing to the new `SecureDrop Workstation <https://github.com/freedomofpress/securedrop-workstation/>`__
-project and its components, including the graphical `SecureDrop Client <https://github.com/freedomofpress/securedrop-client/>`__ app.
 
 
 Preparing and submitting changes
@@ -136,24 +143,6 @@ primary SecureDrop repository in GitHub:
 * `All issues labeled "UX" <https://github.com/freedomofpress/securedrop/issues?q=is%3Aopen+is%3Aissue+label%3AUX>`__
 * `CSS/SASS <https://github.com/freedomofpress/securedrop/issues?q=is%3Aopen+is%3Aissue+label%3ACSS%2FSASS>`__ and `HTML <https://github.com/freedomofpress/securedrop/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+label%3AHTML>`__
 * `All issues labeled "Journalist Experience" <https://github.com/freedomofpress/securedrop/issues?q=is%3Aopen+is%3Aissue+label%3A%22goals%3A+journalist+experience%22>`__
-
-
-
-Release Managers
-~~~~~~~~~~~~~~~~
-
-All software deployed with SecureDrop is installed via Debian GNU/Linux packages
-via Ansible. The `primary repository <https://apt.freedom.press/>`__ is
-controlled, maintained, and signed by `Freedom of the Press Foundation employees
-<https://freedom.press/about/staff>`__. The current responsibilities of the release manager
-are covered in :doc:`detailed documentation <release_management>`.
-
-If you are a `Debian developer <https://www.debian.org/devel/>`__ you can help
-improve packaging and the release process:
-
-* `Building SecureDrop application and OSSEC packages <https://github.com/freedomofpress/securedrop/tree/develop/molecule/builder-focal>`__ and `pending bugs and tasks <https://github.com/freedomofpress/securedrop/issues?q=is%3Aissue+is%3Aopen+package+label%3A%22goals%3A+packaging%22>`__
-* Building `grsecurity kernels <https://github.com/freedomofpress/kernel-builder>`__ and `pending bugs and tasks <https://github.com/freedomofpress/kernel-builder/issues>`__
-
 
 
 Translators
