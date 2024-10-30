@@ -3,6 +3,7 @@
 # SecureDrop documentation build configuration file.
 
 import os
+import sphinx_rtd_theme
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -90,26 +91,7 @@ todo_include_todos = False
 
 
 # -- Options for HTML output ----------------------------------------------
-
-try:
-    # If you want to build the docs locally using the RTD theme,
-    # you may need to install it: ``pip install sphinx_rtd_theme``.
-    # https://github.com/snide/sphinx_rtd_theme#via-package
-    import sphinx_rtd_theme
-
-    html_theme = "sphinx_rtd_theme"
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-except ImportError:
-    # This theme is included with Sphinx and is quite nice (based
-    # on the Pocoo themes), but since we're using the RTD theme
-    # for the production docs, it's best to use that to avoid
-    # issues due to discrepancies between the themes.
-    html_theme = "alabaster"
-
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-# html_theme_options = {}
+html_theme = "sphinx_rtd_theme"
 
 html_context = {
     "display_github": True,
