@@ -36,6 +36,9 @@ securedrop-keyring
     Allows for managed key rotation via automatic updates, as implemented in
     `SecureDrop 0.3.10`_.
 
+All `SecureDrop Client <https://github.com/freedomofpress/securedrop-client>`_ component packages.
+    See :doc:`workstation_release_management` for more information.
+
 .. note::
    The SecureDrop install process configures a custom Linux kernel hardened
    with the grsecurity patch set. Only binary images are hosted in the apt
