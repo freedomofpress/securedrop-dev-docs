@@ -233,7 +233,7 @@ Release Process
    `securedrop-apt-prod <https://github.com/freedomofpress/securedrop-apt-prod>`_
    repository, create a branch from ``main`` called ``release``.
 #. In your local branch, commit the built packages to the ``core/focal``
-   directory.
+   directory. Include all .deb packages, including ``-dbgsym`` packages. ``-dbgsym`` packages belong in the ``main-debug`` component repo. See :ref:`Notes on dbgsym-packages <dbgsym-packages>` for more information.
 #. Run the ``tools/publish`` script. This will create the ``Release`` file.
 #. Commit the changes made by the ``tools/publish`` script.
 #. Push your commits to the remote ``release`` branch. This will trigger an
