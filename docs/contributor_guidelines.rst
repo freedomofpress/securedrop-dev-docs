@@ -1,11 +1,26 @@
 Contributing Guidelines
 =======================
 
-Signing commits
+Signing Commits
 ---------------
 
 Commits should be signed, as `explained in the GitHub documentation <https://docs.github.com/en/github/authenticating-to-github/signing-commits>`_.
 This helps verify commits proposed in a pull request are from the expected author.
+
+Code Review
+-----------
+Changes to SecureDrop code or documentation (in any repository) must be reviewed
+by a SecureDrop maintainer.  This is generally done in the form of GitHub pull
+requests (PRs), which are formally reviewed and merged.
+
+If multiple individuals collaborate on a single PR, it is acceptable for
+cross-review by the authors to take place during development, but there must not be
+any unreviewed changes in the pull request at the time of approval.
+
+When adding a new component to SecureDrop, it is the developer's responsibility
+to ensure it undergoes full review before integration. For example, if you create
+a new GitHub repository, it must not be added as a dependency of production code
+before the repository has been reviewed in its entirety.
 
 Branching Strategy
 ------------------
@@ -208,7 +223,7 @@ Git History
 -----------
 
 We currently use an explicit merge strategy to merge feature branches into
-``develop``. 
+``develop``.
 
 .. include:: includes/squash-commits.txt
 
@@ -242,6 +257,7 @@ committed to do so in a transparent way as follows:
 
 The privileges of a developer who has not been active for six months or
 more are revoked. They can apply again at any time.
+
 
 Other Tips
 ----------
