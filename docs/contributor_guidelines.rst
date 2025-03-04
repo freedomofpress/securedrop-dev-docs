@@ -208,7 +208,7 @@ Git History
 -----------
 
 We currently use an explicit merge strategy to merge feature branches into
-``develop``. 
+``develop``.
 
 .. include:: includes/squash-commits.txt
 
@@ -227,8 +227,8 @@ contributor with the right technical and social skills is entitled to
 ask. The people who have the power to grant such privileges are
 committed to do so in a transparent way as follows:
 
-#. The contributor posts a message `in the forum
-   <https://forum.securedrop.org/>`__ asking for privileges (review or
+#. The contributor posts a message `on Gitter
+   <https://app.gitter.im/#/room/#freedomofpress_securedrop:gitter.im>`__ asking for privileges (review or
    merge, etc.).
 #. After at least a week someone with permissions to grant such
    privilege reviews the thread and either:
