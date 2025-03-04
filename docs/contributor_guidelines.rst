@@ -22,6 +22,10 @@ to ensure it undergoes full review before integration. For example, if you creat
 a new GitHub repository, it must not be added as a dependency of production code
 before the repository has been reviewed in its entirety.
 
+If a component review is done by other means than a pull request, please ensure
+that a record of the review is kept in an issue that has "code review" in its
+subject, so that it is discoverable at a later date.
+
 Branching Strategy
 ------------------
 
