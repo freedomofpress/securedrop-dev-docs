@@ -146,7 +146,7 @@ Release ``securedrop-workstation-dom0-config``
     RPM.
 4.  sha256sum the built RPM (and store hash in the build
     logs/commit message).
-5.  Commit the (unsigned) version of this RPM to a branch in the
+5.  Commit the (unsigned) version of this RPM to the ``release`` branch in the
     `securedrop-yum-prod <https://github.com/freedomofpress/securedrop-yum-prod>`__
     repository.
 6.  Copy the RPM to the signing environment.
@@ -160,11 +160,12 @@ Release ``securedrop-workstation-dom0-config``
 9.  Move the signed RPM back to the environment for committing to the
     lfs repository.
 10. Save and publish :doc:`build metadata <build_metadata>`.
-11. Commit the RPM in a second commit on the branch you began above in
+11. Commit the RPM in a second commit on the ``release`` branch in
     `securedrop-yum-prod <https://github.com/freedomofpress/securedrop-yum-prod>`__.
-    Make a PR.
-12. Upon merge to master, ensure that changes deploy to
-    ``yum.securedrop.org`` without issue.
+12. Run the `./tools/publish` script to update repository metadata and commit the result.
+13. Create a PR to merge ``release`` into ``main``. At this point, the package will be
+    available on `yum-qa.securedrop.org <https://yum-qa.securedrop.org>`__.
+14. Once the PR is merged, the changes will be available on `yum.securedrop.org <https://yum.securedrop.org>`__.
 
 Signing procedures
 ==================
@@ -256,6 +257,6 @@ You can then proceed with distributing the package, via the “test” or
 Post-Release tasks
 ==================
 
-1. Ensure release communications have been published. 
+1. Ensure release communications have been published.
 2. Run the updater on a production setup once packages are live, and conduct a smoketest (successful updater run, and basic functionality if updating client packages).
 3. Backport changelog commit(s) with ``git cherry-pick -x`` from the release branch into the main development branch, and sign the commit(s). In a separate commit, run the ``update_version.sh`` script to bump the version on main to the next minor version's rc1. Open a PR with these commits; this PR can close the release tracking issue.
