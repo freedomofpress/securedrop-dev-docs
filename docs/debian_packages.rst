@@ -1,5 +1,5 @@
-SecureDrop apt Repository
-=========================
+Debian packages
+===============
 
 This document contains brief descriptions of the Debian packages
 hosted and maintained by Freedom of the Press Foundation in our apt
@@ -59,7 +59,7 @@ A
 that includes static debug symbols and allows for generating a backtrace or other
 diagnostic information in the event of a crash, for example
 `with gdb <https://wiki.debian.org/HowToGetABacktrace/#Running_gdb>`_. These packages
-have a ``-dbgsym.deb`` suffix on Debian, and a ``-dbgsym.ddeb`` suffix (which we 
+have a ``-dbgsym.deb`` suffix on Debian, and a ``-dbgsym.ddeb`` suffix (which we
 `rename <https://github.com/freedomofpress/securedrop/blob/b7bda4fe7badd5267a829f5bfe243fd13db9178e/builder/build-debs-securedrop.sh#L35-L37>`_
 to to ``-dbgsym.deb`` for consistency) on Ubuntu. These packages are generated
 during the build process for components that include compiled binaries, such as
