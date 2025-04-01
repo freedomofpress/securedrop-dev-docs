@@ -104,7 +104,7 @@ Python code, HTML templates, or desktop icon labels, the translation
 files should also be updated by running ``make extract-strings`` in the root
 of the SecureDrop working copy.
 
-The ``extract-strings`` target gathers source strings, then updates the 
+The ``extract-strings`` target gathers source strings, then updates the
 `.pot`_ files for the SecureDrop server code and the desktop icons.  (This step
 is enforced by CI, which will fail if you skip it.)
 
@@ -321,8 +321,7 @@ Weblate administration
 
 A translation admin has special permissions on `Weblate`_ and the
 repositories. When someone is willing to become an admin, a thread is
-started in `the translation section of the forum
-<https://forum.securedrop.org/c/translations>`_. If there is consensus
+started `on Gitter <https://gitter.im/freedomofpress/securedrop>`_. If there is consensus
 after a week, the permissions of the new admin are elevated. If there
 is not yet consensus, a public vote is organized among the current
 admins.
