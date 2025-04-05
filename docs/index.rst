@@ -20,6 +20,7 @@ administrators <https://docs.securedrop.org/>`_.
    supported_languages
    continuous_integration
    dependency_updates
+   reproducible_builds
 
 .. toctree::
    :caption: SecureDrop Server
