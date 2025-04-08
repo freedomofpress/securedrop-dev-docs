@@ -8,9 +8,11 @@ the current security and privacy features SecureDrop provides.
 Installing the project requires an up-to-date Qubes 4.2 installation
 running on a machine with at least 16GB of RAM (32 GB recommended).
 
-The project is currently in a closed beta, and we do not recommend
-installing it for production purposes. Documentation for end users is
-being developed `here <https://workstation.securedrop.org>`__. The
+The project is currently in open beta. See our `blog post <https://securedrop.org/news/securedrop-workstation-1_0_0-released/>`_
+for more information. if you are interested in using SecureDrop Workstation,
+please reach out to us via the `support portal <https://docs.securedrop.org/en/stable/getting_support.html>`_.
+Documentation for end users is being developed
+`here <https://workstation.securedrop.org>`__. The
 instructions below are intended for developers.
 
 Install Qubes
