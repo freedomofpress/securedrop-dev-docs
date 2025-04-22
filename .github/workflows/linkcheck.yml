@@ -7,4 +7,4 @@ on:
 
 jobs:
   reusable:
-    uses: freedomofpress/securedrop-docs/.github/workflows/linkcheck.yml@main
+    uses: freedomofpress/securedrop-docs/.github/workflows/linkcheck.yml@bookworm
