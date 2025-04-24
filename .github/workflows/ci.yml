@@ -5,4 +5,4 @@ on: [merge_group, push, pull_request]
 
 jobs:
   reusable:
-    uses: freedomofpress/securedrop-docs/.github/workflows/ci.yml@bookworm
+    uses: freedomofpress/securedrop-docs/.github/workflows/ci.yml@main
