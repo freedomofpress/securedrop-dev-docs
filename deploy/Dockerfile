@@ -1,5 +1,4 @@
-# sha256 as of 2024-06-10
-FROM debian:bookworm@sha256:911821c26cc366231183098f489068afff2d55cf56911cb5b7bd32796538dfe1 AS sphinx
+FROM debian:trixie AS sphinx
 
 ARG GIT_BRANCH=main
 RUN apt-get -q update && apt-get -qy upgrade && apt-get -qy install git make latexmk texlive-latex-extra python3-poetry
