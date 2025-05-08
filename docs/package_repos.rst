@@ -29,7 +29,8 @@ release candidate packages are published here to enable developers to perform QA
 including testing upgrades.
 
 Second, nightly package builds are automatically pushed to test repositories by CI
-to enable developers to test integrated systems with code straight from `main`.
+to enable developers to test integrated systems with code straight from `main`. Nightlies
+are stored in a separate component: "nightlies" in apt, "fXX-nightlies" in yum.
 
 The signing key for these test repositories is lower-security and stored in GHA. Packages
 are automatically signed by a GHA workflow before being uploaded to Cloudflare.
@@ -58,6 +59,40 @@ is configured to automatically fetch and install updates every 24 hours while Se
 requires a manual updater run.
 
 This repository is signed using the high-security, offline, SecureDrop signing key.
+
+How it works technically
+------------------------
+
+This is an overview of the workflow, for step-by-step instructions, see
+the :doc:`server release management <release_management>` and
+:doc:`workstation release management <workstation_release_management>` docs.
+
+1. New packages are committed to the relevant Git LFS repository:
+
+   * Nightlies: by GitHub Actions
+   * Test/QA/Prod: by a maintainer
+
+2. If this is a yum repository containing RPMs, the individual RPMs are signed:
+
+   * Test: by GitHub Actions, using the low-security test key
+   * QA/Prod: by a maintainer, using the offline SecureDrop release key
+
+3. Repository metadata is updated, including generation of ``index.html``:
+
+   * Test: by the ``.github/workflows/sign.yml`` GitHub Actions workflow
+   * QA/Prod: by a maintainer, by running ``./tools/publish`` locally (this script
+     is a misnomer as it doesn't actually publish the packages)
+
+4. If this is an apt repository, the ``Release`` files are signed:
+
+   * Test: by the ``.github/workflows/sign.yml`` GitHub Actions workflow
+   * QA/Prod: by a maintainer, using the offline SecureDrop release key
+
+5. Once pushed to the correct branch, a GitHub Actions workflow publishes the
+   "public" (yum) or "repo/public" (apt) folder to Cloudflare R2.
+
+   We use rclone for this purpose, and in theory are entirely
+   vendor neutral and can switch to any another S3-like service.
 
 Historical setup
 ----------------
