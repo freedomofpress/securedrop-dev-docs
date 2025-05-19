@@ -1,9 +1,6 @@
 Package repositories
 ====================
 
-.. warning::
-    This document describes some work that is still in progress and may not be 100% applicable yet.
-
 SecureDrop publishes .deb and .rpm packages via apt and yum repositories, respectively.
 
 Each package repository is maintained in a specific Git LFS repository that is published to `Cloudflare's R2
@@ -93,11 +90,3 @@ the :doc:`server release management <release_management>` and
 
    We use rclone for this purpose, and in theory are entirely
    vendor neutral and can switch to any another S3-like service.
-
-Historical setup
-----------------
-
-Historically each package repository was hosted on a dedicated virtual server, corresponding to the same Git LFS repositories.
-The Git repository contained the .deb and .rpm files and in some cases, the repository metadata too. When a new commit
-is pushed, a webhook instructed the server to pull new changes. A fallback cron job to git pull the repository also
-ran every 15 minutes.
