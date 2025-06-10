@@ -48,3 +48,12 @@ Not reproducible
 
 Currently the ``securedrop-app-code`` package (`issue #5901 <https://github.com/freedomofpress/securedrop/issues/5901>`_)
 and our Linux kernel builds (`issue #3 <https://github.com/freedomofpress/kernel-builder/issues/3>`_) are not reproducible.
+
+Tools
+-----
+
+We primarily use `diffoscope <https://diffoscope.org/>`_ to identify differences in everything; it can handle Debian packages, RPM packages, Python wheels, etc.
+
+It also supports outputting markdown; if you pass ``--markdown -`` and pipe it to ``gh gist create - -f diff.md`` you can share and easily readable diffoscope report.
+
+We have also used `reprotest <https://pypi.org/project/reprotest/>`_ in a few places, but recently have been phasing it out in favor of just repeating builds twice, in parallel, and diffoscoping the result.
