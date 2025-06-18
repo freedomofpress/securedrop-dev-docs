@@ -185,6 +185,19 @@ You can also generate the two-factor code using the Python interpreter:
   >>> pyotp.TOTP('JHCOGO7VCER3EJ4L').now()
   u'422038'
 
+Persistent storage
+^^^^^^^^^^^^^^^^^^
+
+By default the development environment doesn't store any state once shut down.
+
+If you set the ``USE_PERSISTENT_STORE=true`` environment variable, it will create
+a persistent ``sd-store`` volume and use whatever is stored in that. This is especially
+useful if you want to test against a large number of sources that take a while to
+initially generate.
+
+You should be able to export, import, and delete the volume using the standard Docker/Podman
+commands.
+
 .. _multi_machine_environment:
 
 Setting Up a Multi-Machine Environment
