@@ -51,6 +51,7 @@ administrators <https://docs.securedrop.org/>`_.
    kernel
    rust_toolchain
    updating_tor
+   eol_maintenance
 
 .. toctree::
    :caption: SecureDrop Workstation
