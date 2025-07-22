@@ -21,6 +21,7 @@ administrators <https://docs.securedrop.org/>`_.
    continuous_integration
    dependency_updates
    reproducible_builds
+   eol_maintenance
 
 .. toctree::
    :caption: SecureDrop Server
