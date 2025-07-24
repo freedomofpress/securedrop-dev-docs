@@ -68,7 +68,7 @@ Workflow Diagram
    :figwidth: 80%
    :width: 100%
 
-   A workflow diagram showing the continuous translations process.
+   A workflow diagram showing the continuous translations process for the SecureDrop server repository (click to enlarge).
 
 
 .. _translation_responsibilities:
@@ -86,7 +86,7 @@ Translation Responsibilities
     * CI will enforce this requirement via ``make check-strings`` on
       branches pushed to this repository.  Like the other linters,
       this check must pass for a pull request to be approved for
-      merge into ``main``.
+      merge into ``develop``.
 
     * Developers can run ``make check-strings`` locally.
 
@@ -96,7 +96,7 @@ Translation Responsibilities
    the impact and timing of these changes on translators---just as
    they consider the impact and timing of code changes on other
    developers---as part of their review of a pull request prior to
-   approving it for merge into ``main`` and thereby into Weblate.
+   approving it for merge into ``develop`` and thereby into Weblate.
 
 3. **Translators** can always see the latest strings available to
    translate in `weblate`_. They can translate new and
@@ -164,11 +164,11 @@ As prompted, run ``make extract-strings`` and commit and push the changes::
 	@@ -16,7 +16,7 @@ msgstr ""
 	 "Content-Transfer-Encoding: 8bit\n"
 	 "Generated-By: Babel 2.9.1\n"
-	 
+
 	-msgid "{application_name} is already running"
 	+msgid "{application_name} is already running!"
 	 msgstr ""
-	 
+
 	 msgid "The SecureDrop server cannot be reached. Trying to reconnect..."
 	$ git commit --all --message "changes a string"
 	[i18n 3637b3d] changes a string
@@ -290,7 +290,7 @@ How to translate a language on Weblate
    :width: 100%
 
    List of available languages in Weblate. Click on the image to see it full-size.
-   
+
 .. _how_to_translate_a_phrase_weblate:
 
 How to translate a phrase on Weblate

@@ -1,0 +1,57 @@
+%%{init: {'flowchart': {'htmlLabels': false}} }%%
+flowchart LR
+
+    %% ─────────────── Actors ───────────────
+    translators[Translators]
+    weblate(((Weblate)))
+
+    %% ─────────────── GitHub ───────────────
+    subgraph GitHub
+        direction TB
+
+        %% Target branch
+        subgraph "Target branch"
+            develop((develop))
+        end
+
+        subgraph "Prepared changes"
+            main[Weblate PR against develop]
+            branchPR["Developer PR against develop"]
+        end
+
+        subgraph "Weblate branch"
+            weblateBranch(("weblate-translations"))
+        end
+    end
+
+    %% ─────────────── CI ─────────────
+    subgraph CI
+        makeCheck["make check-strings"]
+    end
+
+    %% ─────────────── Local dev ────────────
+    subgraph "Local development"
+        direction TB
+        wc["Developer working copy"]
+        extract["make extract-strings (or via Git pre-commit hook)"]
+    end
+
+    %% ─────────────── Edges & steps ────────
+    wc -.->| Extract strings| extract
+    extract -.->|Commit changes| wc
+    wc -.->|Push to GitHub and open PR| branchPR
+
+    branchPR -->|CI job checks catalogs| makeCheck
+    branchPR -.->|Maintainer reviews and approves| develop
+
+    develop-->|Weblate pulls via Webhook| weblate
+    weblate -->|Notify| translators
+    translators -->|Translate| weblate
+    weblate -->|Push to GitHub branch| weblateBranch
+    weblateBranch-->|Weblate Pull Request| main
+
+    %% Second maintainer approval from Weblate PR
+    main -.->|Maintainer reviews and approves| develop
+
+    classDef default font-size:12px;
+
