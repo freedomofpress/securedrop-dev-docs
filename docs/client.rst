@@ -6,8 +6,14 @@ for SecureDrop we have created a native client application to be run within the
 Qubes operating system. It helps journalists with the most common activities
 associated with using SecureDrop in a user friendly manner.
 
-Currently the client is alpha quality although work is ongoing in terms of
-improving features and the user interface.
+.. note::
+   We are actively rewriting the SecureDrop Client from a PyQt-based application to a modern
+   Electron-based application. The new implementation can be found in the `app directory
+   <https://github.com/freedomofpress/securedrop-client/tree/main/app>`_ of the
+   securedrop-client repository. This rewrite aims to provide better performance,
+   maintainability, and user experience while preserving all security properties.
+
+   See :doc:`app` for development documentation of the new implementation.
 
 The source code, and related issues are `hosted on GitHub <https://github.com/freedomofpress/securedrop-client>`_.
 
@@ -68,7 +74,7 @@ We make use of `ruff`, `mypy`, and other linting tools to standardize code style
 Client Database Structure
 -------------------------
 
-For a better understanding of the SecureDrop Client application architecture, a high-level view of its database structure has been provided: 
+For a better understanding of the SecureDrop Client application architecture, a high-level view of its database structure has been provided:
 
 .. image:: diagrams/securedrop-client-database.png
   :width: 100%

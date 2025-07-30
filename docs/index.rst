@@ -62,3 +62,4 @@ administrators <https://docs.securedrop.org/>`_.
    workstation_development
    workstation_release_management
    client
+   app
