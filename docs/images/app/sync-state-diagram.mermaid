@@ -1,0 +1,35 @@
+stateDiagram
+
+[*] --> LoggedIn
+[*] --> Offline
+
+LoggedIn --> Offline
+state "logged in" as LoggedIn {
+    [*] --> SteadyState
+
+    Note right of SteadyState
+        No UI indicator
+    end note
+    state "steady state" as SteadyState {
+        Idle --> SyncingMetadata: every 15 sec
+        state "idle" as Idle
+
+        SyncingMetadata --> Idle: delta = {}
+        state "syncing metadata" as SyncingMetadata
+    }
+    SteadyState --> Failed: failed
+    SteadyState --> FetchingItems: delta = {...}
+
+    FetchingItems --> SteadyState: succeeded
+    FetchingItems --> Failed: failed
+    Note left of FetchingItems
+        Progress indicator
+    end note
+    state "fetching new/changed items" as FetchingItems
+
+    Note right of Failed
+        Error indicator
+    end note
+    state "syncing/fetching failed" as Failed
+}
+
