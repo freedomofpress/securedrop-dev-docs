@@ -22,6 +22,7 @@ administrators <https://docs.securedrop.org/>`_.
    dependency_updates
    reproducible_builds
    eol_maintenance
+   language_toolchains
 
 .. toctree::
    :caption: SecureDrop Server
@@ -50,7 +51,6 @@ administrators <https://docs.securedrop.org/>`_.
    release_management
    build_metadata
    kernel
-   rust_toolchain
    updating_tor
 
 .. toctree::
