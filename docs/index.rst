@@ -43,6 +43,7 @@ administrators <https://docs.securedrop.org/>`_.
    testing_application_tests
    testing_configuration_tests
    demo
+   seen_by_feature
    package_repos
    debian_packages
    updating_ossec
