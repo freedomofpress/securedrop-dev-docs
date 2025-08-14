@@ -715,6 +715,9 @@ Mark items that have been seen by the current user
 Requires authentication. Records that the current user has seen a
 reply from another user, or a file or message submitted by a source.
 
+For more information about the "seen by" feature implementation and behavior
+across different SecureDrop interfaces, see :doc:`seen_by_feature`.
+
 .. code:: sh
 
   POST /api/v1/seen

@@ -1,0 +1,19 @@
+ stateDiagram-v2
+          [*] --> Unseen_Global: Source with new items
+
+          state "Has Unseen Items" as Unseen_Global
+          state "All Items Downloaded" as Seen_Global
+
+          Unseen_Global --> Seen_Global: ALL items have been downloaded by someone
+
+          note right of Unseen_Global
+              <b>Per-item data:</b> seen_by = [] for at least one item<br>
+              <b>Source list UI :</b> Source is styled bold.<br>
+              <b>Per-item UI:</b> Seen items are styled normal with opened envelope icon, unseen items are styled bold with closed envelope icon.
+          end note
+
+          note right of Seen_Global
+              <b>Per-item data:</b> seen_by = [journalist1] or [journalist1, journalist2, ...]<br>
+              <b>Source list UI:</b> Source is styled normal.<br>
+              <b>Per-item UI:</b> All items are styled normal with an opened envelope icon. No journalist names.
+          end note
