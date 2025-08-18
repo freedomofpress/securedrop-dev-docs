@@ -9,6 +9,10 @@
  * Modified by Aloïs Dreyfus: 20200527-1037
  * Modified by Erik Kalkoken: 20220615
  * Modified by Nathan Dyer: 20230330
+ *
+ * NOTE: Dark mode styling for syntax highlighting is handled via a Pygments theme.
+ * Use the Makefile target `pygments-css` to update it.
+ *
  */
 
 :root {
@@ -32,10 +36,21 @@
 		color: #bf84d8;
 	}
 
-	pre {
-		background-color: #2d2d2d !important;
+	/* Code styling that's not covered by Pygments theme: regular pre-formatted text */
+	pre:not(.highlight) {
+		background-color: #1d2331 !important;
+		color: #d4d2c8 !important;
+		border: 1px solid #3c4354 !important;
+		border-radius: 4px;
+		padding: 0.4em 0.6em;
 	}
 
+	/* Code styling that's not covered by Pygments theme: inline code literals */
+	code.literal {
+		background-color: #1d2331 !important;
+		color: #d4d2c8 !important;
+		border: 1px solid #3c4354 !important;
+	}
 
 /*
 ** Vertical menu color overrides
@@ -102,11 +117,6 @@
 		color: #333333 !important;
 	}
 
-	code.literal {
-		background-color: #2d2d2d !important;
-		border: 1px solid #333333 !important;
-	}
-
 	.wy-nav-content-wrap {
 		background-color: rgba(0, 0, 0, 0.7) !important;
 	}
@@ -146,14 +156,6 @@
 
 	.wy-table-odd td, .wy-table-striped tr:nth-child(2n-1) td, .rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td {
 		background-color: #343131;
-	}
-
-	.highlight .m {
-		color: inherit
-	}
-
-	.highlight .nv {
-		color: #7dbdff
 	}
 
 	.rst-content .section .admonition ul {

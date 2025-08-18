@@ -127,6 +127,7 @@ html_logo = "../static/i/favicon.png"
 html_static_path = ['_static']
 html_css_files = [
     'rtd_dark.css',
+    'pygments_dark.css',
 ]
 
 # Add any extra paths that contain custom files (such as robots.txt or
