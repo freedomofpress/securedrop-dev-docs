@@ -19,6 +19,12 @@ docs-linkcheck:  ## Check documentation for broken links.
 	@make clean && poetry run sphinx-build -b linkcheck -Wn docs/ docs/_build/html
 	@echo
 
+.PHONY: pygments-css
+pygments-css:  ## Generate Pygments dark theme CSS for syntax highlighting.
+	@echo "███ Generating Pygments dark theme CSS..."
+	@poetry run python extract_css.py lightbulb
+	@echo
+
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %:
