@@ -108,5 +108,6 @@ Additional Implementation Considerations
 **Security Properties**
 
 - Only tracks journalist viewing actions, never source actions
-- Does not record file opening, only message/reply viewing
+- **Journalist Interface:** "Seen" means items have been downloaded, not necessarily opened
+- **Client:** "Seen" means messages/replies have been viewed; no information about whether files have been downloaded or opened
 - Viewing status is available to all journalists
