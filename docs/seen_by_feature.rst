@@ -27,7 +27,7 @@ The behavior is subtly different across these implementations, as summarized in 
 +-------------------+---------------------------+-----------------------------------+
 | Aspect            | Web Interface             | SecureDrop Client                 |
 +===================+===========================+===================================+
-| **Trigger**       | File download             | Source click (viewing             |
+| **Trigger**       | Item download             | Source click (viewing             |
 |                   |                           | conversation)                     |
 +-------------------+---------------------------+-----------------------------------+
 | **Granularity**   | Per-item as downloaded    | All source items at once          |
