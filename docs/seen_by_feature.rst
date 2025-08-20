@@ -103,7 +103,7 @@ Additional Implementation Considerations
 
 - **Offline Mode**: SecureDrop Client displays "seen by" information but does not record new views
 - **Deleted Users**: Displayed as "deleted" in SecureDrop Client tooltips
-- **Own Replies**: Journalist's own replies are immediately marked as seen by the sending journalist
+- **Own Replies**: Journalist's own replies are immediately marked as seen by the sending journalist—in other words, replying to to a source does not change the source's seen/unseen state (for any journalist, in any interface)
 
 **Security Properties**
 
