@@ -47,7 +47,7 @@ In the web-based Journalist Interface:
 - **Granularity**: Per-item basis (as files are downloaded)
 - **Source List UI**: Sources with unseen items are styled bold in the source list
 - **Per-Item UI**: Individual items are styled as bold (unseen) or normal (seen) with closed/opened envelope icons
-- **Limitation**: Does not display which specific journalists have seen items
+- **Limitations**: Does not display which specific journalists have seen items; does not convey whether any items have been copied to the *Secure Viewing Station*, decrypted or viewed
 
 SecureDrop Client Behavior
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,6 +59,7 @@ In the Python/Qt-based SecureDrop Client:
 - **Source List UI**: Sources with unseen items are styled bold in the source list
 - **Per-Item UI**: Journalist names displayed as tooltips on checkmarks for each item
 - **Enhancement**: Shows specific journalist names who have seen each item
+- **Limitation**: Does not convey whether submitted files have been downloaded, decrypted, or viewed
 
 SecureDrop App Behavior
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,6 +109,5 @@ Additional Implementation Considerations
 **Security Properties**
 
 - Only tracks journalist viewing actions, never source actions
-- **Journalist Interface:** "Seen" means items have been downloaded, not necessarily opened
-- **Client:** "Seen" means messages/replies have been viewed; no information about whether files have been downloaded or opened
+- Conveys limited information about whether items have been fully viewed (note differences between SecureDrop Client and Journalist Interface enumerated above)
 - Viewing status is available to all journalists
