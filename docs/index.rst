@@ -63,3 +63,4 @@ administrators <https://docs.securedrop.org/>`_.
    workstation_release_management
    client
    app
+   seen_by_feature

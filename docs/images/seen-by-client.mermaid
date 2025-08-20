@@ -1,0 +1,19 @@
+  stateDiagram-v2
+      [*] --> Unseen_Global: Source with new items
+
+      state "Has Unseen Items" as Unseen_Global
+      state "All Items Seen" as Seen_Global
+
+      Unseen_Global --> Seen_Global: Any journalist clicks source
+
+      note right of Unseen_Global
+          <b>Per-item data:</b> seen_by = [] on at least one item<br>
+          <b>Source list UI:</b> Source is styled bold in source list<br>
+          <b>Per-item UI:</b> N/A except in offline mode: can't view items without marking _all_ items as seen.
+      end note
+
+      note right of Seen_Global
+          <b>Data per item:</b> seen_by = [journalist1] or [journalist1, journalist2, ...]<br>
+          <b>Source UI:</b> Source is styled normal<br>
+          <b>Per-item UI:</b> Journalist names displayed as tooltips on checkmarks
+      end note
