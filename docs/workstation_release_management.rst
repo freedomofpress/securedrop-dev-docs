@@ -15,8 +15,9 @@ As with SecureDrop server releases, the release manager should work with the Com
 assigned for the release to prepare announcements that will be shared on the SecureDrop
 blog and on social media after the release is live.
 
-Typically, the kick-off of the QA period is a good time to begin the process. If at all possible
-ensure you leave enough time for review by FPF's editorial team.
+Typically, the kick-off of the QA period is a good time to begin the process. Please note that review
+by FPF's editorial team is required and should only be skipped in case of urgent release-specific
+considerations, e.g., to get a hotfix release out as quickly as possible.
 
 Once the release is live:
 
