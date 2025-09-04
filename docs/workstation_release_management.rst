@@ -9,8 +9,24 @@ SecureDrop Workstation code spans across two repositories:
 
 The components in the Debian packages are all released together, while the workstation RPM package is released independently.
 
+Communications Process
+-----------------------
+As with SecureDrop server releases, the release manager should work with the Communications Manager
+assigned for the release to prepare announcements that will be shared on the SecureDrop
+blog and on social media after the release is live.
+
+Typically, the kick-off of the QA period is a good time to begin the process. Please note that review
+by FPF's editorial team is required and should only be skipped in case of urgent release-specific
+considerations, e.g., to get a hotfix release out as quickly as possible.
+
+Once the release is live:
+
+1. Make sure that release notes are written and posted on the SecureDrop blog.
+2. Make sure that the release is announced on social media.
+3. If the release warrants announcements beyond that (e.g., via Signal group), make them now.
+
 Release a Debian package
-========================
+-------------------------
 
 Releasing a release candidate (RC) package is the first step before you begin QA or any signing ceremonies. Even when you are
 releasing a hotfix, RC packages are still recommended for QA purposes.
@@ -18,14 +34,14 @@ releasing a hotfix, RC packages are still recommended for QA purposes.
 Production releases will require at least two maintainers, one of which will need access to the SecureDrop release key.
 
 Step 0: Tracking issue
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Before beginning the release proces, create a tracking issue titled ``Release <package name> <version>``. It should contain
 estimated timelines and assignees for release management, QA, and stakeholder communications. Pin the issue for ease of access
 and visibility.
 
 Step 1: Create a release candidate (RC) tag
--------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Create a release branch named ``release/<major>.<minor>.<patch>``.
 2. Ensure that the version is set to the expected value; if not, increment it as needed using ``update_version.sh``.
@@ -36,7 +52,7 @@ Step 1: Create a release candidate (RC) tag
    releasing ``0.5.0``, ``main`` should be bumped to ``0.6.0-rc1``.
 
 Step 2: Build and deploy the package to ``apt-test``
-----------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Clone ``securedrop-client`` and ``securedrop-builder``.
 
@@ -58,7 +74,7 @@ Step 2: Build and deploy the package to ``apt-test``
    Once merged, the packages will be deployed to https://apt-test.freedom.press.
 
 Step 3: Begin QA
-----------------
+~~~~~~~~~~~~~~~~
 
 You can now start the QA process! If a bug is found, a fix should be developed, merged into the main branch and
 cherry-picked into the release branch. If desired, release another RC set of packages for further testing.
@@ -66,14 +82,14 @@ cherry-picked into the release branch. If desired, release another RC set of pac
 Once QA testers are satisfied with the packages, you are ready to move on to the next step.
 
 Step 4: Create a release tag
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Update the changelog and version. Remove any references to the RC versions from the changelogs.
 2. Generate a release tag named ``<major>.<minor>.<patch>`` (same as the previous tags, without the ``~rcN`` part).
 3. :ref:`Sign the tag with the SecureDrop release key` or ask another maintainer to do this and push the signed tag
 
 Step 5: Build and deploy the packages to ``apt-qa``
----------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Clone ``securedrop-client`` and ``securedrop-builder``.
 
@@ -100,7 +116,7 @@ Step 5: Build and deploy the packages to ``apt-qa``
    are `bit-for-bit identical <https://reproducible-builds.org/docs/definition/>`_ to those pushed to apt-qa.
 
 Step 6: Perform the ``apt-qa`` preflight check
-----------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 First, provision a production workstation from the most recently-released
 ``securedrop-workstation-dom0-config`` production package. Ensure your machine
 has been updated (either via Qubes native updater or SDW GUI updater).
@@ -123,7 +139,7 @@ save time if there is already full test coverage.
 5. Start the Client application and perform testing according to test plan.
 
 Step 7: Deploy the package to ``apt-prod``
-------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. In ``securedrop-apt-prod``, merge the ``release`` branch into ``main`` to deploy your package to https://apt.freedom.press.
 2. Once you see the package land on https://apt.freedom.press, run the updater to install it in a production environment and ensure that it works as expected.
@@ -131,10 +147,10 @@ Step 7: Deploy the package to ``apt-prod``
    Ensure that the version number on ``main`` designates it as RC1 for the *next* release.
 
 Release an RPM package
-======================
+-----------------------
 
 Release ``securedrop-workstation-dom0-config``
-----------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.  Verify the tag of the project you wish to build:
     ``git tag -v VERSION`` and ensure the tag is signed with the
@@ -168,12 +184,12 @@ Release ``securedrop-workstation-dom0-config``
 14. Once the PR is merged, the changes will be available on `yum.securedrop.org <https://yum.securedrop.org>`__.
 
 Signing procedures
-==================
+~~~~~~~~~~~~~~~~~~
 
 .. _Sign the tag with the SecureDrop release key:
 
 Sign the tag with the SecureDrop release key
---------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. If the tag does not already exist, create a new annotated and unsigned tag: ``git tag -a VERSION``.
 2. Output the tag to a file: ``git cat-file tag VERSION > VERSION.tag``.
@@ -189,7 +205,7 @@ Sign the tag with the SecureDrop release key
 .. _Regenerate and sign the apt release file:
 
 Regenerate and sign the apt release file
-----------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. From the ``release`` branch containing the new package, update the apt repository distribution files.
 
@@ -215,7 +231,7 @@ Regenerate and sign the apt release file
    gpg --verify ./repo/public/dists/<debian-codename>/Release{.gpg,}
 
 Sign the RPM package
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 The entire RPM must be signed. This process also requires a Fedora
 machine/VM on which the GPG signing key (either in GPG keyring or in
@@ -253,10 +269,8 @@ Now we’ll sign the RPM:
 You can then proceed with distributing the package, via the “test” or
 “prod” repo, as appropriate.
 
-
 Post-Release tasks
-==================
-
-1. Ensure release communications have been published.
+------------------
+1. If you've not done so already as part of the release, ensure release communications are published.
 2. Run the updater on a production setup once packages are live, and conduct a smoketest (successful updater run, and basic functionality if updating client packages).
 3. Backport changelog commit(s) with ``git cherry-pick -x`` from the release branch into the main development branch, and sign the commit(s). In a separate commit, run the ``update_version.sh`` script to bump the version on main to the next minor version's rc1. Open a PR with these commits; this PR can close the release tracking issue.
