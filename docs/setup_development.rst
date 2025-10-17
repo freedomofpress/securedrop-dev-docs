@@ -153,21 +153,25 @@ file is saved. They are made available on your host machine by forwarding the
 following ports:
 
 * Source Interface: `localhost:8080 <http://localhost:8080>`__
-* *Journalist Interface*: `localhost:8081 <http://localhost:8081>`__
+* Journalist Interface: `localhost:8081 <http://localhost:8081>`__
 
 You should use Tor Browser to test web application changes, :ref:`see here for instructions <using_tor_with_dev_env>`.
 
-A test administrator (``journalist``) and non-admin user (``dellsberg``) are
-created by default when running ``make dev``. In addition, sources and
-submissions are present. The test users have the following credentials. Note that
-the password and TOTP secret are the same for both accounts for convenience during
-development.
+Credentials
+^^^^^^^^^^^
+
+The Journalist Interface requires a login. A test administrator (``journalist``)
+and non-admin user (``dellsberg``) are created by default when running ``make dev``.
+In addition, sources and submissions are created.
+
+The test users have the following credentials. Both the password and TOTP
+secret are the same for both accounts for convenience during development.
 
 * **Username:** ``journalist`` or ``dellsberg``
 * **Password:** ``correct horse battery staple profanity oil chewy``
 * **TOTP secret:** ``JHCO GO7V CER3 EJ4L``
 
-If you need to generate the six digit two-factor code, use the TOTP secret in
+To generate the six digit two-factor code, use the TOTP secret in
 combination with an authenticator application that implements
 `RFC 6238 <https://tools.ietf.org/html/rfc6238>`__, such as
 `FreeOTP <https://freeotp.github.io/>`__ (Android and iOS) or
