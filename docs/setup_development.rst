@@ -160,7 +160,7 @@ You should use Tor Browser to test web application changes, :ref:`see here for i
 Credentials
 ^^^^^^^^^^^
 
-The Journalist Interface requires a login. A test administrator (``journalist``)
+The *Journalist Interface* requires a login. A test administrator (``journalist``)
 and non-admin user (``dellsberg``) are created by default when running ``make dev``.
 In addition, sources and submissions are created.
 
