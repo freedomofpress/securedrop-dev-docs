@@ -4,6 +4,7 @@ name: Publish
 on:
   push:
     branches: ["main"]
+    tags: ["**"]
 
 env:
   DEFAULT_BRANCH: main
