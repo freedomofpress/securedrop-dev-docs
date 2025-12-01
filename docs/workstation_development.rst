@@ -11,7 +11,6 @@ top files there. In the ``dom0`` copy of this project:
 - ``make clone`` is used to build a new version of the RPM and copy the contents
   of your working directory (including the RPM) from your development VM to
   ``dom0``
-- ``make <vm-name>`` can be used to rebuild an individual VM
 - ``make dev`` installs the latest locally present RPM and performs the
   full installation.
 
