@@ -134,17 +134,20 @@ Run Development SecureDrop Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here, you will setup a development version of the SecureDrop server to
-which your workstation will connect. Alternatively, you can setup
-:doc:`virtualized staging environments on Qubes OS <virtual_environments>`,
+which your workstation will connect, though the Tor Network. Alternatively, you
+can setup :doc:`virtualized staging environments on Qubes OS <virtual_environments>`,
 which is slightly more involved.
 
-- Setup a :doc:`SecureDrop (server) development environment <setup_development>` on Qubes.
+1. Setup a :doc:`SecureDrop (server) development environment <setup_development>` on Qubes.
 
-.. note:: You will need to run the following step every time that you want
-   to login on SecureDrop client.
+2. Start the securedrop server in ``sd-dev`` qube with use ``make dev-tor``
 
-- Start the securedrop server in ``sd-dev`` qube with use ``make dev-tor``
+   .. note:: You will need to run this step every time that you want to login on
+      SecureDrop client, in the Workstation.
 
+The specific `.onion` address and its discovery key will be stored on your
+system. If you ever need to change it, you can run `make clean`, which will
+also delete any other server state.
 
 Configure the Workstation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
