@@ -192,7 +192,7 @@ You can also generate the two-factor code using the Python interpreter:
 Persistent storage
 ^^^^^^^^^^^^^^^^^^
 
-By default the development environment doesn't store any state once shut down.
+By default the development environment doesn't store any server data once shut down.
 
 If you set the ``USE_PERSISTENT_STORE=true`` environment variable, it will create
 a persistent ``sd-store`` volume and use whatever is stored in that. This is especially
