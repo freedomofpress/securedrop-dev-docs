@@ -11,16 +11,17 @@ flowchart LR
 
         %% Target branch
         subgraph "Target branch"
-            develop((develop))
+            develop((develop)) -.tag.-> stable((stable))
         end
 
         subgraph "Prepared changes"
-            main[Weblate PR against develop]
+            main[Weblate PR against stable]
             branchPR["Developer PR against develop"]
         end
 
         subgraph "Weblate branch"
             weblateBranch(("weblate-translations"))
+            weblateBranchStable(("weblate-translations-stable"))
         end
     end
 
@@ -44,14 +45,15 @@ flowchart LR
     branchPR -->|CI job checks catalogs| makeCheck
     branchPR -.->|Maintainer reviews and approves| develop
 
-    develop-->|Weblate pulls via Webhook| weblate
+    stable-->|Weblate pulls via Webhook| weblate
     weblate -->|Notify| translators
     translators -->|Translate| weblate
-    weblate -->|Push to GitHub branch| weblateBranch
-    weblateBranch-->|Weblate Pull Request| main
+    weblate -->|Push to GitHub branch| weblateBranchStable
+    weblateBranchStable-->|Weblate Pull Request| main
 
     %% Second maintainer approval from Weblate PR
-    main -.->|Maintainer reviews and approves| develop
+    main -.->|Maintainer reviews and approves| stable
 
     classDef default font-size:12px;
 
+stable -.-> release>release]
