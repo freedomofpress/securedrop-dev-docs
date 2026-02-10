@@ -16,10 +16,12 @@ The SecureDrop App is an Electron-based desktop application built with React and
 Requirements
 ~~~~~~~~~~~~
 
-- Node.js (v22 or later)
-- Rust toolchain (2021 edition or later)
+- Node.js v24
+- Rust toolchain
 - pnpm package manager
 - Additional system packages for building the Rust proxy
+
+Linux is strongly recommended, though it should be possible to also develop the App using macOS.
 
 Development Setup
 -----------------
@@ -110,4 +112,3 @@ The application may display error indicators, and will automatically retry these
 - Incompatibility with the server (e.g., API mismatch)
 
 These errors require user intervention and cannot be resolved through automatic retry mechanisms.
-
