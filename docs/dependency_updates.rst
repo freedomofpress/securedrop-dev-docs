@@ -132,7 +132,7 @@ repository; this should be done at the same time as the dependency update.
 .. _scan-guarddog:
 
 Scanning updated dependencies with GuardDog
-----------------------------------------
+-------------------------------------------
 
 GuardDog independently scans dependencies specifically for patterns indicative of supply-chain attacks.
 
@@ -212,7 +212,7 @@ To scan the package locally, decompress the tarball and run GuardDog:
 .. _scan-semgrep:
 
 Scanning updated dependencies with Semgrep
----------------------------------------
+------------------------------------------
 
 Semgrep performs detailed static code analysis. While not the same as a comprehensive diff review, Semgrep can be used to target specific changes for further examination. 
 
