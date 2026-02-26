@@ -131,21 +131,38 @@ repository; this should be done at the same time as the dependency update.
 
 .. _scan-guarddog:
 
-Scan updated dependencies with GuardDog
+Scanning updated dependencies with GuardDog
 ----------------------------------------
 
 GuardDog independently scans dependencies specifically for patterns indicative of supply-chain attacks.
 
-You can install and run `GuardDog <https://github.com/DataDog/guarddog>`_ locally using `pip` or Docker as you prefer. 
-   
+You can install and run `GuardDog <https://github.com/DataDog/guarddog>`_ locally using ``pip`` or Docker as you prefer. It's also important to keep GuardDog up-to-date.
+
+Install using ``pip``:
+
    .. code::
 
       pip install guarddog
+
+Update using ``pip``:
+
+   .. code::
+
+      pip install --upgrade guarddog
+
+Install using Docker:
 
    .. code::
 
       docker pull ghcr.io/datadog/guarddog
       alias guarddog='docker run --rm ghcr.io/datadog/guarddog'
+
+Update using Docker:
+
+   .. code::
+
+      docker pull ghcr.io/datadog/guarddog:latest
+
 
 .. note:: GuardDog fails quietly, and scans that did not run produce output similar to a successful scan with no findings. For this reason, you should pass ``--log-level debug`` with every invocation. 
 
@@ -178,7 +195,7 @@ To scan the updated version of a package locally, you can download the package t
 
    .. code::
 
-      npm view react@19.2.0
+      pnpm view react@19.2.0
 
 The output of ``npm view`` includes the integrity sha512 hash that should match the hash in the updated `pnpm-lock.yml` file. You can compute this hash of the tarball locally:
 
@@ -194,7 +211,7 @@ To scan the package locally, decompress the tarball and run GuardDog:
 
 .. _scan-semgrep:
 
-Scan updated dependencies with Semgrep
+Scanning updated dependencies with Semgrep
 ---------------------------------------
 
 Semgrep performs detailed static code analysis. While not the same as a comprehensive diff review, Semgrep can be used to target specific changes for further examination. 
