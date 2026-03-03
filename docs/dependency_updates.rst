@@ -54,7 +54,7 @@ When updating a dependency, one should:
    - For packages where the highest level of scrutiny is warranted, perform a :ref:`manual diff review <manual-diff>` with the assistance of a tool like `diffoscope <https://try.diffoscope.org/>`_ locally to view the diffs in the source code.
 
    See below for details on each of these techniques to review an updated dependency. 
-3. **Explain version specifiers:** Use comments in ``.in``, ``pyproject.toml``, or ``package.json5``
+3. **Explain version specifiers:** Use comments in ``.in``, ``pyproject.toml``, or ``package.json``
    files to explain why you are specifying certain versions or ranges.
 
 dependabot automated updates
