@@ -17,7 +17,7 @@ deployment artifacts are signed, which they should be) dependencies.
 
 We use tools that pin every dependency to a specific version and verify they
 match published checksums. Historically we used ``pip-compile`` for this
-purpose; we are currently in the process of migrating to ``poetry``.
+purpose; we are currently in the process of migrating to ``poetry``. For JavaScript, we use ``pnpm``.
 
 Adding a dependency
 -------------------
@@ -45,13 +45,16 @@ When updating a dependency, one should:
 
 1. **Review the changelog:** were any high-risk areas of the code modified? Were
    bugs with security implications fixed?
-2. **Review the diff:** Perform a timeboxed review of the diff. Are there any
-   concerning areas (primarily in terms of security)?  One can use the diffoscope
-   tool from https://try.diffoscope.org/ locally to view the diffs in the source code.
+2. **Review the diff:** 
+   
+   - For routine updates of PyPi or NPM dependencies, use :ref:`GuardDog <scan-guarddog>` to locally scan the updated version of the dependency. GuardDog is particularly focused on identifying common patterns used in supply chain attacks.
 
-   * Note: we trust packages managed by the `Python Packaging Authority <https://www.pypa.io/en/latest/>`_
-     (PyPA) and don't diff review them.
-3. **Explain version specifiers:** Use comments in ``.in`` or ``pyproject.toml``
+   - For dependencies with lower trust or otherwise requiring heightened scrutiny, use :ref:`Semgrep <scan-semgrep>` to locally scan the updated version of the dependency. Semgrep is an all-purpose static code analysis tool.
+   
+   - For packages where the highest level of scrutiny is warranted, perform a :ref:`manual diff review <manual-diff>` with the assistance of a tool like `diffoscope <https://try.diffoscope.org/>`_ locally to view the diffs in the source code.
+
+   See below for details on each of these techniques to review an updated dependency. 
+3. **Explain version specifiers:** Use comments in ``.in``, ``pyproject.toml``, or ``package.json``
    files to explain why you are specifying certain versions or ranges.
 
 dependabot automated updates
@@ -126,8 +129,115 @@ Some package updates will require new reproducible wheels to be published in the
 `securedrop-builder <https://github.com/freedomofpress/securedrop-builder>`_
 repository; this should be done at the same time as the dependency update.
 
-Dependency diff review procedure
---------------------------------
+.. _scan-guarddog:
+
+Scanning updated dependencies with GuardDog
+-------------------------------------------
+
+GuardDog independently scans dependencies specifically for patterns indicative of supply-chain attacks.
+
+You can install and run `GuardDog <https://github.com/DataDog/guarddog>`_ locally using ``pip`` or Docker as you prefer. It's also important to keep GuardDog up-to-date.
+
+Install using ``pip``:
+
+   .. code::
+
+      pip install guarddog
+
+Update using ``pip``:
+
+   .. code::
+
+      pip install --upgrade guarddog
+
+Install using Docker:
+
+   .. code::
+
+      docker pull ghcr.io/datadog/guarddog
+      alias guarddog='docker run --rm ghcr.io/datadog/guarddog'
+
+Update using Docker:
+
+   .. code::
+
+      docker pull ghcr.io/datadog/guarddog:latest
+
+
+.. note:: GuardDog fails quietly, and scans that did not run produce output similar to a successful scan with no findings. For this reason, you should pass ``--log-level debug`` with every invocation. 
+
+
+Scanning PyPi packages with GuardDog
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+GuardDog can scan any package directly from PyPi: 
+
+   .. code::
+
+      guarddog --log-level debug pypi scan cryptography --version 2.7
+
+By default, GuardDog will grab wheels from PyPi. We typically pin python dependencies to tarballs rather than wheels. There are no flags to prioritize tarballs over wheels, so in these cases, you should download the target version's tarball off of PyPI and then run GuardDog against this local artifact:
+
+   .. code::
+
+      guarddog --log-level debug pypi scan /path/to/TARBALL.tar.gz 
+
+Scanning NPM packages with GuardDog
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+GuardDog can also scan packages directly from `npm`:
+
+   .. code::
+      
+      guarddog --log-level debug npm scan react --version 19.2.0
+
+To scan the updated version of a package locally, you can download the package tarball from `npm`:
+
+   .. code::
+
+      pnpm view react@19.2.0
+
+The output of ``npm view`` includes the integrity sha512 hash that should match the hash in the updated `pnpm-lock.yml` file. You can compute this hash of the tarball locally:
+
+   .. code::
+
+      cat ./react-19.2.0.tgz | openssl dgst -sha512 -binary | base64
+
+To scan the package locally, decompress the tarball and run GuardDog:
+
+   .. code::
+
+      guarddog --log-level debug npm scan ./package
+
+.. _scan-semgrep:
+
+Scanning updated dependencies with Semgrep
+------------------------------------------
+
+Semgrep performs detailed static code analysis. While not the same as a comprehensive diff review, Semgrep can be used to target specific changes for further examination. 
+
+You can install and run `Semgrep <https://semgrep.dev/docs/getting-started/quickstart>`_ locally using ``pip`` or Docker. 
+
+You will need to use a free Semgrep account to access the SAST scanning feature. You can use an existing GitHub account for SSO with Semgrep. Run ``semgrep login`` to launch a browser session where you can create an account or login and create a token to use in your terminal session.
+
+Semgrep can scan any local file or code repository. For a dependency update we recommend cloning the repository of the package so that you can target the scan to the code that has changed in the update. Checkout the version/tag you are updating to, and use the ``--baseline-commit`` flag to indicate the hash of the commit of the version/tag you are updating *from*. 
+
+GuardDog uses a combination of `YARA <https://virustotal.github.io/yara/>`_ and Semgrep rules. You can thus instruct Semgrep to use GuardDog's Semgrep rules via the ``--config`` flag if you also have GuardDog installed. 
+
+Below is an example series of commands to clone a package repository, and scan the code changes between versions using the local GuardDog rules as well as Semgrep's default rules:
+
+   .. code::
+
+      git clone https://github.com/remix-run/react-router/
+      cd react-router
+      git fetch --tags
+      git checkout v7.13.0 #the version we are upgrading to
+      semgrep scan --baseline-commit=4a5e333 --config=/home/user/guarddog-env/lib/python3.13/site-packages/guarddog/analyzer/sourcecode ./
+
+.. _manual-diff:
+
+Manual dependency diff review procedure
+---------------------------------------
 
 1. Download the source tarball from pypi.org for both the version from which
 you are starting your diff review and the target version, example here for the
