@@ -38,6 +38,21 @@ following factors should be considered:
    dependency. By relying on well-known, widely-used dependencies, we benefit
    from the many eyes that should be evaluating it.
 
+When to upgrade a dependency
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In general dependencies should be upgraded whenever there is some specific need,
+whether it's for a new feature or to address a security vulnerability.
+
+If the upgrade fixes security vulnerabilities, it should be prioritized based on
+the severity. Non-security releases should be upgraded to after a `7-day cooldown <https://blog.yossarian.net/2025/11/21/We-should-all-be-using-dependency-cooldowns>`_.
+
+It may also be useful to upgrade dependencies to the latest major version so that
+any potential security fixes are easier to upgrade to.
+
+Development-only dependencies can be upgraded on a regular cadence without needing
+a concrete reason, with the belief that we'll benefit from improved tooling and linters.
+
 Updating dependencies
 ---------------------
 
@@ -45,15 +60,15 @@ When updating a dependency, one should:
 
 1. **Review the changelog:** were any high-risk areas of the code modified? Were
    bugs with security implications fixed?
-2. **Review the diff:** 
-   
+2. **Review the diff:**
+
    - For routine updates of PyPi or NPM dependencies, use :ref:`GuardDog <scan-guarddog>` to locally scan the updated version of the dependency. GuardDog is particularly focused on identifying common patterns used in supply chain attacks.
 
    - For dependencies with lower trust or otherwise requiring heightened scrutiny, use :ref:`Semgrep <scan-semgrep>` to locally scan the updated version of the dependency. Semgrep is an all-purpose static code analysis tool.
-   
+
    - For packages where the highest level of scrutiny is warranted, perform a :ref:`manual diff review <manual-diff>` with the assistance of a tool like `diffoscope <https://try.diffoscope.org/>`_ locally to view the diffs in the source code.
 
-   See below for details on each of these techniques to review an updated dependency. 
+   See below for details on each of these techniques to review an updated dependency.
 3. **Explain version specifiers:** Use comments in ``.in``, ``pyproject.toml``, or ``package.json``
    files to explain why you are specifying certain versions or ranges.
 
@@ -164,13 +179,13 @@ Update using Docker:
       docker pull ghcr.io/datadog/guarddog:latest
 
 
-.. note:: GuardDog fails quietly, and scans that did not run produce output similar to a successful scan with no findings. For this reason, you should pass ``--log-level debug`` with every invocation. 
+.. note:: GuardDog fails quietly, and scans that did not run produce output similar to a successful scan with no findings. For this reason, you should pass ``--log-level debug`` with every invocation.
 
 
 Scanning PyPi packages with GuardDog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-GuardDog can scan any package directly from PyPi: 
+GuardDog can scan any package directly from PyPi:
 
    .. code::
 
@@ -180,7 +195,7 @@ By default, GuardDog will grab wheels from PyPi. We typically pin python depende
 
    .. code::
 
-      guarddog --log-level debug pypi scan /path/to/TARBALL.tar.gz 
+      guarddog --log-level debug pypi scan /path/to/TARBALL.tar.gz
 
 Scanning NPM packages with GuardDog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -188,7 +203,7 @@ Scanning NPM packages with GuardDog
 GuardDog can also scan packages directly from `npm`:
 
    .. code::
-      
+
       guarddog --log-level debug npm scan react --version 19.2.0
 
 To scan the updated version of a package locally, you can download the package tarball from `npm`:
@@ -214,15 +229,15 @@ To scan the package locally, decompress the tarball and run GuardDog:
 Scanning updated dependencies with Semgrep
 ------------------------------------------
 
-Semgrep performs detailed static code analysis. While not the same as a comprehensive diff review, Semgrep can be used to target specific changes for further examination. 
+Semgrep performs detailed static code analysis. While not the same as a comprehensive diff review, Semgrep can be used to target specific changes for further examination.
 
-You can install and run `Semgrep <https://semgrep.dev/docs/getting-started/quickstart>`_ locally using ``pip`` or Docker. 
+You can install and run `Semgrep <https://semgrep.dev/docs/getting-started/quickstart>`_ locally using ``pip`` or Docker.
 
 You will need to use a free Semgrep account to access the SAST scanning feature. You can use an existing GitHub account for SSO with Semgrep. Run ``semgrep login`` to launch a browser session where you can create an account or login and create a token to use in your terminal session.
 
-Semgrep can scan any local file or code repository. For a dependency update we recommend cloning the repository of the package so that you can target the scan to the code that has changed in the update. Checkout the version/tag you are updating to, and use the ``--baseline-commit`` flag to indicate the hash of the commit of the version/tag you are updating *from*. 
+Semgrep can scan any local file or code repository. For a dependency update we recommend cloning the repository of the package so that you can target the scan to the code that has changed in the update. Checkout the version/tag you are updating to, and use the ``--baseline-commit`` flag to indicate the hash of the commit of the version/tag you are updating *from*.
 
-GuardDog uses a combination of `YARA <https://virustotal.github.io/yara/>`_ and Semgrep rules. You can thus instruct Semgrep to use GuardDog's Semgrep rules via the ``--config`` flag if you also have GuardDog installed. 
+GuardDog uses a combination of `YARA <https://virustotal.github.io/yara/>`_ and Semgrep rules. You can thus instruct Semgrep to use GuardDog's Semgrep rules via the ``--config`` flag if you also have GuardDog installed.
 
 Below is an example series of commands to clone a package repository, and scan the code changes between versions using the local GuardDog rules as well as Semgrep's default rules:
 
