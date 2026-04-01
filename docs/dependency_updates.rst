@@ -380,3 +380,12 @@ Exemptions can be specified in ``supply-chain/config.toml``:
 
 Note that within crates do review, you should still review all the code, regardless of what
 platform it is targeting.
+
+Identifying production dependencies in SecureDrop Inbox
+-------------------------------------------------------
+
+In the Inbox's package.json, the dependencies that are only used in the renderer are actually
+contained in the "devDependencies" field because they are bundled into the build.
+
+The ``find-prod-deps.py`` script can be used to get a real list of dependencies that
+are shipped in or compiled into the production build.
