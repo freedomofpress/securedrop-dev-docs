@@ -115,7 +115,7 @@ Then:
    SHOULD revoke support for *L* for *V3*.
 
         #. In consultation with Localization Lab and the Release
-           Manager, the Localization Manager MAY extend *L*’s probationary
+           Manager, the Localization Manager MAY extend *L*'s probationary
            period, for example if the `language census`_ indicates that revoking
            support for *L* would jeopardize the default locale for many
            instances, for especially high-traffic or high-profile instances,

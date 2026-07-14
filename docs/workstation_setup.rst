@@ -39,7 +39,7 @@ have been properly applied. Finally, update all existing TemplateVMs:
    qubes-update-gui
 
 Select all VMs marked as **updates available**, then click **Next**.
-Once all updates have been applied, you’re ready to proceed. Choose the
+Once all updates have been applied, you're ready to proceed. Choose the
 environment that you wish to set up and then follow the applicable
 instructions:
 
@@ -92,7 +92,7 @@ be copied there from your development VM.
 
 .. include:: includes/dom0-warning.txt
 
-That process is a little tricky, but here’s one way to do it: assuming
+That process is a little tricky, but here's one way to do it: assuming
 this code is checked out in your ``sd-dev`` VM at
 ``/home/user/projects/securedrop-workstation``, run the following in
 ``dom0``:
@@ -105,15 +105,15 @@ this code is checked out in your ``sd-dev`` VM at
 that initial manual step, the code in your development VM may be copied
 into place on ``dom0`` by setting the ``SECUREDROP_DEV_VM`` and
 ``SECUREDROP_DEV_DIR`` environmental variables to reflect the VM and
-directory to which you’ve cloned this repo, and running ``make clone``
+directory to which you've cloned this repo, and running ``make clone``
 from the root of the project on ``dom0``:
 
 ::
 
-   [dom0]$ export SECUREDROP_DEV_VM=sd-dev    # set to your dev VM
-   [dom0]$ export SECUREDROP_DEV_DIR=/home/user/projects/securedrop-workstation    # set to your working directory
-   [dom0]$ cd ~/securedrop-workstation/
-   [dom0]$ make clone    # build RPM package and copy repo to dom0
+   export SECUREDROP_DEV_VM=sd-dev    # set to your dev VM
+   export SECUREDROP_DEV_DIR=/home/user/projects/securedrop-workstation    # set to your working directory
+   cd ~/securedrop-workstation/
+   make clone    # build RPM package and copy repo to dom0
 
 **NOTE:** The destination directory on ``dom0`` is not customizable; it
 must be ``securedrop-workstation`` in your home directory.
@@ -183,8 +183,8 @@ Then, in ``dom0``, clone the workstation again, to obtain these new files:
 
 ::
 
-   [dom0]$ cd ~/securedrop-workstation/
-   [dom0]$ make clone
+   cd ~/securedrop-workstation/
+   make clone
 
 
 Provision the VMs
@@ -214,9 +214,9 @@ dialog asking how to connect to Tor: you should be able to select the
 default option and continue. If you want to refer back to the
 provisioning log for a given VM, go to
 ``/var/log/qubes/mgmt-<vm name>.log`` in ``dom0``. You can also monitor
-logs as they’re being written via ``journalctl -ef``. This will display
-logs across the entire system so it can be noisy. It’s best used when
-you know what to look for, at least somewhat, or if you’re provisioning
+logs as they're being written via ``journalctl -ef``. This will display
+logs across the entire system so it can be noisy. It's best used when
+you know what to look for, at least somewhat, or if you're provisioning
 one VM at a time.
 
 When the installation process completes, a number of new VMs will be
@@ -229,7 +229,7 @@ When developing on the Workstation, make sure to edit files in
 ``sd-dev``, then copy them to dom0 via ``make clone && make dev`` to
 reinstall them. Any changes that you make to the
 ~/securedrop-workstation folder in dom0 will be overwritten during
-``make clone``. Similarly, any changes you make to e.g. ``/srv/salt/``
+``make clone``. Similarly, any changes you make to e.g. ``/srv/salt/``
 in dom0 will be overwritten by ``make dev``.
 
 Staging Environment
@@ -271,7 +271,7 @@ Download and install securedrop-workstation-dom0-config package
 Since ``dom0`` does not have network access, we will need to download
 the ``securedrop-workstation-dom0-config`` package in a Fedora-based VM.
 We can use the default Qubes-provisioned ``work`` VM. If you perform
-these changes in the ``work`` VM or another AppVM, they won’t persist
+these changes in the ``work`` VM or another AppVM, they won't persist
 across reboots (recommended).
 
 In a terminal in ``work``, run the following commands:
@@ -280,8 +280,8 @@ In a terminal in ``work``, run the following commands:
 
 ::
 
-   [user@work ~]$ wget https://raw.githubusercontent.com/freedomofpress/securedrop-workstation/master/sd-workstation/apt-test-pubkey.asc
-   [user@work ~]$ sudo rpmkeys --import apt-test-pubkey.asc
+   wget https://raw.githubusercontent.com/freedomofpress/securedrop-workstation/master/sd-workstation/apt-test-pubkey.asc
+   sudo rpmkeys --import apt-test-pubkey.asc
 
 2. Configure the test repository
 
@@ -299,7 +299,7 @@ contents:
 
 ::
 
-   [user@work ~]$ dnf download securedrop-workstation-dom0-config
+   dnf download securedrop-workstation-dom0-config
 
 The RPM file will be downloaded to your current working directory.
 
@@ -307,7 +307,7 @@ The RPM file will be downloaded to your current working directory.
 
 ::
 
-   [user@work ~]$ rpm -Kv securedrop-workstation-dom0-config-x.y.z-1.fc37.noarch.rpm
+   rpm -Kv securedrop-workstation-dom0-config-x.y.z-1.fc37.noarch.rpm
 
 The output should match the following, and return ``OK`` for all lines
 as follows:
@@ -329,7 +329,7 @@ its current value):
 
 ::
 
-   [dom0]$ qvm-run --pass-io work 'cat /home/user/securedrop-workstation-dom0-config-x.y.z-1.fc37.noarch.rpm' > securedrop-workstation.rpm
+   qvm-run --pass-io work 'cat /home/user/securedrop-workstation-dom0-config-x.y.z-1.fc37.noarch.rpm' > securedrop-workstation.rpm
    sudo dnf install securedrop-workstation.rpm
 
 The provisioning scripts and tools should now be in place, and you can
@@ -355,4 +355,4 @@ In a terminal in ``dom0``, run the following commands:
 
 ::
 
-   [dom0]$ sdw-admin --apply
+   sdw-admin --apply

@@ -243,7 +243,7 @@ from the `Vagrant Downloads page`_ and then install it.
 .. _`GitHub #932`: https://github.com/freedomofpress/securedrop/pull/932
 .. _`GitHub #1381`: https://github.com/freedomofpress/securedrop/issues/1381
 
-.. warning:: We do not recommend installing vagrant-cachier. It destroys apt’s
+.. warning:: We do not recommend installing vagrant-cachier. It destroys apt's
             state unless the VMs are always shut down/rebooted with Vagrant,
             which conflicts with the tasks in the Ansible playbooks. The
             instructions in Vagrantfile that would enable vagrant-cachier are

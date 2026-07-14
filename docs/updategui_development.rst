@@ -13,8 +13,8 @@ in a virtual environment. From the ``journalist_gui`` directory:
 
 ::
 
-    $ python3 -m venv .venv && source .venv/bin/activate
-    $ pip install --require-hashes -r dev-requirements.txt
+    python3 -m venv .venv && source .venv/bin/activate
+    pip install --require-hashes -r dev-requirements.txt
 
 The first command will create a virtual environment and activate it.
 The second command will install the dependencies, using the exact hashes
@@ -28,7 +28,7 @@ You can run the GUI via:
 
 ::
 
-    $ python3 SecureDropUpdater
+    python3 SecureDropUpdater
 
 Note that since the application expects to run in Tails, you should test its
 functionality in a Tails VM. You can follow the instructions in the
@@ -42,7 +42,7 @@ The design of the GUI is saved in the ``journalist_gui/mainwindow.ui`` file. To 
 
 ::
 
-    $ sudo apt install qtcreator python3-pyqt5
+    sudo apt install qtcreator python3-pyqt5
 
 
 
@@ -50,7 +50,7 @@ If we make any changes to the UI, we will have to use ``pyuic5`` command to upda
 
 ::
 
-    $ pyuic5 journalist_gui/mainwindow.ui -o journalist_gui/updaterUI.py
+    pyuic5 journalist_gui/mainwindow.ui -o journalist_gui/updaterUI.py
 
 
 Using Resources in the UI
@@ -77,7 +77,7 @@ command:
 
 ::
 
-    $ pyrcc5 journalist_gui/resources.qrc -o journalist_gui/resources_rc.py
+    pyrcc5 journalist_gui/resources.qrc -o journalist_gui/resources_rc.py
 
 
 
@@ -96,4 +96,4 @@ test cases or updating the old ones. You can run the tests using the following c
 
 ::
 
-    $ python3 test_gui.py
+    python3 test_gui.py

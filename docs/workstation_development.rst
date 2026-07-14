@@ -1,7 +1,7 @@
 SecureDrop Workstation Development
 ==================================
 
-This project’s development requires different workflows for working on
+This project's development requires different workflows for working on
 provisioning components and working on submission-handling scripts.
 
 For developing salt states and other provisioning components, work is
@@ -15,7 +15,7 @@ top files there. In the ``dom0`` copy of this project:
   full installation.
 
 Note that ``make clone`` requires two environment variables to be set:
-``SECUREDROP_DEV_VM`` must be set to the name of the VM where you’ve
+``SECUREDROP_DEV_VM`` must be set to the name of the VM where you've
 been working on the code, the ``SECUREDROP_DEV_DIR`` should be set to
 the directory where the code is checked out on your development VM.
 
@@ -38,7 +38,7 @@ Configuration Tests
 
 These tests assert that expected scripts and configuration files are in
 the correct places across the VMs. These tests can be found in the
-``tests/`` directory. They can be run from the project’s root directory
+``tests/`` directory. They can be run from the project's root directory
 on ``dom0`` with:
 
 ::

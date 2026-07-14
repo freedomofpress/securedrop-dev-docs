@@ -330,16 +330,16 @@ We audit Rust crates using the `Cargo Vet <https://mozilla.github.io/cargo-vet/i
 
 .. code::
 
-   $ cargo install --locked cargo-vet
+   cargo install --locked cargo-vet
 
 Then you can audit both new and updated crates:
 
 .. code::
 
-   $ cargo vet diff $CRATE $OLD $NEW    # $CRATE has been updated from $OLD to $NEW.
-   $ cargo vet inspect $CRATE $VERSION  # $CRATE is entirely new at $VERSION.
+   cargo vet diff $CRATE $OLD $NEW    # $CRATE has been updated from $OLD to $NEW.
+   cargo vet inspect $CRATE $VERSION  # $CRATE is entirely new at $VERSION.
    [...]
-   $ cargo vet certify
+   cargo vet certify
 
 Running ``cargo vet suggest`` after updating or modifying dependencies will automatically
 provide you with the relevant ``diff`` and ``inspect`` commands to run.
