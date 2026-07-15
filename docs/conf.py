@@ -3,7 +3,7 @@
 # SecureDrop documentation build configuration file.
 
 import os
-import sphinx_rtd_theme
+import sphinx_book_theme
 from datetime import date
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -21,7 +21,6 @@ from datetime import date
 # ones.
 extensions = [
     "sphinx.ext.todo",
-    "sphinx_rtd_theme",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -92,15 +91,22 @@ todo_include_todos = False
 
 
 # -- Options for HTML output ----------------------------------------------
-html_theme = "sphinx_rtd_theme"
+html_theme = "sphinx_book_theme"
 
-html_context = {
-    "display_github": True,
-    "github_user": "freedomofpress",
-    "github_repo": "securedrop-dev-docs",
-    "github_version": "main",
-    "conf_py_path": "/docs/",
-    "source_suffix": source_suffix,
+html_theme_options = {
+    "use_download_button": False,
+    "show_toc_level": 2,
+    "home_page_in_toc": True,
+    "repository_url": "https://github.com/freedomofpress/securedrop-dev-docs",
+    "use_source_button": True,
+    "repository_branch": "main",
+    "use_edit_page_button": True,
+    "path_to_docs": "docs/",
+    "use_fullscreen_button": False
+}
+
+html_sidebars = {
+    "**": ["navbar-logo.html", "search-button-field.html", "sbt-sidebar-nav.html", "download.html"]
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -115,7 +121,7 @@ html_context = {
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "../static/i/favicon.png"
+html_logo = "../static/i/logo.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -127,7 +133,7 @@ html_logo = "../static/i/favicon.png"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 html_css_files = [
-    'rtd_dark.css',
+    'custom.css',
     'pygments_dark.css',
 ]
 
