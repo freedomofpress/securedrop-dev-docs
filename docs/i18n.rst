@@ -196,7 +196,7 @@ generate using this command in the base directory:
 
 .. code:: sh
 
-    $ LOCALES=en_US make translation-test
+    LOCALES=en_US make translation-test
 
 Inspect the screenshots in the directory ``securedrop/tests/pageslayout/screenshots/en_US``
 and make sure that their content corresponds to the expected version of the
@@ -208,7 +208,7 @@ You can now run this command to perform an upload:
 
 .. code:: sh
 
-    $ securedrop/upload-screenshots.py
+    securedrop/upload-screenshots.py
 
 If new screenshots were added as part of this run, make sure to associate them
 with relevant strings in Weblate, which you can do from the
@@ -364,9 +364,9 @@ know exists in the source strings. You can rebuild the index with:
 
 .. code:: sh
 
-      $ ssh debian@weblate.securedrop.org
-      $ cd /app/weblate
-      $ sudo docker-compose run weblate rebuild_index --all --clean
+      ssh debian@weblate.securedrop.org
+      cd /app/weblate
+      sudo docker-compose run weblate rebuild_index --all --clean
 
 Note that the new index may not be used right away. Some workers may
 still have the old index open. If the index is holding up translators

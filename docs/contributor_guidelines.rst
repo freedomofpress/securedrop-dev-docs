@@ -214,14 +214,14 @@ How to Use mypy?
 ~~~~~~~~~~~~~~~~~
 
 ``make lint`` already checks for any error using the ``mypy`` tool. In case you want
-to have a local installation, you can do that using your Python 3 virtualenv.
+to have a local installation, you can do that using your Python 3 virtualenv:
 
 .. code:: shell
 
-    $ python3 -m venv ../.py3
-    $ source ../.py3/bin/activate
-    $ pip install mypy
-    $ mypy securedrop
+    python3 -m venv ../.py3
+    source ../.py3/bin/activate
+    pip install mypy
+    mypy securedrop
 
 Git History
 -----------

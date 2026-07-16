@@ -272,11 +272,11 @@ Glossary
 
 Text taken directly from a user interface is in **bold face**.
 
-    "Once you’re sure you have the right drive, click **Format Drive**."
+    "Once you're sure you have the right drive, click **Format Drive**."
 
 SecureDrop-specific `glossary <https://docs.securedrop.org/en/stable/glossary.html>`_ is in *italics*.
 
-    "To get started, you’ll need two Tails drives: one for the *Admin
+    "To get started, you'll need two Tails drives: one for the *Admin
     Workstation* and one for the *Secure Viewing Station*."
 
 When referring to virtual machines in the development environment, use

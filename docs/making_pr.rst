@@ -45,7 +45,7 @@ If you create a new file, remember to add it with :code:`git add`.
 
   git add <new-file>
 
-Commit your changes, adding a description of what was added. If you’re not
+Commit your changes, adding a description of what was added. If you're not
 used to Git, the simplest way is to commit all modified files and add a
 description message of your changes in a single command like this:
 

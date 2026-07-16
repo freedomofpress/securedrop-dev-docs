@@ -254,7 +254,7 @@ empty Signature field. Set up your environment (for prod you can use the
    %__gpg_sign_cmd %{__gpg} --no-verbose -u %{_gpg_name} --detach-sign %{__plaintext_filename} --output %{__signature_filename}
    EOF
 
-Now we’ll sign the RPM:
+Now we'll sign the RPM:
 
 ::
 
