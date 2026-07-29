@@ -200,66 +200,6 @@ html_css_files = [
 # Output file base name for HTML help builder.
 htmlhelp_basename = "SecureDropDevDocs"
 
-# -- Options for LaTeX output ---------------------------------------------
-
-latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
-    # 'papersize': 'letterpaper',
-    # The font size ('10pt', '11pt' or '12pt').
-    # 'pointsize': '10pt',
-    # Additional stuff for the LaTeX preamble.
-    # Neither of:
-    #     \usepackage[T1]{fontenc}
-    #     \usepackage{textcomp}
-    # seem to make this magically work, so define individual characters.
-    # Also,
-    #     \usepackage{svg}
-    # does not seem to allow inclusion of the Weblate status badge (over HTTPS,
-    # which may be the problem).
-    'preamble': r'''
-    \DeclareUnicodeCharacter{25B6}{$\blacktriangleright$}
-    \DeclareUnicodeCharacter{25B8}{$\blacktriangleright$}
-    \DeclareUnicodeCharacter{2B06}{$\uparrow$}
-    \DeclareUnicodeCharacter{2B07}{$\downarrow$}
-    \DeclareUnicodeCharacter{201C}{\textquotedblleft}
-    \DeclareUnicodeCharacter{201D}{\textquotedblright}
-    \DeclareUnicodeCharacter{00E2}{\^a}
-    \DeclareUnicodeCharacter{20AC}{\euro}
-    \DeclareUnicodeCharacter{0153}{\oe}
-    \DeclareUnicodeCharacter{FFFD}{$\blacklozenge$}
-    ''',
-    # Latex figure (float) alignment
-    # 'figure_align': 'htbp',
-}
-
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title,
-#  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-    (master_doc, "SecureDropDevDocs.tex", u"SecureDrop Developer Documentation", author, "manual"),
-]
-
-# The name of an image file (relative to this directory) to place at the top of
-# the title page.
-# latex_logo = None
-
-# For "manual" documents, if this is true, then toplevel headings are parts,
-# not chapters.
-# latex_use_parts = False
-
-# If true, show page references after internal links.
-# latex_show_pagerefs = False
-
-# If true, show URL addresses after external links.
-# latex_show_urls = False
-
-# Documents to append as an appendix to all manuals.
-# latex_appendices = []
-
-# If false, no module index is generated.
-# latex_domain_indices = True
-
-
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
