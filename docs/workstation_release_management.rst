@@ -1,14 +1,6 @@
 SecureDrop Workstation Release Management
 =========================================
 
-SecureDrop Workstation code spans across two repositories:
-
--  https://github.com/freedomofpress/securedrop-client (Debian packages)
--  https://github.com/freedomofpress/securedrop-workstation (RPM
-   package)
-
-The components in the Debian packages are all released together, while the workstation RPM package is released independently.
-
 Communications Process
 -----------------------
 As with SecureDrop server releases, the release manager should work with the Communications Manager
@@ -24,127 +16,6 @@ Once the release is live:
 1. Make sure that release notes are written and posted on the SecureDrop blog.
 2. Make sure that the release is announced on social media.
 3. If the release warrants announcements beyond that (e.g., via Signal group), make them now.
-
-Release a Debian package
--------------------------
-
-Releasing a release candidate (RC) package is the first step before you begin QA or any signing ceremonies. Even when you are
-releasing a hotfix, RC packages are still recommended for QA purposes.
-
-Production releases will require at least two maintainers, one of which will need access to the SecureDrop release key.
-
-Step 0: Tracking issue
-~~~~~~~~~~~~~~~~~~~~~~
-
-Before beginning the release proces, create a tracking issue titled ``Release <package name> <version>``. It should contain
-estimated timelines and assignees for release management, QA, and stakeholder communications. Pin the issue for ease of access
-and visibility.
-
-Step 1: Create a release candidate (RC) tag
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. Create a release branch named ``release/<major>.<minor>.<patch>``.
-2. Ensure that the version is set to the expected value; if not, increment it as needed using ``update_version.sh``.
-3. Push a commit adding the changelog for this release.
-4. Push an RC tag in the format ``<major>.<minor>.<patch>~rcN`` on your new commit. We will be building from this tag in the next step.
-5. Unless this is a patch-level release, create a PR to bump the version on ``main``
-   to ``<major>.<minor+1>.<patch>-rc1``. In other words, if you are in the process of
-   releasing ``0.5.0``, ``main`` should be bumped to ``0.6.0-rc1``.
-
-Step 2: Build and deploy the package to ``apt-test``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. Clone ``securedrop-client`` and ``securedrop-builder``.
-
-  .. code-block:: sh
-
-   git clone git@github.com:freedomofpress/securedrop-client.git
-   git clone git@github.com:freedomofpress/securedrop-builder.git
-
-2. Check out the newly pushed tag and then build the packages.
-
-  .. code-block:: sh
-
-   cd securedrop-client
-   git checkout <major>.<minor>.<patch>~rcN
-   make build-debs
-
-3. Save and publish :doc:`build metadata <build_metadata>`.
-4. Open a PR to https://github.com/freedomofpress/securedrop-apt-test with the packages you want to deploy.
-   Once merged, the packages will be deployed to https://apt-test.freedom.press.
-
-Step 3: Begin QA
-~~~~~~~~~~~~~~~~
-
-You can now start the QA process! If a bug is found, a fix should be developed, merged into the main branch and
-cherry-picked into the release branch. If desired, release another RC set of packages for further testing.
-
-Once QA testers are satisfied with the packages, you are ready to move on to the next step.
-
-Step 4: Create a release tag
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. Update the changelog and version. Remove any references to the RC versions from the changelogs.
-2. Generate a release tag named ``<major>.<minor>.<patch>`` (same as the previous tags, without the ``~rcN`` part).
-3. :ref:`Sign the tag with the SecureDrop release key` or ask another maintainer to do this and push the signed tag
-
-Step 5: Build and deploy the packages to ``apt-qa``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. Clone ``securedrop-client`` and ``securedrop-builder``.
-
-  .. code-block:: sh
-
-   git clone git@github.com:freedomofpress/securedrop-client.git
-   git clone git@github.com:freedomofpress/securedrop-builder.git
-
-2. Check out the newly pushed tag and then build the packages.
-
-  .. code-block:: sh
-
-   cd securedrop-client
-   git tag -v <major>.<minor>.<patch> # Signed by SecureDrop Release Key
-   git checkout <major>.<minor>.<patch>
-   make build-debs
-
-3. Save and publish :doc:`build metadata <build_metadata>`.
-4. Add your packages to a new branch called ``release`` in https://github.com/freedomofpress/securedrop-apt-prod. Include all .deb packages built by the client, including ``-dbgsym`` packages. ``-dbgsym`` packages belong in the ``main-debug`` component repo. See :ref:`Notes on dbgsym-packages <dbgsym-packages>` for more information.
-5. Update the apt repo distribution files by running ``./tools/publish`` and push those changes to the ``release`` branch as well.
-6. :ref:`Regenerate and sign the apt release file` or ask another maintainer to do this. The packages will now be installable from https://apt-qa.freedom.press.
-7. Open a PR to merge the ``release`` branch into ``main``.
-8. Another maintainer should also build the packages (following the same steps as earlier) and verify their newly built packages
-   are `bit-for-bit identical <https://reproducible-builds.org/docs/definition/>`_ to those pushed to apt-qa.
-
-Step 6: Perform the ``apt-qa`` preflight check
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-First, provision a production workstation from the most recently-released
-``securedrop-workstation-dom0-config`` production package. Ensure your machine
-has been updated (either via Qubes native updater or SDW GUI updater).
-
-At minimum, perform the full test. Additional QAers may perform smoketest to
-save time if there is already full test coverage.
-
-**Full test (includes updater)**
-
-1. As root, edit ``/srv/salt/sd-default-config.yml`` so that the ``prod`` ``apt_repo_url`` points to ``https://apt-qa.freedom.press``.
-2. Run the SDW GUI updater. To force an updater run, invoke the updater via ``/opt/securedrop/launcher/sdw-launcher.py --skip-delta 0``.
-3. Start the Client application, and observe the updated version string, indicating the required packages were installed. Perform testing according to the test plan.
-
-**Smoketest (no updater run)**
-
-1. Start the Template VMs.
-2. In each template VM, edit ``/etc/apt/sources.list.d/securedrop_workstation.list`` file to point to https://apt-qa.freedom.press.
-3. Update the package system and install the new packages via ``apt update && apt upgrade -y``.
-4. Verify that the updated packages were installed in the templates. Shut down template VMs and all VMs associated with SecureDrop Workstation.
-5. Start the Client application and perform testing according to test plan.
-
-Step 7: Deploy the package to ``apt-prod``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. In ``securedrop-apt-prod``, merge the ``release`` branch into ``main`` to deploy your package to https://apt.freedom.press.
-2. Once you see the package land on https://apt.freedom.press, run the updater to install it in a production environment and ensure that it works as expected.
-3. In the source repository (e.g., ``securedrop-client``), port the changelog to the ``main`` branch.
-   Ensure that the version number on ``main`` designates it as RC1 for the *next* release.
 
 Release an RPM package
 -----------------------
@@ -201,34 +72,6 @@ Sign the tag with the SecureDrop release key
 8. Create new signed tag: ``git mktag < VERSION.tag > .git/refs/tags/VERSION``.
 9. Verify the tag's signature: ``git tag -v VERSION``.
 10. Push the tag to the shared remote: ``git push origin VERSION``.
-
-.. _Regenerate and sign the apt release file:
-
-Regenerate and sign the apt release file
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. From the ``release`` branch containing the new package, update the apt repository distribution files.
-
-  .. code-block:: sh
-
-   git clone https://github.com/freedomofpress/securedrop-apt-prod
-   cd securedrop-apt-prod
-   git checkout -b release
-   ./tools/publish
-
-2. Copy the regenerated file called ``Release`` into your signing environment and then verify the hash to ensure the file transfer was successful.
-3. Sign the ``Release`` file with the SecureDrop release key.
-
-  .. code-block:: sh
-
-   gpg --armor --detach-sign Release
-
-4. Copy the ``Release.gpg`` file into your release environment and move it to ``repo/public/dists/<debian-codename>/`` on your ``release`` branch.
-5. Verify that the release file was signed with the production key.
-
-  .. code-block:: sh
-
-   gpg --verify ./repo/public/dists/<debian-codename>/Release{.gpg,}
 
 Sign the RPM package
 ~~~~~~~~~~~~~~~~~~~~
