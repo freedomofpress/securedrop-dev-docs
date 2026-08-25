@@ -92,19 +92,19 @@ Step 5: Build and deploy the packages to ``apt-prod``
 
 1. Clone ``securedrop-client`` and ``securedrop-builder``.
 
-  .. code-block:: sh
+   .. code-block:: sh
 
-   git clone git@github.com:freedomofpress/securedrop-client.git
-   git clone git@github.com:freedomofpress/securedrop-builder.git
+     git clone git@github.com:freedomofpress/securedrop-client.git
+     git clone git@github.com:freedomofpress/securedrop-builder.git
 
 2. Check out the newly pushed tag and then build the packages.
 
-  .. code-block:: sh
+   .. code-block:: sh
 
-   cd securedrop-client
-   git tag -v <version> # Signed by SecureDrop Release Key
-   git checkout <major>.<minor>.<patch>
-   make build-debs
+     cd securedrop-client
+     git tag -v <version> # Signed by SecureDrop Release Key
+     git checkout <major>.<minor>.<patch>
+     make build-debs
 
 3. Save and publish :doc:`build metadata <build_metadata>`.
 4. Add your packages to a new branch called ``release`` in https://github.com/freedomofpress/securedrop-apt-prod. Include all built .deb packages, including ``-dbgsym`` packages. (``-dbgsym`` packages will be kept in the ``main-debug`` component. See :ref:`Notes on dbgsym-packages <dbgsym-packages>` for more information.)
@@ -201,23 +201,23 @@ Regenerate and sign the apt release file
 
 1. From the ``release`` branch containing the new package, update the apt repository distribution files.
 
-  .. code-block:: sh
+   .. code-block:: sh
 
-   git clone https://github.com/freedomofpress/securedrop-apt-prod
-   cd securedrop-apt-prod
-   git checkout -b release
-   ./tools/publish
+     git clone https://github.com/freedomofpress/securedrop-apt-prod
+     cd securedrop-apt-prod
+     git checkout -b release
+     ./tools/publish
 
 2. Copy the regenerated file called ``Release`` into your signing environment and then verify the hash to ensure the file transfer was successful.
 3. Sign the ``Release`` file with the SecureDrop release key.
 
-  .. code-block:: sh
+   .. code-block:: sh
 
-   gpg --armor --detach-sign Release
+     gpg --armor --detach-sign Release
 
 4. Copy the ``Release.gpg`` file into your release environment and move it to ``repo/public/dists/<debian-codename>/`` on your ``release`` branch.
 5. Verify that the release file was signed with the production key.
 
-  .. code-block:: sh
+   .. code-block:: sh
 
-   gpg --verify ./repo/public/dists/<debian-codename>/Release{.gpg,}
+     gpg --verify ./repo/public/dists/<debian-codename>/Release{.gpg,}
