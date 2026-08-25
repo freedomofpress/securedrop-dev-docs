@@ -49,18 +49,18 @@ Step 2: Build and deploy the package to ``apt-test``
 
 1. Clone ``securedrop-client`` and ``securedrop-builder``.
 
-  .. code-block:: sh
+   .. code-block:: sh
 
-   git clone git@github.com:freedomofpress/securedrop-client.git
-   git clone git@github.com:freedomofpress/securedrop-builder.git
+      git clone git@github.com:freedomofpress/securedrop-client.git
+      git clone git@github.com:freedomofpress/securedrop-builder.git
 
 2. Check out the newly pushed tag and then build the packages.
 
-  .. code-block:: sh
+   .. code-block:: sh
 
-   cd securedrop-client
-   git checkout <version>-rc1
-   make build-debs
+      cd securedrop-client
+      git checkout <version>-rc1
+      make build-debs
 
 3. Save and publish :doc:`build metadata <build_metadata>`.
 4. Open a PR to https://github.com/freedomofpress/securedrop-apt-test with the packages you want to deploy.
