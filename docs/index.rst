@@ -61,6 +61,7 @@ administrators <https://docs.securedrop.org/>`_.
    workstation_setup
    workstation_development
    workstation_release_management
+   inbox_release_management
    client
    app
    seen_by_feature
