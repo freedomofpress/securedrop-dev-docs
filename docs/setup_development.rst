@@ -86,7 +86,7 @@ the following in ``dom0``:
 
 .. code:: sh
 
-   qvm-clone --class StandaloneVM debian-12-xfce sd-dev
+   qvm-clone --class StandaloneVM debian-13-xfce sd-dev
    qvm-start sd-dev
    qvm-sync-appmenus sd-dev
 
