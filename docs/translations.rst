@@ -30,7 +30,7 @@ about anything in this document, here's how to ask for help:
 
 * Chat in the `SecureDrop instant messaging channel`_
 
-   * `Localization Lab`_, with whom we coordinate SecureDrop's translation, also
+  * `Localization Lab`_, with whom we coordinate SecureDrop's translation, also
      maintains `their own channel <https://community.internetfreedomfestival.org/community/channels/localization-lab-chat>`_,
      hosted by the Internet Freedom Festival.
 
@@ -83,12 +83,12 @@ Translation Responsibilities
    the source-code changes that caused them, for a cleaner Git history
    to review and (if necessary) ``blame`` and ``revert``.
 
-    * CI will enforce this requirement via ``make check-strings`` on
-      branches pushed to this repository.  Like the other linters,
-      this check must pass for a pull request to be approved for
-      merge into ``develop``.
+   * CI will enforce this requirement via ``make check-strings`` on
+     branches pushed to this repository.  Like the other linters,
+     this check must pass for a pull request to be approved for
+     merge into ``develop``.
 
-    * Developers can run ``make check-strings`` locally.
+   * Developers can run ``make check-strings`` locally.
 
 2. **Maintainers** should keep in mind that pull requests they
    review will include changes to the catalog template
@@ -114,65 +114,73 @@ Tutorial for Developers
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Let's say you've made the following string change in the Client's
-Python source code::
+Python source code:
 
-	$ git diff
-	diff --git a/securedrop_client/app.py b/securedrop_client/app.py
-	index 6b95eda..13ee15d 100644
-	--- a/securedrop_client/app.py
-	+++ b/securedrop_client/app.py
-	@@ -175,7 +175,7 @@ def prevent_second_instance(app: QApplication, unique_name: str) -> None:
-		 if e.errno == ALREADY_BOUND_ERRNO:
-		     err_dialog = QMessageBox()
-		     err_dialog.setText(
-	-                _("{application_name} is already running").format(
-	+                _("{application_name} is already running!").format(
-		             application_name=app.applicationName()
-		         )
-		     )
+.. code:: sh
+   :class: no-copybutton
 
-When you commit and push this change, you'll receive the following error in CI::
+   $ git diff
+   diff --git a/securedrop_client/app.py b/securedrop_client/app.py
+   index 6b95eda..13ee15d 100644
+   --- a/securedrop_client/app.py
+   +++ b/securedrop_client/app.py
+   @@ -175,7 +175,7 @@ def prevent_second_instance(app: QApplication, unique_name: str) -> None:
+   	 if e.errno == ALREADY_BOUND_ERRNO:
+   	     err_dialog = QMessageBox()
+   	     err_dialog.setText(
+   -                _("{application_name} is already running").format(
+   +                _("{application_name} is already running!").format(
+   	             application_name=app.applicationName()
+   	         )
+   	     )
 
+When you commit and push this change, you'll receive the following error in CI:
 
-	writing PO template file to securedrop_client/locale/messages.pot
-	Translation catalog is out of date. Please run "make extract-strings" and commit the changes.
-	make: *** [check-strings] Error 1
+.. code:: sh
+   :class: no-copybutton
+   
+   writing PO template file to securedrop_client/locale/messages.pot
+   Translation catalog is out of date. Please run "make extract-strings" and commit the changes.
+   make: *** [check-strings] Error 1
 
-As prompted, run ``make extract-strings`` and commit and push the changes::
+As prompted, run ``make extract-strings`` and commit and push the changes:
 
-	$ make extract-strings
-	[...]
-	writing PO template file to securedrop_client/locale/messages.pot
-	$ git diff
-	diff --git a/securedrop_client/app.py b/securedrop_client/app.py
-	index 6b95eda..13ee15d 100644
-	--- a/securedrop_client/app.py
-	+++ b/securedrop_client/app.py
-	@@ -175,7 +175,7 @@ def prevent_second_instance(app: QApplication, unique_name: str) -> None:
-		     if e.errno == ALREADY_BOUND_ERRNO:
-		         err_dialog = QMessageBox()
-		         err_dialog.setText(
-	-                _("{application_name} is already running").format(
-	+                _("{application_name} is already running!").format(
-		                 application_name=app.applicationName()
-		             )
-		         )
-	diff --git a/securedrop_client/locale/messages.pot b/securedrop_client/locale/messages.pot
-	index 51c95cc..524cdde 100644
-	--- a/securedrop_client/locale/messages.pot
-	+++ b/securedrop_client/locale/messages.pot
-	@@ -16,7 +16,7 @@ msgstr ""
-	 "Content-Transfer-Encoding: 8bit\n"
-	 "Generated-By: Babel 2.9.1\n"
+.. code:: sh
+   :class: no-copybutton
 
-	-msgid "{application_name} is already running"
-	+msgid "{application_name} is already running!"
-	 msgstr ""
+   $ make extract-strings
+   [...]
+   writing PO template file to securedrop_client/locale/messages.pot
+   $ git diff
+   diff --git a/securedrop_client/app.py b/securedrop_client/app.py
+   index 6b95eda..13ee15d 100644
+   --- a/securedrop_client/app.py
+   +++ b/securedrop_client/app.py
+   @@ -175,7 +175,7 @@ def prevent_second_instance(app: QApplication, unique_name: str) -> None:
+   	     if e.errno == ALREADY_BOUND_ERRNO:
+   	         err_dialog = QMessageBox()
+   	         err_dialog.setText(
+   -                _("{application_name} is already running").format(
+   +                _("{application_name} is already running!").format(
+   	                 application_name=app.applicationName()
+   	             )
+   	         )
+   diff --git a/securedrop_client/locale/messages.pot b/securedrop_client/locale/messages.pot
+   index 51c95cc..524cdde 100644
+   --- a/securedrop_client/locale/messages.pot
+   +++ b/securedrop_client/locale/messages.pot
+   @@ -16,7 +16,7 @@ msgstr ""
+    "Content-Transfer-Encoding: 8bit\n"
+    "Generated-By: Babel 2.9.1\n"
 
-	 msgid "The SecureDrop server cannot be reached. Trying to reconnect..."
-	$ git commit --all --message "changes a string"
-	[i18n 3637b3d] changes a string
-	 2 files changed, 2 insertions(+), 2 deletions(-)
+   -msgid "{application_name} is already running"
+   +msgid "{application_name} is already running!"
+    msgstr ""
+
+    msgid "The SecureDrop server cannot be reached. Trying to reconnect..."
+   $ git commit --all --message "changes a string"
+   [i18n 3637b3d] changes a string
+    2 files changed, 2 insertions(+), 2 deletions(-)
 
 When you open a pull request for your branch, a maintainer will review your
 string changes for their translation impact.
@@ -491,21 +499,33 @@ How to translate a phrase with placeholders
 Source strings may contain placeholder text in curly braces, for
 example ``{count}``. These represent variable content (like a
 username, as in the example below), and must be left unmodified, but
-they can be moved around in a string. For instance::
+they can be moved around in a string. For instance:
 
-  Edit user {user}
+.. code:: none
+   :class: no-copybutton
 
-might be displayed to the user as::
+   Edit user {user}
 
-  Edit user Jean-Claude
+might be displayed to the user as:
 
-The French translated string should look like::
+.. code:: none
+   :class: no-copybutton
 
-  Modifier l'utilisateur {user}
+   Edit user Jean-Claude
 
-And it would be **incorrect** to translate the placeholder like so::
+The French translated string should look like:
 
-  Modifier l'utilisateur {utilisateur}
+.. code:: none
+   :class: no-copybutton
+
+   Modifier l'utilisateur {user}
+
+And it would be **incorrect** to translate the placeholder like so:
+
+.. code:: none
+   :class: no-copybutton
+
+   Modifier l'utilisateur {utilisateur}
 
 .. _how_to_translate_a_phrase_with_html_code:
 
@@ -529,16 +549,22 @@ Image elements (``<img>``) in HTML place a picture on the
 page. Because people with visual impairments rely on a special note
 on the image element -- the ``alt`` attribute -- to describe the image,
 it is necessary to translate those. Here's an example that contains an
-image with both an ``alt`` attribute *and* a placeholder::
+image with both an ``alt`` attribute *and* a placeholder:
 
-  <img src="{icon}" alt="shield icon">
+.. code:: html
+   :class: no-copybutton
+
+   <img src="{icon}" alt="shield icon">
 
 As explained above, the placeholder ``{icon}`` in the ``src``
 attribute of the ``<img>`` element should not be translated. The
 ``alt`` attribute text (``"shield icon"``) should be. The correctly
-translated HTML in Portuguese would be::
+translated HTML in Portuguese would be:
 
-  <img src="{icon}" alt="ícone do escudo">
+.. code:: html
+   :class: no-copybutton
+
+   <img src="{icon}" alt="ícone do escudo">
 
 Attribute ``title``
 """""""""""""""""""
@@ -546,14 +572,20 @@ Attribute ``title``
 Links (``<a>``) and abbreviations (``<abbr>``) sometimes rely on
 an additional ``title`` attribute. The content of that attribute is
 usually shown when placing a cursor over the link or abbreviation.
-::
+:
 
-  <a id="recommend-tor" title="How to install Tor Browser" href="{url}">Learn how to install it</a>
+.. code:: html
+   :class: no-copybutton
+
+   <a id="recommend-tor" title="How to install Tor Browser" href="{url}">Learn how to install it</a>
 
 It is necessary to translate the contents of any ``title`` attribute.
-The correctly translated HTML in Spanish would be::
+The correctly translated HTML in Spanish would be:
 
-  <a id="recommend-tor" title="Cómo instalar Tor Browser" href="{url}">Aprenda cómo instalarlo</a>
+.. code:: html
+   :class: no-copybutton
+
+   <a id="recommend-tor" title="Cómo instalar Tor Browser" href="{url}">Aprenda cómo instalarlo</a>
 
 As explained above, the text content ``recommend-tor`` of the ``id``
 attribute in the ``<a>`` element should not be translated. Neither

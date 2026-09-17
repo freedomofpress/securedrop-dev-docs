@@ -45,10 +45,10 @@ Automated Testing
 When a pull request is submitted, we have Circle CI automatically run the
 SecureDrop test suites, which consist of:
 
-  #. Unit tests of the Python SecureDrop application code.
-  #. Functional tests that use Selenium to drive a web browser to verify the
-     function of the application from the user's perspective.
-  #. Tests of the system configuration state using testinfra.
+#. Unit tests of the Python SecureDrop application code.
+#. Functional tests that use Selenium to drive a web browser to verify the
+   function of the application from the user's perspective.
+#. Tests of the system configuration state using testinfra.
 
 Before a PR can be merged, these tests must all pass. If you modify the
 application code, you should verify the tests pass locally before submitting
@@ -66,7 +66,7 @@ root of the repository:
 
 .. code:: sh
 
-    ln -sf .githooks/pre-commit .git/hooks/pre-commit
+   ln -sf .githooks/pre-commit .git/hooks/pre-commit
 
 
 .. note::
@@ -85,9 +85,9 @@ Python
 All Python code should be `flake8 <https://flake8.pycqa.org/en/latest/>`__
 compliant. You can run ``flake8`` locally via:
 
-  .. code:: sh
+.. code:: sh
 
-      make flake8
+   make flake8
 
 Shell
 ~~~~~
@@ -95,9 +95,9 @@ Shell
 All Shell code (e.g. ``bash``, ``sh``) should be `shellcheck <https://github.com/koalaman/shellcheck>`__
 compliant. You can run ``shellcheck`` locally via:
 
-  .. code:: sh
+.. code:: sh
 
-      make shellcheck
+   make shellcheck
 
 For reference, consult the `shellcheck wiki <https://github.com/koalaman/shellcheck/wiki>`__
 for detailed explanations of any reported violations.
@@ -111,9 +111,9 @@ We use `html-linter <https://pypi.org/project/html-linter/>`__ to lint
 our HTML templates in ``securedrop/source_templates`` and
 ``securedrop/journalist_templates``. Run the HTML linting options we use via:
 
-  .. code:: sh
+.. code:: sh
 
-      make html-lint
+   make html-lint
 
 Accessibility
 ^^^^^^^^^^^^^
@@ -140,9 +140,9 @@ tasks, and playbooks. All YAML files in the project should pass the
 in the ``.yamllint`` file at the root of the repository.
 Run the checks locally via:
 
-  .. code:: sh
+.. code:: sh
 
-      make yamllint
+   make yamllint
 
 Type Hints in Python code
 -------------------------
@@ -168,42 +168,43 @@ Example of Type Hint
 ~~~~~~~~~~~~~~~~~~~~
 
 .. code:: Python
+   :class: no-copybutton
 
-    import typing
-    # https://www.python.org/dev/peps/pep-0484/#runtime-or-type-checking
-    if typing.TYPE_CHECKING:
-        # flake8 can not understand type annotation yet.
-        # That is why all type annotation relative import
-        # statements has to be marked as noqa.
-        # https://flake8.pycqa.org/en/latest/user/error-codes.html?highlight=f401
-        from typing import Dict  # noqa: F401
+   import typing
+   # https://www.python.org/dev/peps/pep-0484/#runtime-or-type-checking
+   if typing.TYPE_CHECKING:
+       # flake8 can not understand type annotation yet.
+       # That is why all type annotation relative import
+       # statements has to be marked as noqa.
+       # https://flake8.pycqa.org/en/latest/user/error-codes.html?highlight=f401
+       from typing import Dict  # noqa: F401
 
-    class Config(object):
+   class Config(object):
 
-        def __init__(self):
-            # type: () -> None
-            self.NAMES = {}  # type: Dict[str, str]
+       def __init__(self):
+           # type: () -> None
+           self.NAMES = {}  # type: Dict[str, str]
 
-        def add(self, a, b):
-            # type: (int, int) -> float
-            c = 10.5  # type: float
-            return a + b + c
+       def add(self, a, b):
+           # type: (int, int) -> float
+           c = 10.5  # type: float
+           return a + b + c
 
-        def update(self, uid, Name):
-            # type: (int, str) -> None
-            """
-            This method updates the name example.
-            """
-            self.NAMES[uid] = Name
+       def update(self, uid, Name):
+           # type: (int, str) -> None
+           """
+           This method updates the name example.
+           """
+           self.NAMES[uid] = Name
 
-    def main():
-        # type: () -> None
-        config = Config()  # type: Config
-        config.add(2, 3)
-        config.update(223, "SD")
+   def main():
+       # type: () -> None
+       config = Config()  # type: Config
+       config.add(2, 3)
+       config.update(223, "SD")
 
-    if __name__ == '__main__':
-        main()
+   if __name__ == '__main__':
+       main()
 
 The above example shows how to do a conditional import of ``Dict`` class from
 ``typing`` module. ``typing.TYPE_CHECKING`` will only be true when we use mypy

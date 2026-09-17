@@ -28,8 +28,8 @@ Rinse and repeat, again running ``aa-logprof`` to update the profile.
 The AppArmor profiles are saved in ``/etc/apparmor.d/``. There are two
 profiles:
 
-    -  ``/etc/apparmor.d/usr.sbin.tor``
-    -  ``/etc/apparmor.d/usr.sbin.apache2``
+-  ``/etc/apparmor.d/usr.sbin.tor``
+-  ``/etc/apparmor.d/usr.sbin.apache2``
 
 After running ``aa-logprof`` you will need to copy the modified profile back to
 your host machine to include them in the ``securedrop-app-code`` package.

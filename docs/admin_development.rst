@@ -47,6 +47,7 @@ Convenience ``Makefile`` targets are also provided for the most common
 tasks:
 
 .. code::
+   :class: no-copybutton
 
    $ make
    Makefile for developing and testing securedrop-admin.

@@ -55,22 +55,25 @@ Updating the Application Tests
 ------------------------------
 
 Unit tests are stored in the ``securedrop/tests/`` directory and functional
-tests are stored in the functional test directory::
+tests are stored in the functional test directory:
 
-    securedrop/tests/
-    ├── functional
-    │   ├── test_admin_interface.py
-    │   ├── test_submit_and_retrieve_file.py
-    │   │               ...
-    │   └── submission_not_in_memory.py
-    ├── utils
-    │   ├── db_helper.py
-    │   ├── env.py
-    │   └── asynchronous.py
-    ├── test_journalist.py
-    ├── test_source.py
-    │        ...
-    └── test_store.py
+.. code::
+   :class: no-copybutton
+
+   securedrop/tests/
+   ├── functional
+   │   ├── test_admin_interface.py
+   │   ├── test_submit_and_retrieve_file.py
+   │   │               ...
+   │   └── submission_not_in_memory.py
+   ├── utils
+   │   ├── db_helper.py
+   │   ├── env.py
+   │   └── asynchronous.py
+   ├── test_journalist.py
+   ├── test_source.py
+   │        ...
+   └── test_store.py
 
 ``securedrop/tests/utils`` contains helper functions for writing tests.
 If you want to add a test, you should see if there is an existing file

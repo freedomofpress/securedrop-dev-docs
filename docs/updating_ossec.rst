@@ -36,26 +36,28 @@ whether an alert will be produced, and if so, what rule triggered it and its
 level, you can simply pass the event to ``ossec-logtest``:
 
 .. code:: sh
+   :class: no-copybutton
 
-  root@mon-staging:/home/vagrant# sudo echo "Feb 10 23:34:40 app-prod kernel: [  124.188641] grsec: denied RWX mmap of <anonymous mapping> by /usr/sbin/apache2[apache2:1328] uid/euid:33/33 gid/egid:33/33, parent /usr/sbin/apache2[apache2:1309] uid/euid:0/0 gid/egid:0/0" | /var/ossec/bin/ossec-logtest
-  2017/08/16 22:28:25 ossec-testrule: INFO: Reading local decoder file.
-  2017/08/16 22:28:25 ossec-testrule: INFO: Started (pid: 18973).
-  ossec-testrule: Type one log per line.
 
-  **Phase 1: Completed pre-decoding.
-         full event: 'Feb 10 23:34:40 app-prod kernel: [  124.188641] grsec: denied RWX mmap of <anonymous mapping> by /usr/sbin/apache2[apache2:1328] uid/euid:33/33 gid/egid:33/33, parent /usr/sbin/apache2[apache2:1309] uid/euid:0/0 gid/egid:0/0'
-         hostname: 'app-prod'
-         program_name: 'kernel'
-         log: '[  124.188641] grsec: denied RWX mmap of <anonymous mapping> by /usr/sbin/apache2[apache2:1328] uid/euid:33/33 gid/egid:33/33, parent /usr/sbin/apache2[apache2:1309] uid/euid:0/0 gid/egid:0/0'
+   root@mon-staging:/home/vagrant# sudo echo "Feb 10 23:34:40 app-prod kernel: [  124.188641] grsec: denied RWX mmap of <anonymous mapping> by /usr/sbin/apache2[apache2:1328] uid/euid:33/33 gid/egid:33/33, parent /usr/sbin/apache2[apache2:1309] uid/euid:0/0 gid/egid:0/0" | /var/ossec/bin/ossec-logtest
+   2017/08/16 22:28:25 ossec-testrule: INFO: Reading local decoder file.
+   2017/08/16 22:28:25 ossec-testrule: INFO: Started (pid: 18973).
+   ossec-testrule: Type one log per line.
 
-  **Phase 2: Completed decoding.
-         decoder: 'iptables'
+   **Phase 1: Completed pre-decoding.
+          full event: 'Feb 10 23:34:40 app-prod kernel: [  124.188641] grsec: denied RWX mmap of <anonymous mapping> by /usr/sbin/apache2[apache2:1328] uid/euid:33/33 gid/egid:33/33, parent /usr/sbin/apache2[apache2:1309] uid/euid:0/0 gid/egid:0/0'
+          hostname: 'app-prod'
+          program_name: 'kernel'
+          log: '[  124.188641] grsec: denied RWX mmap of <anonymous mapping> by /usr/sbin/apache2[apache2:1328] uid/euid:33/33 gid/egid:33/33, parent /usr/sbin/apache2[apache2:1309] uid/euid:0/0 gid/egid:0/0'
 
-  **Phase 3: Completed filtering (rules).
-         Rule id: '100101'
-         Level: '7'
-         Description: 'grsec error was detected'
-  **Alert to be generated.
+   **Phase 2: Completed decoding.
+          decoder: 'iptables'
+
+   **Phase 3: Completed filtering (rules).
+          Rule id: '100101'
+          Level: '7'
+          Description: 'grsec error was detected'
+   **Alert to be generated.
 
 This is the utility we use in automated tests of OSSEC.
 
@@ -138,24 +140,25 @@ it will give you some parsed output:
     <https://github.com/freedomofpress/securedrop-docs/pull/199#pullrequestreview-634460996>
     for a prior discussion on this point.
 
-::
+.. code::
+   :class: no-copybutton
 
-    $ echo "Mar  1 13:22:53 app fwupd[133921]: 13:22:53:0883 FuPluginUefi         Error opening directory â€œ/sys/firmware/efi/esrt/entriesâ€�: No such file or directory" | sudo /var/ossec/bin/ossec-logtest
-    [...]
-    **Phase 1: Completed pre-decoding.
-        full event: 'Mar  1 13:22:53 app fwupd[133921]: 13:22:53:0883 FuPluginUefi         Error opening directory â€œ/sys/firmware/efi/esrt/entriesâ€�: No such file or directory'
-        hostname: 'app'
-        program_name: 'fwupd'
-        log: '13:22:53:0883 FuPluginUefi         Error opening directory â€œ/sys/firmware/efi/esrt/entriesâ€�: No such file or directory'
+   $ echo "Mar  1 13:22:53 app fwupd[133921]: 13:22:53:0883 FuPluginUefi         Error opening directory â€œ/sys/firmware/efi/esrt/entriesâ€�: No such file or directory" | sudo /var/ossec/bin/ossec-logtest
+   [...]
+   **Phase 1: Completed pre-decoding.
+       full event: 'Mar  1 13:22:53 app fwupd[133921]: 13:22:53:0883 FuPluginUefi         Error opening directory â€œ/sys/firmware/efi/esrt/entriesâ€�: No such file or directory'
+       hostname: 'app'
+       program_name: 'fwupd'
+       log: '13:22:53:0883 FuPluginUefi         Error opening directory â€œ/sys/firmware/efi/esrt/entriesâ€�: No such file or directory'
 
-    **Phase 2: Completed decoding.
-        No decoder matched.
+   **Phase 2: Completed decoding.
+       No decoder matched.
 
-    **Phase 3: Completed filtering (rules).
-        Rule id: '1002'
-        Level: '2'
-        Description: 'Unknown problem somewhere in the system.'
-    **Alert to be generated.
+   **Phase 3: Completed filtering (rules).
+       Rule id: '1002'
+       Level: '2'
+       Description: 'Unknown problem somewhere in the system.'
+   **Alert to be generated.
 
 .. _the_rules:
 

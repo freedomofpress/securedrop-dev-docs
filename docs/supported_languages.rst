@@ -70,9 +70,9 @@ such as communication, are at the discretion of the Localization Manager.
    believe *L*'s `language team`_ is likely to be able to maintain coverage for
    the foreseeable future.
 
-        #. If so, the Localization Manager SHOULD grant support for *L*.
+   #. If so, the Localization Manager SHOULD grant support for *L*.
 
-        #. If not, the Localization Manager MUST NOT grant support for *L*.
+   #. If not, the Localization Manager MUST NOT grant support for *L*.
 
 Revoking Support for a Language
 -------------------------------
@@ -105,21 +105,21 @@ Then:
    considered supported until it has missed coverage for a total of 3
    consecutive translation freezes.
 
-        #. In consultation with Localization Lab, the Localization
-           Manager MAY consult the `language census`_ (internal link) and reach out to
-           administrators who may be able to contribute to translation and
-           review.
+   #. In consultation with Localization Lab, the Localization
+      Manager MAY consult the `language census`_ (internal link) and reach out to
+      administrators who may be able to contribute to translation and
+      review.
 
 #. If *L* misses coverage again for *V2*'s translation freeze and does not
    regain coverage for *V3*'s translation freeze, then the Localization Manager
    SHOULD revoke support for *L* for *V3*.
 
-        #. In consultation with Localization Lab and the Release
-           Manager, the Localization Manager MAY extend *L*'s probationary
-           period, for example if the `language census`_ indicates that revoking
-           support for *L* would jeopardize the default locale for many
-           instances, for especially high-traffic or high-profile instances,
-           etc.
+   #. In consultation with Localization Lab and the Release
+      Manager, the Localization Manager MAY extend *L*'s probationary
+      period, for example if the `language census`_ indicates that revoking
+      support for *L* would jeopardize the default locale for many
+      instances, for especially high-traffic or high-profile instances,
+      etc.
            
 Adding a New Language for Translation
 -------------------------------------
@@ -138,10 +138,10 @@ Technical Limitations
 * SecureDrop cannot be translated into the following constructed languages,
   because their `ISO 639-1 codes`_ are used in our automated tools and tests:
 
-   * Esperanto (``eo``): used for `pseudolocale generation
-     <https://docs.weblate.org/en/weblate-4.14/admin/addons.html#pseudolocale-generation>`_
-   * Interlingua (``ia``): used for testing
-   * Ido (``io``): reserved for future use
+  * Esperanto (``eo``): used for `pseudolocale generation
+    <https://docs.weblate.org/en/weblate-4.14/admin/addons.html#pseudolocale-generation>`_
+  * Interlingua (``ia``): used for testing
+  * Ido (``io``): reserved for future use
 
 .. rubric:: Footnotes
 
