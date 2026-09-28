@@ -14,7 +14,10 @@ Announcements for new Tor releases are posted in the `Tor forum
 Our continuous integration automatically checks for new Tor packages every
 night and should commit them to the `securedrop-apt-test
 <https://github.com/freedomofpress/securedrop-apt-test>`_ repository.
-Within 15 minutes they should be available for download via
+
+The workflow can also be `triggered manually <https://github.com/freedomofpress/securedrop-apt-test/actions/workflows/update-tor.yml>`_.
+
+Within 5 minutes they should be available for download via
 ``apt-test.freedom.press``.
 
 Testing
