@@ -95,9 +95,9 @@ Testing Documentation Changes
 
 You can check for formatting violations by running the linting option:
 
-   .. code:: sh
+.. code:: sh
 
-      make docs-lint
+   make docs-lint
 
 The ``make docs`` command will display warnings if mistakes are found, but will
 still build the documentation. Using ``make docs-lint`` will convert any warnings
@@ -106,9 +106,9 @@ to errors, causing the build to fail.
 To test the documentation for broken links, run the following command from
 a reliable internet connection:
 
-   .. code:: sh
+.. code:: sh
 
-      make docs-linkcheck
+   make docs-linkcheck
 
 
 Project maintainers will need to approve the PR before it can be merged.
@@ -204,19 +204,21 @@ Code Blocks
 Ensure that example commands in codeblocks are easy to copy and paste.
 Do not prepend the ``$`` shell prompt indicator to example commands:
 
-  .. code::
+.. code::
+   :class: no-copybutton
 
-     echo hello
+   echo hello
 
 In the context of a terminal session with both typed commands and printed
 output text, use ``$`` before the typed commands:
 
-  .. code::
+.. code::
+   :class: no-copybutton
 
-     $ echo hello
-     hello
-     $ echo sunshine
-     sunshine
+   $ echo hello
+   hello
+   $ echo sunshine
+   sunshine
 
 
 Date Format
@@ -226,20 +228,22 @@ dates to the documentation.
 
 To avoid confusion, format dates in the documentation as Month_Name Day, Year:
 
-  .. code::
+.. code::
+   :class: no-copybutton
 
-     October 13, 2020
+   October 13, 2020
 
-  not
+not
 
-  .. code::
+.. code::
+   :class: no-copybutton
 
-     13 October, 2020
-     13/10/2020
-     10/13/2020
-     10/13/20
-     2020-10-13
-     2020-Oct-13
+   13 October, 2020
+   13/10/2020
+   10/13/2020
+   10/13/20
+   2020-10-13
+   2020-Oct-13
 
 
 
@@ -251,12 +255,13 @@ called ``securedrop``. This ``securedrop`` directory also contains a
 ``securedrop`` subdirectory for app code.
 
 .. code::
+   :class: no-copybutton
 
-     .
-     ├── securedrop
-     │   │
-     │  ...
-     │   ├── securedrop
+   .
+   ├── securedrop
+   │   │
+   │  ...
+   │   ├── securedrop
     ... ...
 
 To avoid confusion, paths to files anywhere inside the SecureDrop git repository
@@ -302,20 +307,22 @@ To avoid confusion, lists should include the "Oxford comma":
 
 Capitalize all section headings in title case:
 
-  .. code::
+.. code::
+   :class: no-copybutton
+   
+   Before You Begin
+   ================
 
-     Before You Begin
-     ================
+   Set up the Environment
+   ----------------------
 
-     Set up the Environment
-     ----------------------
+not
 
-  not
+.. code::
+   :class: no-copybutton
+   
+   Before you begin
+   ================
 
-  .. code::
-
-     Before you begin
-     ================
-
-     Set up the environment
-     ----------------------
+   Set up the environment
+   ----------------------

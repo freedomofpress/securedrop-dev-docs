@@ -10,6 +10,7 @@ With `gettext`_, text to be translated is specially marked in source
 code. A Python example:
 
 .. code:: python
+   :class: no-copybutton
 
    if not (msg or fh):
        flash(gettext("You must enter a message or choose a file to submit."), "error")
@@ -22,8 +23,9 @@ submit.`` can be automatically extracted for translation. The
 strings to be translated and store them into a `.pot`_ file at
 ``securedrop/translations/messages.pot``. For instance:
 
-::
-
+.. code::
+   :class: no-copybutton
+   
     #: source_app/main.py:111
     msgid "You must enter a message or choose a file to submit."
     msgstr ""
@@ -37,8 +39,9 @@ a `.po`_ file derived from the template. For instance,
 identical to ``securedrop/translations/messages.pot`` except for the
 `msgstr` fields, which will contain the French translations, e.g.:
 
-::
-
+.. code::
+   :class: no-copybutton
+   
     #: source_app/main.py:111
     msgid "You must enter a message or choose a file to submit."
     msgstr "Vous devez saisir un message ou sélectionner un fichier à envoyer."

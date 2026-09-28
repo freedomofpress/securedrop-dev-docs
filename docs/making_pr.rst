@@ -73,6 +73,7 @@ feature branching workflow.
 Assume the following history exists:
 
 .. code:: sh
+   :class: no-copybutton
 
           A---B---C change-one
          /
@@ -88,6 +89,7 @@ From this point, the result of either of the following commands:
 would be:
 
 .. code:: sh
+   :class: no-copybutton
 
                     A`--B`--C` change-one
                  /

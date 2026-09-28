@@ -63,6 +63,7 @@ to be defined inside of a ``<file></file>``.
 Example qrc file:
 
 .. code-block:: xml
+   :class: no-copybutton
 
     <RCC>
         <qresource prefix="/images">

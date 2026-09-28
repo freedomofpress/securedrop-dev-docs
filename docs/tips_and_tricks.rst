@@ -47,16 +47,16 @@ based workflow for adding Python dependencies. If you would like to add a Python
 dependency, instead of editing the ``securedrop/requirements/python3/*.txt`` files
 directly, please:
 
-  #. Edit the relevant ``*.in`` file in ``securedrop/requirements/python3``
-  #. Use the following shell script to generate
-     ``securedrop/requirements/python3/*.txt`` files:
+#. Edit the relevant ``*.in`` file in ``securedrop/requirements/python3``
+#. Use the following shell script to generate
+   ``securedrop/requirements/python3/*.txt`` files:
 
-     .. code:: sh
+   .. code:: sh
 
-        make update-pip-requirements
+      make update-pip-requirements
 
-  #. Commit both the ``securedrop/requirements/python3/*.in`` and
-     ``securedrop/requirements/python3/*.txt`` files
+#. Commit both the ``securedrop/requirements/python3/*.in`` and
+   ``securedrop/requirements/python3/*.txt`` files
 
 Note that application dependency changes are subject to closer review, using
 `diffoscope` or a similar tool to compare the old and updated dependencies. You

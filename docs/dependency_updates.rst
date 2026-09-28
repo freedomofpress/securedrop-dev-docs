@@ -104,12 +104,13 @@ it was semver-compatible, we only want to permit patch changes, not major or
 minor. For example, in a ``requirements.in`` file:
 
 .. code::
+   :class: no-copybutton
 
-    # bad
-    ansible>=2.9.13
-    # good
-    # v2.10.0 is a breaking change, requires custom update logic
-    ansible>=2.9.13,<2.10.0
+   # bad
+   ansible>=2.9.13
+   # good
+   # v2.10.0 is a breaking change, requires custom update logic
+   ansible>=2.9.13,<2.10.0
 
 Make sure to provide a comment explaining the version constraints, so that
 future maintainers will have an easier time making sense of the controls. If no
@@ -118,8 +119,9 @@ Typically, you should set a lower bound on the target version you just upgraded
 to (for example, due to a ``safety`` alert):
 
 .. code::
+   :class: no-copybutton
 
-    Jinja2>=2.11.3
+   Jinja2>=2.11.3
 
 Doing so clearly indicates to other maintainers that no version less than
 ``2.11.3`` should be used. The next time the requirement is updated, the lower
@@ -129,9 +131,10 @@ For projects using poetry, the ``^`` semver operator should be used, which only
 permits semver minor and patch updates:
 
 .. code:: toml
+   :class: no-copybutton
 
-    [tool.poetry.dependencies]
-    sphinx = "^6.1.3"
+   [tool.poetry.dependencies]
+   sphinx = "^6.1.3"
 
 
 Additional comments
@@ -155,28 +158,28 @@ You can install and run `GuardDog <https://github.com/DataDog/guarddog>`_ locall
 
 Install using ``pip``:
 
-   .. code::
+.. code::
 
-      pip install guarddog
+   pip install guarddog
 
 Update using ``pip``:
 
-   .. code::
+.. code::
 
-      pip install --upgrade guarddog
+   pip install --upgrade guarddog
 
 Install using Docker:
 
-   .. code::
+.. code::
 
-      docker pull ghcr.io/datadog/guarddog
-      alias guarddog='docker run --rm ghcr.io/datadog/guarddog'
+   docker pull ghcr.io/datadog/guarddog
+   alias guarddog='docker run --rm ghcr.io/datadog/guarddog'
 
 Update using Docker:
 
-   .. code::
+.. code::
 
-      docker pull ghcr.io/datadog/guarddog:latest
+   docker pull ghcr.io/datadog/guarddog:latest
 
 
 .. note:: GuardDog fails quietly, and scans that did not run produce output similar to a successful scan with no findings. For this reason, you should pass ``--log-level debug`` with every invocation.
@@ -187,42 +190,42 @@ Scanning PyPi packages with GuardDog
 
 GuardDog can scan any package directly from PyPi:
 
-   .. code::
+.. code::
 
-      guarddog --log-level debug pypi scan cryptography --version 2.7
+   guarddog --log-level debug pypi scan cryptography --version 2.7
 
 By default, GuardDog will grab wheels from PyPi. We typically pin python dependencies to tarballs rather than wheels. There are no flags to prioritize tarballs over wheels, so in these cases, you should download the target version's tarball off of PyPI and then run GuardDog against this local artifact:
 
-   .. code::
+.. code::
 
-      guarddog --log-level debug pypi scan /path/to/TARBALL.tar.gz
+   guarddog --log-level debug pypi scan /path/to/TARBALL.tar.gz
 
 Scanning NPM packages with GuardDog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 GuardDog can also scan packages directly from `npm`:
 
-   .. code::
+.. code::
 
-      guarddog --log-level debug npm scan react --version 19.2.0
+   guarddog --log-level debug npm scan react --version 19.2.0
 
 To scan the updated version of a package locally, you can download the package tarball from `npm`:
 
-   .. code::
+.. code::
 
-      pnpm view react@19.2.0
+   pnpm view react@19.2.0
 
 The output of ``npm view`` includes the integrity sha512 hash that should match the hash in the updated `pnpm-lock.yml` file. You can compute this hash of the tarball locally:
 
-   .. code::
+.. code::
 
-      cat ./react-19.2.0.tgz | openssl dgst -sha512 -binary | base64
+   cat ./react-19.2.0.tgz | openssl dgst -sha512 -binary | base64
 
 To scan the package locally, decompress the tarball and run GuardDog:
 
-   .. code::
+.. code::
 
-      guarddog --log-level debug npm scan ./package
+   guarddog --log-level debug npm scan ./package
 
 .. _scan-semgrep:
 
@@ -241,13 +244,13 @@ GuardDog uses a combination of `YARA <https://virustotal.github.io/yara/>`_ and 
 
 Below is an example series of commands to clone a package repository, and scan the code changes between versions using the local GuardDog rules as well as Semgrep's default rules:
 
-   .. code::
+.. code::
 
-      git clone https://github.com/remix-run/react-router/
-      cd react-router
-      git fetch --tags
-      git checkout v7.13.0 #the version we are upgrading to
-      semgrep scan --baseline-commit=4a5e333 --config=/home/user/guarddog-env/lib/python3.13/site-packages/guarddog/analyzer/sourcecode ./
+   git clone https://github.com/remix-run/react-router/
+   cd react-router
+   git fetch --tags
+   git checkout v7.13.0 #the version we are upgrading to
+   semgrep scan --baseline-commit=4a5e333 --config=/home/user/guarddog-env/lib/python3.13/site-packages/guarddog/analyzer/sourcecode ./
 
 .. _manual-diff:
 
@@ -260,18 +263,19 @@ diff review for ``cryptography`` 2.3 to 2.7:
 
    .. code::
 
-       $ pip download --no-binary :all: --no-deps cryptography==2.3
-       $ pip download --no-binary :all: --no-deps cryptography==2.7
+      $ pip download --no-binary :all: --no-deps cryptography==2.3
+      $ pip download --no-binary :all: --no-deps cryptography==2.7
 
 2. Compute the sha256 hashes:
 
    .. code::
 
-       $ shasum -a 256 cryptography-{2.3,2.7}.tar.gz
-       c132bab45d4bd0fff1d3fe294d92b0a6eb8404e93337b3127bdec9f21de117e6  cryptography-2.3.tar.gz
-       e6347742ac8f35ded4a46ff835c60e68c22a536a8ae5c4422966d06946b6d4c6  cryptography-2.7.tar.gz
+      $ shasum -a 256 cryptography-{2.3,2.7}.tar.gz
+      c132bab45d4bd0fff1d3fe294d92b0a6eb8404e93337b3127bdec9f21de117e6  cryptography-2.3.tar.gz
+      e6347742ac8f35ded4a46ff835c60e68c22a536a8ae5c4422966d06946b6d4c6  cryptography-2.7.tar.gz
 
    Verify that these hashes match what's in the requirements file (before and after).
+   
 
 3. Now perform a timeboxed review of the diff using diffoscope or your tool of choice, e.g.:
 
@@ -289,30 +293,31 @@ diff review for ``cryptography`` 2.3 to 2.7:
 4. Else, make a signed document containing the source tarball hashes before/after, and sign it:
 
    .. code::
+      :class: no-copybutton
 
-    -----BEGIN PGP SIGNED MESSAGE-----
-       Hash: SHA512
+      -----BEGIN PGP SIGNED MESSAGE-----
+      Hash: SHA512
 
-       Diff reviewed from:
+      Diff reviewed from:
 
-       c132bab45d4bd0fff1d3fe294d92b0a6eb8404e93337b3127bdec9f21de117e6  cryptography-2.3.tar.gz
-       e6347742ac8f35ded4a46ff835c60e68c22a536a8ae5c4422966d06946b6d4c6  cryptography-2.7.tar.gz
-       -----BEGIN PGP SIGNATURE-----
+      c132bab45d4bd0fff1d3fe294d92b0a6eb8404e93337b3127bdec9f21de117e6  cryptography-2.3.tar.gz
+      e6347742ac8f35ded4a46ff835c60e68c22a536a8ae5c4422966d06946b6d4c6  cryptography-2.7.tar.gz
+      -----BEGIN PGP SIGNATURE-----
 
-       iQIzBAEBCgAdFiEEntsmvkbGwko38nhRsH6AZWrNlQEFAl1a9swACgkQsH6AZWrN
-       lQGwbQ/+OwKgNKJuU44+zW8kBQ7l08oiLKf02kxBaGZYMBamd2/LMjATQGdQ8ocp
-       sIQ4YXq+ybInv3ZNP8Ok9tuFP3o+3PsXU1Mc0A3FZnH4wwxFUGckWV57drFIWuSR
-       pNOAO3M8VaggMP7FaDFgSRa1BmjBIYGW/FL+nUUSQtkFwOmGJEmVBo0Uxf8WXztP
-       lnio4BYYsQbhjGSlm1jXjNyrMkHefYluKQBsjcgecU/dngTtOAD3GgAC6wczBztX
-       k7Afzmv9vJVRIecZGkzfNNuJC5WCQjoH3y6DiyQYiIk9sIG0TbFnvqNIG2azWY5b
-       AdlHgbsZqRO1tIMzjpn5fiiXHekJ8L8Y6tRTYGgkN9IIUAwwUhFkd0ExPB3OGOWz
-       4CItkwyrfUC6RtwH0oGhHNUaDeGWrh3TyHwjHE9kFQDDz+RXvlSpBkLmZof/UK0V
-       mK8TSs5LsA+WPTP8zbgjORcMmOZL44HdnrxnOpfM+YhBDKp8bUC2wB9Rasew74y6
-       sM07lHyQQzDuPGvV/SrCVGJF8hDDA1OVLXK3QasEdHnvlU5w4lM8uLb+rX2sC8Im
-       +HSpm3f4N7dbPTTft352+uSgD0vXGqzqwcOrovtEJcgb1T/IpN40QvnsrLQyMZ7O
-       xPA9YoeZOlHsgAazDPXfHRqsPmJslZp80uZqbfp56OZPBBJKbuw=
-       =T0MH
-       -----END PGP SIGNATURE-----
+      iQIzBAEBCgAdFiEEntsmvkbGwko38nhRsH6AZWrNlQEFAl1a9swACgkQsH6AZWrN
+      lQGwbQ/+OwKgNKJuU44+zW8kBQ7l08oiLKf02kxBaGZYMBamd2/LMjATQGdQ8ocp
+      sIQ4YXq+ybInv3ZNP8Ok9tuFP3o+3PsXU1Mc0A3FZnH4wwxFUGckWV57drFIWuSR
+      pNOAO3M8VaggMP7FaDFgSRa1BmjBIYGW/FL+nUUSQtkFwOmGJEmVBo0Uxf8WXztP
+      lnio4BYYsQbhjGSlm1jXjNyrMkHefYluKQBsjcgecU/dngTtOAD3GgAC6wczBztX
+      k7Afzmv9vJVRIecZGkzfNNuJC5WCQjoH3y6DiyQYiIk9sIG0TbFnvqNIG2azWY5b
+      AdlHgbsZqRO1tIMzjpn5fiiXHekJ8L8Y6tRTYGgkN9IIUAwwUhFkd0ExPB3OGOWz
+      4CItkwyrfUC6RtwH0oGhHNUaDeGWrh3TyHwjHE9kFQDDz+RXvlSpBkLmZof/UK0V
+      mK8TSs5LsA+WPTP8zbgjORcMmOZL44HdnrxnOpfM+YhBDKp8bUC2wB9Rasew74y6
+      sM07lHyQQzDuPGvV/SrCVGJF8hDDA1OVLXK3QasEdHnvlU5w4lM8uLb+rX2sC8Im
+      +HSpm3f4N7dbPTTft352+uSgD0vXGqzqwcOrovtEJcgb1T/IpN40QvnsrLQyMZ7O
+      xPA9YoeZOlHsgAazDPXfHRqsPmJslZp80uZqbfp56OZPBBJKbuw=
+      =T0MH
+      -----END PGP SIGNATURE-----
 
    Note that you generate an inline signature like this via: ``gpg --clear-sign crypto-diff.txt``
 
@@ -373,10 +378,11 @@ and crates that apply to it. For example, we can ignore all of the ``windows-sys
 Exemptions can be specified in ``supply-chain/config.toml``:
 
 .. code:: toml
+   :class: no-copybutton
 
-    [policy.windows-sys]
-    criteria = []
-    notes = "Windows-only"
+   [policy.windows-sys]
+   criteria = []
+   notes = "Windows-only"
 
 Note that within crates do review, you should still review all the code, regardless of what
 platform it is targeting.

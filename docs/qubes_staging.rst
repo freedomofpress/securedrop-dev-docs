@@ -66,12 +66,12 @@ For the most part, the install process matches the
 `hardware install flow <https://docs.securedrop.org/en/stable/servers.html#perform-the-installation>`_,
 with a few exceptions:
 
-  -  **Subnet:** 10.137.0.0/24
-  -  **Address:** use value returned by ``qvm-prefs sd-staging-base-focal ip``
-  -  **Gateway:** use value returned by ``qvm-prefs sd-staging-base-focal visible_gateway``
-  -  **Name servers:** 10.139.1.1,10.139.1.2
-  -  **Search domains:** *should be left blank*
-  -  **Your server's name:** ``sd-staging-base-focal``
+-  **Subnet:** 10.137.0.0/24
+-  **Address:** use value returned by ``qvm-prefs sd-staging-base-focal ip``
+-  **Gateway:** use value returned by ``qvm-prefs sd-staging-base-focal visible_gateway``
+-  **Name servers:** 10.139.1.1,10.139.1.2
+-  **Search domains:** *should be left blank*
+-  **Your server's name:** ``sd-staging-base-focal``
 
 Make sure to configure LVM and use **Virtual disk 1 (xvda 20.0GB Xen Virtual Block device)**
 when asked for a target partition during installation. It should be the default option.

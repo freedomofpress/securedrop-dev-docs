@@ -122,10 +122,10 @@ Pre-Release
       existing debs. Changes merged to this branch will be published to ``apt-test.freedom.press``
       within 15 minutes.
 
-     .. warning:: Only commit deb packages with an incremented version number: do not clobber
-                  existing packages. That is, if there is already a deb called e.g.
-                  ``ossec-agent-3.6.0-amd64.deb`` in ``main``, do not commit a new version of this
-                  deb.
+      .. warning:: Only commit deb packages with an incremented version number: do not clobber
+                   existing packages. That is, if there is already a deb called e.g.
+                   ``ossec-agent-3.6.0-amd64.deb`` in ``main``, do not commit a new version of this
+                   deb.
 
 #. Write a test plan that focuses on the new functionality introduced in the release. Post for
    feedback and make changes based on suggestions from the community. Once it's ready, publish the
@@ -256,30 +256,30 @@ Release Process
    during the next release.
 #. Update the `public documentation <https://docs.securedrop.org/>`_:
 
-  * Review and merge the ``securedrop-docs`` PR that bumps the version and adds
-    the upgrade documentation for this release.
+   * Review and merge the ``securedrop-docs`` PR that bumps the version and adds
+     the upgrade documentation for this release.
 
-  * Verify that there are no changes on the ``main`` branch of ``securedrop-docs``
-    that should not be released into the stable version of the documentation.
+   * Verify that there are no changes on the ``main`` branch of ``securedrop-docs``
+     that should not be released into the stable version of the documentation.
 
-    If necessary, you can create a branch from an earlier commit. Follow the
-    ``release/<major>.<minor>.<patch>`` convention for the branch name in
-    ``securedrop-docs``, and cherry-pick at least the changes from the PR above
-    onto it via a backport PR.
+     If necessary, you can create a branch from an earlier commit. Follow the
+     ``release/<major>.<minor>.<patch>`` convention for the branch name in
+     ``securedrop-docs``, and cherry-pick at least the changes from the PR above
+     onto it via a backport PR.
 
-  * Create a tag signed with your developer key in the format
-    ``<major>.<minor>.<patch>`` on the ``HEAD`` of the ``main`` branch or of the
-    docs release branch you created in the previous step. ::
+   * Create a tag signed with your developer key in the format
+     ``<major>.<minor>.<patch>`` on the ``HEAD`` of the ``main`` branch or of the
+     docs release branch you created in the previous step. ::
 
-      git tag -as <major>.<minor>.<patch>
-      git push origin <major>.<minor>.<patch>
+       git tag -as <major>.<minor>.<patch>
+       git push origin <major>.<minor>.<patch>
 
-    This will update the stable version of the documentation.
+     This will update the stable version of the documentation.
 
-  * Subsequent changes to the stable version should be tagged with PEP-440
-    conformant `post-release separators <https://www.python.org/dev/peps/pep-0440/#post-release-separators>`__
-    in the format ``<major>.<minor>.<patch>-1``,  ``<major>.<minor>.<patch>-2``,
-    and so on.
+   * Subsequent changes to the stable version should be tagged with PEP-440
+     conformant `post-release separators <https://www.python.org/dev/peps/pep-0440/#post-release-separators>`__
+     in the format ``<major>.<minor>.<patch>-1``,  ``<major>.<minor>.<patch>-2``,
+     and so on.
 
 #. Verify that the public documentation has been updated. Inspecting or
    restarting builds requires Codefresh access; if you lack access, a tech lead

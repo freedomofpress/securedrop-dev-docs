@@ -41,30 +41,36 @@ Changes to the Ansible config should result in failing config tests, but
 only if an existing task was modified. If you add a new task, make
 sure to add a corresponding spectest to validate that state after a
 new provisioning run. Tests import variables from separate YAML files
-than the Ansible playbooks: ::
+than the Ansible playbooks:
 
-    molecule/testinfra/staging/vars/
-    ├── app-prod.yml
-    ├── app-staging.yml
-    ├── mon-prod.yml
-    ├── mon-staging.yml
-    └── staging.yml
+.. code::
+   :class: no-copybutton
+
+   molecule/testinfra/staging/vars/
+   ├── app-prod.yml
+   ├── app-staging.yml
+   ├── mon-prod.yml
+   ├── mon-staging.yml
+   └── staging.yml
 
 Any variable changes in the Ansible config should have a corresponding
 entry in these vars files. These vars are dynamically loaded for each
 host via the ``molecule/testinfra/staging/conftest.py`` file. Make sure to add
-your tests to the relevant location for the host you plan to test: ::
+your tests to the relevant location for the host you plan to test:
 
-    molecule/testinfra/staging/app/
-    ├── apache
-    │   ├── test_apache_journalist_interface.py
-    │   ├── test_apache_service.py
-    │   ├── test_apache_source_interface.py
-    │   └── test_apache_system_config.py
-    ├── test_apparmor.py
-    ├── test_appenv.py
-    ├── test_network.py
-    └── test_ossec.py
+.. code::
+   :class: no-copybutton
+
+   molecule/testinfra/staging/app/
+   ├── apache
+   │   ├── test_apache_journalist_interface.py
+   │   ├── test_apache_service.py
+   │   ├── test_apache_source_interface.py
+   │   └── test_apache_system_config.py
+   ├── test_apparmor.py
+   ├── test_appenv.py
+   ├── test_network.py
+   └── test_ossec.py
 
 In the example above, to add a new test for the ``app-staging`` host,
 add a new file to the ``testinfra/staging/app`` directory.
@@ -76,17 +82,20 @@ Config Test Layout
 ------------------
 
 With some exceptions, the config tests are broken up according to platform definitions in the
-Molecule configuration: ::
+Molecule configuration:
 
-    molecule/testinfra/staging
-    ├── app
-    ├── app-code
-    ├── common
-    ├── mon
-    ├── ossec
-    └── vars
+.. code::
+   :class: no-copybutton
 
-Ideally the config tests would be broken up according to roles,
+   molecule/testinfra/staging
+   ├── app
+   ├── app-code
+   ├── common
+   ├── mon
+   ├── ossec
+   └── vars
+
+sIdeally the config tests would be broken up according to roles,
 mirroring the Ansible configuration. Prior to the reorganization of
 the Ansible layout, the tests are rather tightly coupled to hosts. The
 layout of config tests is therefore subject to change.
