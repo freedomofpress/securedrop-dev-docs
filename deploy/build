@@ -9,8 +9,17 @@ do_build() {
     git checkout "$1"
 
     make html
-    # Remote-loaded SVGs will cause a build failure unless we use force-mode.
-    LATEXMKOPTS="-interaction=nonstopmode -f" make latexpdf || true
+    # Concatenate every page into one HTML file, then have headless Chromium
+    # print it to PDF. This replaces the old LaTeX-based `make latexpdf`.
+    make singlehtml
+    chromium \
+        --headless \
+        --no-sandbox \
+        --disable-gpu \
+        --virtual-time-budget=120000 \
+        --no-pdf-header-footer \
+        --print-to-pdf=docs/_build/singlehtml/SecureDropDevDocs.pdf \
+        "file://$(pwd)/docs/_build/singlehtml/index.html"
 
     mkdir -p build
     mv docs/_build "build/${2}"

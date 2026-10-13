@@ -1,7 +1,7 @@
 FROM debian:trixie AS sphinx
 
 ARG GIT_BRANCH=main
-RUN apt-get -q update && apt-get -qy upgrade && apt-get -qy install git make latexmk texlive-latex-extra python3-poetry
+RUN apt-get -q update && apt-get -qy upgrade && apt-get -qy install git make chromium python3-poetry
 COPY ./ .
 RUN poetry install
 RUN deploy/build $GIT_BRANCH
@@ -14,4 +14,4 @@ RUN mkdir -p /opt/nginx/run /opt/nginx/webroot/en/latest && chown -R nginx:nginx
 
 USER nginx
 COPY --from=sphinx --chown=nginx:nginx build/latest/html/ /opt/nginx/webroot/en/latest/
-COPY --from=sphinx --chown=nginx:nginx build/latest/latex/SecureDropDevDocs.pdf /opt/nginx/webroot/en/latest/
+COPY --from=sphinx --chown=nginx:nginx build/latest/singlehtml/SecureDropDevDocs.pdf /opt/nginx/webroot/en/latest/
