@@ -5,7 +5,7 @@ SecureDrop currently uses Ubuntu Focal as its server OS.
 The instructions below cover setting up a SecureDrop staging environment
 using Focal under Qubes.
 
-It is assumed that you have an up-to-date Qubes R4.2 installation on a compatible
+It is assumed that you have an up-to-date Qubes R4.3 installation on a compatible
 laptop, with at least 32GB RAM and 60GB free disk space. The SecureDrop server VMs
 run Tor locally instead of using ``sys-whonix``, so the system clock must be set
 accurately for Tor to start and hidden services to be available.
